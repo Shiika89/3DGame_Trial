@@ -9,6 +9,7 @@ public class EnemyMove : MonoBehaviour
 {
     [SerializeField] GameObject m_Player;
     [SerializeField] Animator m_anim;
+    public bool m_inArea = false;
     //Rigidbody m_rb;
     NavMeshAgent m_navMeshAgent;
 
@@ -22,9 +23,15 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_navMeshAgent.destination = m_Player.transform.position;
-        Animation();
-        
+        if (m_inArea == true)
+        {
+            m_navMeshAgent.destination = m_Player.transform.position;
+            Animation();
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void Animation()
@@ -34,6 +41,24 @@ public class EnemyMove : MonoBehaviour
             Vector3 velocity = m_navMeshAgent.velocity;
             velocity.y = 0f;
             m_anim.SetFloat("Speed", velocity.magnitude);
+        }
+    }
+
+    //検出範囲に入った時の処理
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            m_inArea = true;
+        }
+    }
+
+    //検出範囲から出たときの処理
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            m_inArea = false;
         }
     }
 }
