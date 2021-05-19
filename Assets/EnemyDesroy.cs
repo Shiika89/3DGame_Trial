@@ -4,23 +4,33 @@ using UnityEngine;
 
 public class EnemyDesroy : MonoBehaviour
 {
+    [SerializeField] public int m_life = 100;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Attack")
-        {
-            Destroy(this.gameObject);
-        }
-    }
+    [SerializeField] int currentLife;
+
+    int Damage = 10;
+
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentLife = m_life;
     }
 
     // Update is called once per frame
-    void Update()
+    
+
+    public void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.tag == "Attack")
+        {
+            currentLife = currentLife -= Damage;
+
+
+            if (currentLife == 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }

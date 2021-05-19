@@ -12,6 +12,8 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] Animator m_anim;
     //動くスピード
     [SerializeField] float m_moveSpeed = 0f;
+    //攻撃を開始する距離
+    [SerializeField] float m_attackRange = 1.5f;
     //相手が検知範囲に入ったどうか調べるための変数
     public bool m_inArea = false;
     Rigidbody m_rb;
@@ -30,15 +32,15 @@ public class EnemyMove : MonoBehaviour
         //検知エリアに入ったら動いて出たら止まる
         if (m_inArea == true)
         {
-            //m_navMeshAgent.destination = m_target.transform.position;
-            //m_anim.SetBool("Inarea", true);
-            Move();
-            Animation();
+            m_navMeshAgent.destination = m_target.transform.position;
+            //Move();
+            MoveAnimation();
+            AttackAnimation();
         }
         else
         {
             //Speedを０にする
-            Vector3 velocity = m_rb.velocity;
+            Vector3 velocity = m_navMeshAgent.velocity;
             velocity.y = 0f;
             m_anim.SetFloat("Speed", 0);
 
@@ -46,14 +48,22 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    public void Animation()
+    public void MoveAnimation()
     {
         if (m_anim)
         {
             //Speedにm_rbの速度を入れる
-            Vector3 velocity = m_rb.velocity;
+            Vector3 velocity = m_navMeshAgent.velocity;
             velocity.y = 0f;
             m_anim.SetFloat("Speed", velocity.magnitude);
+        }
+    }
+
+    public void AttackAnimation()
+    {
+        if (Vector3.Distance(transform.position, m_target.position) <= m_attackRange)
+        {
+            m_anim.SetTrigger("Attack");
         }
     }
 
