@@ -24,7 +24,7 @@ public class EnemyDesroy : MonoBehaviour
     {
         if (other.gameObject.tag == "Attack")
         {
-            currentLife = currentLife -= Damage;
+           currentLife -= Damage;
 
 
             if (currentLife == 0)
