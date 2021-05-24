@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     //動く速さ
-    [SerializeField] float m_movingSpeed = 5f;
+    [SerializeField] public float m_movingSpeed = 5f;
+    public bool m_IsAttacking = false;
     [SerializeField] Animator m_anim;
     Rigidbody m_rb;
 
@@ -23,6 +24,10 @@ public class PlayerMove : MonoBehaviour
 
     public void Move()
     {
+        if (m_IsAttacking)
+        {
+            return;
+        }
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
 

@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_attackRange: {fileID: 382758003}
+  m_attackStop: {fileID: 970144378}
 --- !u!1001 &653731212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1082,6 +1083,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 8d5a0e0d58f4e4176a844a1a03976c19, type: 2}
+    - target: {fileID: 9500000, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 8f0565f23a2b58541a475bd3c1393052, type: 3}
       propertyPath: m_AABB.m_Center.y
       value: 1.380296
@@ -1616,6 +1621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_movingSpeed: 5
+  m_IsAttacking: 0
   m_anim: {fileID: 552001152}
 --- !u!114 &970144379
 MonoBehaviour:
