@@ -6,8 +6,6 @@ public class EnemyAttackController : MonoBehaviour
 {
     [SerializeField] Collider m_attackRange;
 
-    PlayerDesroy Player;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +19,6 @@ public class EnemyAttackController : MonoBehaviour
     void BeginAttack()
     {
         m_attackRange.gameObject.SetActive(true);
-        //PlayerDesroy
     }
 
     void EndAttack()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyDesroy : MonoBehaviour
 {
     [SerializeField] public int m_life = 100;
-
+    [SerializeField] GameObject m_enemyDie;
     [SerializeField] int currentLife;
 
     int Damage = 10;
@@ -27,8 +27,11 @@ public class EnemyDesroy : MonoBehaviour
            currentLife -= Damage;
 
 
-            if (currentLife == 0)
+            if (currentLife <= 0)
             {
+                Debug.Log("死亡");
+                GameObject death = Instantiate(m_enemyDie);
+                death.transform.position = this.transform.position;
                 Destroy(this.gameObject);
             }
         }

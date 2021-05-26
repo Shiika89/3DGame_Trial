@@ -39,9 +39,11 @@ public class EnemyMove : MonoBehaviour
         }
         else
         {
+            m_navMeshAgent.destination = this.transform.position;
+
             //Speedを０にする
-            Vector3 velocity = m_navMeshAgent.velocity;
-            velocity.y = 0f;
+            //Vector3 velocity = m_navMeshAgent.velocity;
+            //velocity.y = 0f;
             m_anim.SetFloat("Speed", 0);
 
             return;
@@ -85,17 +87,17 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    void Move()
-    {
-        //自身をtargetの方向に向かせる
-        Vector3 targetPos = m_target.position;
-        targetPos.y = transform.position.y;
-        transform.LookAt(targetPos);
+    //void Move()
+    //{
+    //    //自身をtargetの方向に向かせる
+    //    Vector3 targetPos = m_target.position;
+    //    targetPos.y = transform.position.y;
+    //    transform.LookAt(targetPos);
 
-        //向いてる方向に進ませる
-        Vector3 velo = this.transform.forward * m_moveSpeed;
-        velo.y = m_rb.velocity.y;
-        m_rb.velocity = velo;
-        transform.position = transform.position + velo * Time.deltaTime;
-    }
+    //    //向いてる方向に進ませる
+    //    Vector3 velo = this.transform.forward * m_moveSpeed;
+    //    velo.y = m_rb.velocity.y;
+    //    m_rb.velocity = velo;
+    //    transform.position = transform.position + velo * Time.deltaTime;
+    //}
 }
