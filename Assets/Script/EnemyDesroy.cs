@@ -29,7 +29,7 @@ public class EnemyDesroy : MonoBehaviour
 
             if (currentLife <= 0)
             {
-                Debug.Log("死亡");
+                Debug.Log("エネミー死亡");
                 GameObject death = Instantiate(m_enemyDie);
                 death.transform.position = this.transform.position;
                 Destroy(this.gameObject);
