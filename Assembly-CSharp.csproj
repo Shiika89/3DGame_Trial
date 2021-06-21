@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HPUIRotateScript.cs" />
     <Compile Include="Assets\Script\AttackController.cs" />
     <Compile Include="Assets\Script\EnemyAttackController.cs" />
     <Compile Include="Assets\Script\EnemyDesroy.cs" />
