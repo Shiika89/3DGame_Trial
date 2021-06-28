@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyDesroy : MonoBehaviour
+public class EnemyDesroy : MonoBehaviour ,IDamage
 {
     [SerializeField] public int m_life = 100;
     [SerializeField] GameObject m_enemyDie;
@@ -11,7 +11,7 @@ public class EnemyDesroy : MonoBehaviour
     [SerializeField] private GameObject m_HPUI;
     private Slider m_slinder;
 
-    int Damage = 10;
+    int m_damage = 10;
 
     
     // Start is called before the first frame update
@@ -22,22 +22,19 @@ public class EnemyDesroy : MonoBehaviour
         m_slinder.maxValue = m_life;
         m_slinder.value = m_currentLife;
     }
-
-    public void OnTriggerEnter(Collider other)
+    public void Damage(int a)
     {
-        if (other.gameObject.tag == "Attack")
+        m_currentLife -= a;
+        m_slinder.value -= a;
+
+
+        if (m_currentLife <= 0)
         {
-            m_currentLife -= Damage;
-            m_slinder.value -= Damage;
-
-
-            if (m_currentLife <= 0)
-            {
-                Debug.Log("エネミー死亡");
-                GameObject death = Instantiate(m_enemyDie);
-                death.transform.position = this.transform.position;
-                Destroy(this.gameObject);
-            }
+            Debug.Log("エネミー死亡");
+            GameObject death = Instantiate(m_enemyDie);
+            death.transform.position = this.transform.position;
+            Destroy(this.gameObject);
         }
     }
+    
 }

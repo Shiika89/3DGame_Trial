@@ -36,8 +36,5 @@ public class AttackController : MonoBehaviour
         m_attackStop.m_IsAttacking = false;
     }
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
