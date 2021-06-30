@@ -49,7 +49,9 @@ public class EnemyMove : MonoBehaviour
             return;
         }
     }
-
+    /// <summary>
+    /// Enemyをナビメッシュで動かす
+    /// </summary>
     public void MoveAnimation()
     {
         if (m_anim)
@@ -60,7 +62,9 @@ public class EnemyMove : MonoBehaviour
             m_anim.SetFloat("Speed", velocity.magnitude);
         }
     }
-
+    /// <summary>
+    /// Enemyのアニメーション
+    /// </summary>
     public void AttackAnimation()
     {
         if (Vector3.Distance(transform.position, m_target.position) <= m_attackRange)

@@ -21,7 +21,9 @@ public class PlayerMove : MonoBehaviour
         Move();
         Animation();
     }
-
+    /// <summary>
+    /// プレイヤーの操作（カメラの方向を基準に移動）
+    /// </summary>
     public void Move()
     {
         if (m_IsAttacking)
@@ -51,7 +53,9 @@ public class PlayerMove : MonoBehaviour
             m_rb.velocity = velo;
         }
     }
-
+    /// <summary>
+    /// プレイヤーのアニメーション
+    /// </summary>
     public void Animation()
     {
         if (m_anim)
