@@ -9,6 +9,7 @@ public class EnemyDesroy : MonoBehaviour ,IDamage
     [SerializeField] GameObject m_enemyDie;
     [SerializeField] int m_currentLife;
     [SerializeField] private GameObject m_HPUI;
+    public GameObject[] m_dropitem;
     private Slider m_slinder;
 
     int m_damage = 10;
@@ -33,8 +34,14 @@ public class EnemyDesroy : MonoBehaviour ,IDamage
             Debug.Log("エネミー死亡");
             GameObject death = Instantiate(m_enemyDie);
             death.transform.position = this.transform.position;
+            RamdomItemDrop();
             Destroy(this.gameObject);
         }
     }
-    
+
+    public void RamdomItemDrop()
+    {
+        var number = Random.Range(0, m_dropitem.Length);
+        Instantiate(m_dropitem[number], new Vector3(transform.position.x, 0.32f, transform.position.z), transform.rotation);
+    }
 }

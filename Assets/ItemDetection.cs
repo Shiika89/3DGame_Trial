@@ -5,13 +5,42 @@ using UnityEngine.UI;
 
 public class ItemDetection : MonoBehaviour
 {
-    [SerializeField] Button m_button;
+    [SerializeField] JewelType m_jewelType;
+    [SerializeField] Canvas m_canvas;
+    [SerializeField] GameObject m_itemManagerobject;
+    ItemData m_data;
 
-    void OnTriggerStay(Collider other)
+    private void Start()
+    {
+        m_data = new ItemData(m_jewelType);
+    }
+
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            m_button.image.enabled = true;
+            m_canvas.gameObject.SetActive(true);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            m_canvas.gameObject.SetActive(false);
+        }
+    }
+
+    public void ItemPickUp()
+    {
+        ItemManager.Instance.ItemGet(m_data);
+        //AddItemList();
+        Destroy(gameObject);
+    }
+
+    void AddItemList()
+    {
+        //m_itemManager.m_haveitem.Add(gameObject);
+    }
 }
+
