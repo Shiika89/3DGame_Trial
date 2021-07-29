@@ -64,7 +64,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ItemDetection.cs" />
     <Compile Include="Assets\Script\AttackController.cs" />
     <Compile Include="Assets\Script\EnemyAttackController.cs" />
     <Compile Include="Assets\Script\EnemyDesroy.cs" />
@@ -75,6 +74,7 @@
     <Compile Include="Assets\Script\InventoryManager.cs" />
     <Compile Include="Assets\Script\ItemBase.cs" />
     <Compile Include="Assets\Script\ItemData.cs" />
+    <Compile Include="Assets\Script\ItemDetection.cs" />
     <Compile Include="Assets\Script\ItemDrop.cs" />
     <Compile Include="Assets\Script\ItemJewel.cs" />
     <Compile Include="Assets\Script\ItemList.cs" />
@@ -84,22 +84,6 @@
     <Compile Include="Assets\Script\PlayerDesroy.cs" />
     <Compile Include="Assets\Script\PlayerMove.cs" />
     <Compile Include="Assets\Script\ZombiDeath.cs" />
-    <Compile Include="Assets\Scripts\AttackController.cs" />
-    <Compile Include="Assets\Scripts\EnemyAttackController.cs" />
-    <Compile Include="Assets\Scripts\EnemyDesroy.cs" />
-    <Compile Include="Assets\Scripts\EnemyMove.cs" />
-    <Compile Include="Assets\Scripts\HPUIRotateScript.cs" />
-    <Compile Include="Assets\Scripts\IDamage.cs" />
-    <Compile Include="Assets\Scripts\ItemBase.cs" />
-    <Compile Include="Assets\Scripts\ItemJewel.cs" />
-    <Compile Include="Assets\Scripts\ItemList.cs" />
-    <Compile Include="Assets\Scripts\ItemManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerAttack.cs" />
-    <Compile Include="Assets\Scripts\PlayerDesroy.cs" />
-    <Compile Include="Assets\Scripts\PlayerMove.cs" />
-    <Compile Include="Assets\Scripts\SceneLoder.cs" />
-    <Compile Include="Assets\Scripts\Test.cs" />
-    <Compile Include="Assets\Scripts\ZombiDeath.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\CameraController.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\FaceUpdate.cs" />
