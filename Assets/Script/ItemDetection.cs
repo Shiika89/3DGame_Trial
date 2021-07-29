@@ -34,7 +34,6 @@ public class ItemDetection : MonoBehaviour
     public void ItemPickUp()
     {
         ItemManager.Instance.ItemGet(m_data);
-        //AddItemList();
         Destroy(gameObject);
     }
 

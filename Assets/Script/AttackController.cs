@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーの攻撃判定のオンオフを切り替える
+/// </summary>
 public class AttackController : MonoBehaviour
 {
     [SerializeField] Collider m_attackRange;

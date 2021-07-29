@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ゲーム全体を管理
+/// </summary>
 public class Gamemanager : MonoBehaviour
 {
+    [Tooltip("装備画面のUI")]
     [SerializeField] GameObject m_EquipmentUI;
+
+    /// <summary> 装備画面のUIのオンオフ </summary>
     private bool m_UIflag = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        //　装備画面のUIをスペースキーでオンオフに切り替え
         if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == false)
         {
             m_EquipmentUI.SetActive(true);

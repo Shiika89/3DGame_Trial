@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// </summary>
 public class InventoryManager : MonoBehaviour
 {
+    [Tooltip("生成するUIの親")]
     [SerializeField] JewerData m_JewelUIParent;
+    /// <summary>インベントリに表示中のアイテムのデータ</summary>
     List<JewerData> m_jewerData;
 
     private void Start()
@@ -13,7 +18,11 @@ public class InventoryManager : MonoBehaviour
         m_jewerData = new List<JewerData>();
     }
 
-    public void ItemGet(ItemData[] itemDatas)
+    /// <summary>
+    /// アイテムを入手するたびリスト中身を消してリスト内のアイテムを表示
+    /// </summary>
+    /// <param name="itemDatas"></param>
+    private void ItemGet(ItemData[] itemDatas)
     {
         foreach (var item in m_jewerData)
         {
@@ -25,7 +34,6 @@ public class InventoryManager : MonoBehaviour
 
         foreach (var item in itemDatas)
         {
-            //Instantiate(m_JewelUIParent, transform.position, transform.rotation, transform);
             var ui = Instantiate(m_JewelUIParent, transform.position, transform.rotation, transform);
             ui.SetData(item);
             m_jewerData.Add(ui);

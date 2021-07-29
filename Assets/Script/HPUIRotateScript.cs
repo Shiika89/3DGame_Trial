@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// エネミーのHPバーを常にカメラの方向に向ける
+/// </summary>
 public class HPUIRotateScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
