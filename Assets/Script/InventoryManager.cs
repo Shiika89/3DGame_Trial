@@ -26,17 +26,17 @@ public class InventoryManager : MonoBehaviour
     {
         foreach (var item in m_jewerData)
         {
-            //　リストの中身を消してリセットする
             //　オブジェクト自身にデストロイする関数を作っておいて呼ぶ
             item.MyDestroy();
         }
-        m_jewerData.Clear();
+        m_jewerData.Clear();　//　リストの中身を消してリセットする
 
         foreach (var item in itemDatas)
         {
+            // UIの親を生成
             var ui = Instantiate(m_JewelUIParent, transform.position, transform.rotation, transform);
-            ui.SetData(item);
-            m_jewerData.Add(ui);
+            ui.SetData(item);　// JewerDataのSetDataを呼んでアイテムの種類を判別
+            m_jewerData.Add(ui); // 判別したアイテムをリストに追加
         }
     }
 }

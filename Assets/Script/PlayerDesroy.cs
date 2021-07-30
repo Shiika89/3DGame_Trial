@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーが攻撃を食らったときの処理
+/// </summary>
 public class PlayerDesroy : MonoBehaviour
 {
     [SerializeField] public int m_life = 5;

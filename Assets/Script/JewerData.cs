@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// JewelUの親がどのJewelをアクティブにするか判断
+/// </summary>
 public class JewerData : MonoBehaviour
 {
+    [Tooltip("アイテムの種類を格納")]
     [SerializeField] GameObject[] m_viweItem;
-    ItemData m_data;
+
+    /// <summary>
+    /// アイテムの種類によってどのJewelをアクティブにするか判定
+    /// </summary>
+    /// <param name="itemData"></param>
     public void SetData(ItemData itemData)
     {
-        m_data = itemData;
         switch (itemData.JewelType)
         {
             case JewelType.Red:
@@ -24,6 +31,10 @@ public class JewerData : MonoBehaviour
                 break;
         }
     }
+
+    /// <summary>
+    /// JewelUIの親自身を削除
+    /// </summary>
     public void MyDestroy()
     {
         Destroy(gameObject);

@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
+
+/// <summary>
+/// スタック領域のscript、Jewelの種類に応じてパラメータを付与
+/// </summary>
 public struct ItemData
 {
+    /// <summary>ItemJewelのenumで設定したJewelの種類</summary>
     public JewelType JewelType { get; private set; }
     public int Para1 { get; private set; }
     public int Para2 { get; private set; }
     public int Para3 { get; private set; }
 
-    public ItemData(JewelType type, int p1, int p2, int p3)
-    {
-        JewelType = type;
-        Para1 = p1;
-        Para2 = p2;
-        Para3 = p3;
-    }
+    /// <summary>
+    /// Jewelの種類によってパラメータを付与する関数
+    /// </summary>
+    /// <param name="type"></param>
     public ItemData(JewelType type)
     {
         JewelType = type;

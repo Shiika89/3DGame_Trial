@@ -184,7 +184,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_jewelType: 1
   m_canvas: {fileID: 2414123289406502384}
-  m_itemManagerobject: {fileID: 0}
 --- !u!1 &4793572210860577577
 GameObject:
   m_ObjectHideFlags: 0
