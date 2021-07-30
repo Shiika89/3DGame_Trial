@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    //動く速さ
+    [Tooltip("動く速さ")]
     [SerializeField] public float m_movingSpeed = 5f;
+    /// <summary>プレイヤーが攻撃中かを判定するフラグ</summary>
     public bool m_IsAttacking = false;
     [SerializeField] Animator m_anim;
     Rigidbody m_rb;
