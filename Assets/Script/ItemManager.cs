@@ -11,9 +11,11 @@ public class ItemManager : MonoBehaviour
     /// <summary>ItemManagerをInstanceにする</summary>
     public static ItemManager Instance { get; private set; }
     /// <summary>ItemのDataが入ってるリスト</summary>
-    private List<ItemData> m_haveitem = new List<ItemData>();
-    public event Action<ItemData[]> OnItemGet;
-
+    private List<ItemData> m_haveItem = new List<ItemData>();
+    /// <summary>アイテムを入手するたびに呼ばれるイベント</summary>
+    public event Action OnItemGet;
+    /// <summary>m_haveItemをプロパティ化</summary>
+    public List<ItemData> HaveItem { get => m_haveItem; }
     private void Awake()
     {
         Instance = this;
@@ -21,7 +23,7 @@ public class ItemManager : MonoBehaviour
 
     public void ItemGet(ItemData data)
     {
-        m_haveitem.Add(data);
-        OnItemGet?.Invoke(m_haveitem.ToArray());
+        m_haveItem.Add(data);
+        OnItemGet?.Invoke();
     }
 }

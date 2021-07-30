@@ -21,8 +21,7 @@ public class InventoryManager : MonoBehaviour
     /// <summary>
     /// アイテムを入手するたびリスト中身を消してリスト内のアイテムを表示
     /// </summary>
-    /// <param name="itemDatas"></param>
-    private void ItemGet(ItemData[] itemDatas)
+    private void ItemGet()
     {
         foreach (var item in m_jewerData)
         {
@@ -31,7 +30,7 @@ public class InventoryManager : MonoBehaviour
         }
         m_jewerData.Clear();　//　リストの中身を消してリセットする
 
-        foreach (var item in itemDatas)
+        foreach (var item in ItemManager.Instance.HaveItem)
         {
             // UIの親を生成
             var ui = Instantiate(m_JewelUIParent, transform.position, transform.rotation, transform);
