@@ -30,11 +30,14 @@ public class EnemyMove : MonoBehaviour
         //検知エリアに入ったら動いて出たら止まる
         if (m_inArea == true)
         {
-            //相手が検知にいれば移動目標を相手に設定
-            m_navMeshAgent.destination = m_target.transform.position;
+            if (m_target != null)
+            {
+                //相手が検知にいれば移動目標を相手に設定
+                m_navMeshAgent.destination = m_target.transform.position;
 
-            MoveAnimation();
-            AttackAnimation();
+                MoveAnimation();
+                AttackAnimation();
+            }
         }
         else
         {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 /// <summary>
 /// Itemを管理
@@ -16,6 +15,7 @@ public class ItemManager : MonoBehaviour
     public event Action OnItemGet;
     /// <summary>m_haveItemをプロパティ化</summary>
     public List<ItemData> HaveItem { get => m_haveItem; }
+
     private void Awake()
     {
         Instance = this;

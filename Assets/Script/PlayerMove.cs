@@ -27,7 +27,7 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     public void Move()
     {
-        if (m_IsAttacking)
+        if (m_IsAttacking) // 攻撃中だったら操作を受け付けない
         {
             return;
         }

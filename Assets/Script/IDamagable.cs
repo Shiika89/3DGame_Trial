@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// ダメージ計算をするためのinterface
 /// </summary>
-public interface IDamage
+public interface IDamagable
 {
-    void Damage(int a);
+    void Damage(int damage);
 }

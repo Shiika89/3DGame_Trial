@@ -44,6 +44,7 @@ public class ItemDetection : MonoBehaviour
     }
 
     /// <summary>
+    /// 拾うボタンを押した時に
     /// なんのアイテムを拾ったかをItemManagerに報告、自身を削除
     /// </summary>
     public void ItemPickUp()

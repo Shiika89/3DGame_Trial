@@ -6,16 +6,16 @@ using UnityEngine.UI;
 /// <summary>
 /// エネミーのHP等を管理、IDamageを継承
 /// </summary>
-public class EnemyDesroy : MonoBehaviour ,IDamage
+public class EnemyDesroy : MonoBehaviour ,IDamagable
 {
     [Tooltip("Enemyの初期HP")]
-    [SerializeField] public int m_life = 100;
+    [SerializeField] int m_life = 100;
     [Tooltip("Enemyが死亡した時に呼ばれるオブジェクト")]
     [SerializeField] GameObject m_enemyDie;
     [Tooltip("Enemyの現在HP")]
     [SerializeField] int m_currentLife;
     [Tooltip("EnemyのHPバーのUIを入れる")]
-    [SerializeField] private GameObject m_HPUI;
+    [SerializeField] GameObject m_HPUI;
     /// <summary> ここに登録したアイテムからランダムにドロップする </summary>
     public GameObject[] m_dropitem;
     private Slider m_slinder;
@@ -32,12 +32,12 @@ public class EnemyDesroy : MonoBehaviour ,IDamage
     /// <summary>
     /// エネミーが攻撃を食らった時に呼ばれる
     /// </summary>
-    /// <param name="a"></param>
-    public void Damage(int a)
+    /// <param name="damage">ダメージ</param>
+    public void Damage(int damage)
     {
         // 攻撃を食らったら現在HPとスライダーの値を減らす
-        m_currentLife -= a;
-        m_slinder.value -= a;
+        m_currentLife -= damage;
+        m_slinder.value -= damage;
 
         // HPが０以下になったら死亡用のアニメーションのオブジェクトとアイテムを生成
         if (m_currentLife <= 0)

@@ -28,10 +28,4 @@ public class EnemyAttackController : MonoBehaviour
     {
         m_attackRange.gameObject.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

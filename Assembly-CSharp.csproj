@@ -65,22 +65,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\AttackController.cs" />
+    <Compile Include="Assets\Script\AttackDamage.cs" />
+    <Compile Include="Assets\Script\Character.cs" />
+    <Compile Include="Assets\Script\DeathAnimation.cs" />
     <Compile Include="Assets\Script\EnemyAttackController.cs" />
     <Compile Include="Assets\Script\EnemyDesroy.cs" />
     <Compile Include="Assets\Script\EnemyMove.cs" />
     <Compile Include="Assets\Script\Gamemanager.cs" />
     <Compile Include="Assets\Script\HPUIRotateScript.cs" />
-    <Compile Include="Assets\Script\IDamage.cs" />
+    <Compile Include="Assets\Script\IDamagable.cs" />
     <Compile Include="Assets\Script\InventoryManager.cs" />
     <Compile Include="Assets\Script\ItemData.cs" />
     <Compile Include="Assets\Script\ItemDetection.cs" />
     <Compile Include="Assets\Script\ItemJewel.cs" />
     <Compile Include="Assets\Script\ItemManager.cs" />
     <Compile Include="Assets\Script\JewerData.cs" />
-    <Compile Include="Assets\Script\PlayerAttack.cs" />
     <Compile Include="Assets\Script\PlayerDesroy.cs" />
     <Compile Include="Assets\Script\PlayerMove.cs" />
-    <Compile Include="Assets\Script\ZombiDeath.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\CameraController.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\FaceUpdate.cs" />
