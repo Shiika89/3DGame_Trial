@@ -36,34 +36,36 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision is IDamagable damagable)
+        var attack = other.GetComponent<IDamagable>();
+
+        if (attack != null)
         {
-            damagable.Damage(Status.attack);
-            Debug.Log($"on attack to {collision.gameObject.name}");
+            attack.Damage(Status.attack);
+            //Debug.Log($"on attack to {other.gameObject.name}");
         }
     }
 }
 
-public class Sample : MonoBehaviour, IDamagable
-{
-    int health;
-    [SerializeField]
-    private int m_AttackValue = 5;
-    public void Damage(int damage)
-    {
-        health -= damage;
-    }
+//public class Sample : MonoBehaviour, IDamagable
+//{
+//    int health;
+//    [SerializeField]
+//    private int m_AttackValue = 5;
+//    public void Damage(int damage)
+//    {
+//        health -= damage;
+//    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision is IDamagable damagable)
-        {
-            damagable.Damage(m_AttackValue);
-        }
-    }
-}
+//    private void OnCollisionEnter(Collision collision)
+//    {
+//        if(collision is IDamagable damagable)
+//        {
+//            damagable.Damage(m_AttackValue);
+//        }
+//    }
+//}
 
 public interface IStatusModelHolder
 {

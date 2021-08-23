@@ -2573,8 +2573,8 @@ MonoBehaviour:
   m_Status:
     maxLife: 100
     currentLife: 0
-    deffence: 5
-    attack: 10
+    deffence: 8
+    attack: 15
   m_DeathObject: {fileID: 1266516239550522523, guid: f259f8f7b95729c409d42e827a533833,
     type: 3}
   m_HPUI: {fileID: 1155250964}
@@ -3710,7 +3710,7 @@ MonoBehaviour:
     maxLife: 50
     currentLife: 0
     deffence: 5
-    attack: 8
+    attack: 10
   m_DeathObject: {fileID: 7214655733647128672, guid: 376fd4ba4a6d7d140a8130d3f30545d9,
     type: 3}
   m_HPUI: {fileID: 1591173418}
