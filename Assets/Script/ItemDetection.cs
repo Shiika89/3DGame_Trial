@@ -49,7 +49,7 @@ public class ItemDetection : MonoBehaviour
     /// </summary>
     public void ItemPickUp()
     {
-        ItemManager.Instance.ItemGet(m_data);
+        //ItemManager.Instance.ItemGet(m_data);
         Destroy(gameObject);
     }
 }
