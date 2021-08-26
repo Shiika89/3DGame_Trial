@@ -36,16 +36,16 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        var attack = other.GetComponent<IDamagable>();
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    var attack = other.GetComponent<IDamagable>();
 
-        if (attack != null)
-        {
-            attack.Damage(Status.attack);
-            //Debug.Log($"on attack to {other.gameObject.name}");
-        }
-    }
+    //    if (attack != null)
+    //    {
+    //        attack.Damage(Status.attack);
+    //        //Debug.Log($"on attack to {other.gameObject.name}");
+    //    }
+    //}
 }
 
 //public class Sample : MonoBehaviour, IDamagable

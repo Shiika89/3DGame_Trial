@@ -9,10 +9,13 @@ public class AttackDamage : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        var parent = transform.parent.gameObject;
+        var chara = parent.GetComponent<Character>();
+
         var attack = other.GetComponent<IDamagable>();
         if (attack != null)
         {
-            attack.Damage(10);
+            attack.Damage(chara.Status.attack);
         }
     }
 }

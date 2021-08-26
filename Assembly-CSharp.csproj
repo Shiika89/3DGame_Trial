@@ -67,6 +67,7 @@
     <Compile Include="Assets\Script\AttackController.cs" />
     <Compile Include="Assets\Script\AttackDamage.cs" />
     <Compile Include="Assets\Script\Character.cs" />
+    <Compile Include="Assets\Script\CursorManager.cs" />
     <Compile Include="Assets\Script\DeathAnimation.cs" />
     <Compile Include="Assets\Script\EnemyAttackController.cs" />
     <Compile Include="Assets\Script\EnemyDesroy.cs" />
