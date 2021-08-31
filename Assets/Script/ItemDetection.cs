@@ -14,9 +14,14 @@ public class ItemDetection : MonoBehaviour
     [SerializeField] Canvas m_canvas;
     ItemData m_data;
 
+    GameObject m_player;
+    Character m_chara;
+
     private void Start()
     {
         m_data = new ItemData(m_jewelType);
+        m_player = GameObject.FindGameObjectWithTag("Player");
+        m_chara = m_player.GetComponent<Character>();
     }
 
     /// <summary>
@@ -50,6 +55,10 @@ public class ItemDetection : MonoBehaviour
     public void ItemPickUp()
     {
         ItemManager.Instance.ItemGet(m_data);
+        m_chara.Status.attack += m_data.Para1;
+        m_chara.Status.deffence += m_data.Para2;
+        Debug.Log(m_data.Para1);
+        Debug.Log(m_data.Para2);
         Destroy(gameObject);
     }
 }

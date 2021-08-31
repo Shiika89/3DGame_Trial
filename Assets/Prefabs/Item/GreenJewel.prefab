@@ -187,6 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_jewelType: 2
   m_canvas: {fileID: 5787020030564882105}
+  m_player: {fileID: 1962682658676099682, guid: 7f4c4157840be1147bc7b818889615d2,
+    type: 3}
 --- !u!1 &2148970807268312081
 GameObject:
   m_ObjectHideFlags: 0

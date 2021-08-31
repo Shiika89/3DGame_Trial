@@ -72,6 +72,7 @@
     <Compile Include="Assets\Script\EnemyAttackController.cs" />
     <Compile Include="Assets\Script\EnemyDesroy.cs" />
     <Compile Include="Assets\Script\EnemyMove.cs" />
+    <Compile Include="Assets\Script\EquipmentData.cs" />
     <Compile Include="Assets\Script\Gamemanager.cs" />
     <Compile Include="Assets\Script\HPUIRotateScript.cs" />
     <Compile Include="Assets\Script\IDamagable.cs" />
