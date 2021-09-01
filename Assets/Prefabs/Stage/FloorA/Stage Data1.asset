@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7cd751b20d20fa4fbc92fa0ec5ce4d0, type: 3}
+  m_Name: Stage Data1
+  m_EditorClassIdentifier: 
+  m_mapData:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 2, y: 3}
+  - {x: 1, y: 1}
+  - {x: 2, y: 2}
+  - {x: 3, y: 1}
+  - {x: 3, y: 2}
+  - {x: 3, y: 2}
+  - {x: 3, y: 0}
+  - {x: 3, y: 3}
+  - {x: 1, y: 0}
+  - {x: 2, y: 3}
+  - {x: 1, y: 1}
+  - {x: 3, y: 3}
+  - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 2, y: 1}
+  - {x: 2, y: 3}
+  - {x: 2, y: 1}
+  - {x: 1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 1, y: 1}
+  - {x: 3, y: 2}
+  - {x: 0, y: 3}
+  - {x: 0, y: 2}
+  m_satageSize: 5
+  m_stagePrefab:
+  - {fileID: 2481497558818273636, guid: df758ee2667aaa5439dc71821b3511d0, type: 3}
+  - {fileID: 2481497558818273636, guid: 4e23abf7eecb5994bbd37379fc5cf9d5, type: 3}
+  - {fileID: 2481497558818273636, guid: 34bfaf1a9c3c087419c2b734627c74af, type: 3}
+  - {fileID: 2481497558818273636, guid: fdef59ad8423d2d45abd4c1d1348f250, type: 3}
+  - {fileID: 2481497558818273636, guid: 785fda2417acac8429e739380ad3b65a, type: 3}
+  m_prefabSize: 20

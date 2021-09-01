@@ -21,10 +21,10 @@ public struct ItemData
         {
             case JewelType.Red:
                 Para1 = Random.Range(3, 5);
-                Para2 = Random.Range(0, 3);
+                Para2 = Random.Range(0, -2);
                 break;
             case JewelType.Blue:
-                Para1 = Random.Range(0, 3);
+                Para1 = Random.Range(0, -2);
                 Para2 = Random.Range(3, 5);
                 break;
             case JewelType.Green:

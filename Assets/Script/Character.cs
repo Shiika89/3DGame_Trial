@@ -78,6 +78,6 @@ public class StatusModel
 {
     public int maxLife;
     public int currentLife;
-    public int deffence;
     public int attack;
+    public int deffence;
 }

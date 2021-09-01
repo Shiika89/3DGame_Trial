@@ -13,7 +13,7 @@ public class ItemDetection : MonoBehaviour
     [Tooltip("子についてるUI")]
     [SerializeField] Canvas m_canvas;
     ItemData m_data;
-
+    bool m_falg = false;
     GameObject m_player;
     Character m_chara;
 
@@ -24,6 +24,17 @@ public class ItemDetection : MonoBehaviour
         m_chara = m_player.GetComponent<Character>();
     }
 
+    private void Update()
+    {
+        if (m_falg)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ItemPickUp();
+            }
+        }
+    }
+
     /// <summary>
     /// プレイヤーがアイテムの検知内に入ったらUIを表示
     /// </summary>
@@ -32,6 +43,7 @@ public class ItemDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            m_falg = true;
             m_canvas.gameObject.SetActive(true);
         }
     }
@@ -44,6 +56,7 @@ public class ItemDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            m_falg = false;
             m_canvas.gameObject.SetActive(false);
         }
     }
