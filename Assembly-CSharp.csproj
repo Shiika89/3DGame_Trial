@@ -86,8 +86,6 @@
     <Compile Include="Assets\Script\PlayerMove.cs" />
     <Compile Include="Assets\Script\RandomStage.cs" />
     <Compile Include="Assets\Script\StageData.cs" />
-    <Compile Include="Assets\Script\Test.cs" />
-    <Compile Include="Assets\Script\TestCube.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\CameraController.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\FaceUpdate.cs" />
