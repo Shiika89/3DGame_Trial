@@ -16,6 +16,7 @@ public class ItemDetection : MonoBehaviour
     bool m_falg = false;
     GameObject m_player;
     Character m_chara;
+    int m_heal;
 
     private void Start()
     {
@@ -28,10 +29,15 @@ public class ItemDetection : MonoBehaviour
     {
         if (m_falg)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E)) //アイテムを回収
             {
                 ItemPickUp();
             }
+            if (Input.GetKeyDown(KeyCode.Q)) // アイテムを消費して体力を回復
+            {
+                PlayerHealPickUp();
+            }
+            
         }
     }
 
@@ -65,7 +71,7 @@ public class ItemDetection : MonoBehaviour
     /// 拾うボタンを押した時に
     /// なんのアイテムを拾ったかをItemManagerに報告、自身を削除
     /// </summary>
-    public void ItemPickUp()
+    void ItemPickUp()
     {
         ItemManager.Instance.ItemGet(m_data);
         m_chara.Status.attack += m_data.Para1;
@@ -73,6 +79,31 @@ public class ItemDetection : MonoBehaviour
         Debug.Log(m_data.Para1);
         Debug.Log(m_data.Para2);
         Destroy(gameObject);
+    }
+
+    void PlayerHealPickUp()
+    {
+        if (m_chara.Status.currentLife < 100)
+        {
+            m_heal = m_data.Para1 + m_data.Para2;
+            if (m_chara.Status.currentLife + m_heal >100)
+            {
+                m_chara.Status.currentLife = 100;
+                m_chara.m_slinder.value = 100;
+                Debug.Log("HPは満タンになった");
+            }
+            else
+            {
+                m_chara.Status.currentLife += m_heal;
+                m_chara.m_slinder.value += m_heal;
+                Debug.Log($"HPが{m_heal}回復した");
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            Debug.Log("HPが満タンで拾えない");
+        }
     }
 }
 

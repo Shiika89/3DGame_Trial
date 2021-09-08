@@ -13,7 +13,7 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
 
     [SerializeField] GameObject m_attackRange;
 
-    private Slider m_slinder;
+    public Slider m_slinder { get; set; }
 
     private void Start()
     {
