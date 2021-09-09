@@ -89,13 +89,13 @@ public class ItemDetection : MonoBehaviour
             if (m_chara.Status.currentLife + m_heal >100)
             {
                 m_chara.Status.currentLife = 100;
-                m_chara.m_slinder.value = 100;
+                //m_chara.m_slinder.value = 100;
                 Debug.Log("HPは満タンになった");
             }
             else
             {
                 m_chara.Status.currentLife += m_heal;
-                m_chara.m_slinder.value += m_heal;
+                //m_chara.m_slinder.value += m_heal;
                 Debug.Log($"HPが{m_heal}回復した");
                 Destroy(gameObject);
             }

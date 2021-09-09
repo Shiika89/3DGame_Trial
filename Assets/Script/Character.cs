@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// プレイヤーやエネミーのステータスやダメージ処理
+/// </summary>
 public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
 {
     [SerializeField] private StatusModel m_Status;
@@ -20,6 +23,11 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
         m_slinder = m_HPUI.transform.Find("HPBar").GetComponent<Slider>();
         Status.currentLife = Status.maxLife; // 現在HPを初期HPに
         m_slinder.maxValue = Status.maxLife; // HPスライダーの最大値を初期HPと同じに
+        
+    }
+
+    private void Update()
+    {
         m_slinder.value = Status.currentLife;  //　スライダーの値を現在HPと同じに
     }
 
