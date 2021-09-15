@@ -13,6 +13,10 @@ public class Gamemanager : MonoBehaviour
     /// <summary> 装備画面のUIのオンオフ </summary>
     private bool m_UIflag = false;
 
+    private void Start()
+    {
+        m_EquipmentUI.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()

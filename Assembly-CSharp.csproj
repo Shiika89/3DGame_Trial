@@ -81,11 +81,13 @@
     <Compile Include="Assets\Script\ItemDetection.cs" />
     <Compile Include="Assets\Script\ItemJewel.cs" />
     <Compile Include="Assets\Script\ItemManager.cs" />
+    <Compile Include="Assets\Script\JewelText.cs" />
     <Compile Include="Assets\Script\JewerData.cs" />
     <Compile Include="Assets\Script\PlayerDesroy.cs" />
     <Compile Include="Assets\Script\PlayerMove.cs" />
     <Compile Include="Assets\Script\RandomStage.cs" />
     <Compile Include="Assets\Script\StageData.cs" />
+    <Compile Include="Assets\Script\StatusText.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\CameraController.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\FaceUpdate.cs" />

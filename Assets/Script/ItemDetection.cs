@@ -12,6 +12,7 @@ public class ItemDetection : MonoBehaviour
     [SerializeField] JewelType m_jewelType;
     [Tooltip("子についてるUI")]
     [SerializeField] Canvas m_canvas;
+    [SerializeField] Text m_text;
     ItemData m_data;
     bool m_falg = false;
     GameObject m_player;
@@ -23,6 +24,7 @@ public class ItemDetection : MonoBehaviour
         m_data = new ItemData(m_jewelType);
         m_player = GameObject.FindGameObjectWithTag("Player");
         m_chara = m_player.GetComponent<Character>();
+        ItemText();
     }
 
     private void Update()
@@ -104,6 +106,11 @@ public class ItemDetection : MonoBehaviour
         {
             Debug.Log("HPが満タンで拾えない");
         }
+    }
+
+    private void ItemText()
+    {
+        m_text.text = $"攻撃力  {m_data.Para1}        防御力  {m_data.Para2}\n回復力  {m_data.Para1 + m_data.Para2}";
     }
 }
 
