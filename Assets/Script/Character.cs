@@ -23,7 +23,7 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
         m_slinder = m_HPUI.transform.Find("HPBar").GetComponent<Slider>();
         Status.currentLife = Status.maxLife; // 現在HPを初期HPに
         m_slinder.maxValue = Status.maxLife; // HPスライダーの最大値を初期HPと同じに
-        
+
     }
 
     private void Update()
@@ -43,49 +43,4 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
             Destroy(this.gameObject);
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    var attack = other.GetComponent<IDamagable>();
-
-    //    if (attack != null)
-    //    {
-    //        attack.Damage(Status.attack);
-    //        //Debug.Log($"on attack to {other.gameObject.name}");
-    //    }
-    //}
-}
-
-//public class Sample : MonoBehaviour, IDamagable
-//{
-//    int health;
-//    [SerializeField]
-//    private int m_AttackValue = 5;
-//    public void Damage(int damage)
-//    {
-//        health -= damage;
-//    }
-
-//    private void OnCollisionEnter(Collision collision)
-//    {
-//        if(collision is IDamagable damagable)
-//        {
-//            damagable.Damage(m_AttackValue);
-//        }
-//    }
-//}
-
-public interface IStatusModelHolder
-{
-    StatusModel Status { get; }
-}
-
-
-[Serializable]
-public class StatusModel
-{
-    public int maxLife;
-    public int currentLife;
-    public int attack;
-    public int deffence;
 }

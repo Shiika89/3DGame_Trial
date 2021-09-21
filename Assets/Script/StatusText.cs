@@ -17,6 +17,6 @@ public class StatusText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_text.text = $"HP           {m_character.Status.maxLife}\n攻撃力     {m_character.Status.attack}\n防御力     {m_character.Status.deffence}";
+        m_text.text = $"HP           {m_character.Status.currentLife}\n攻撃力     {m_character.Status.attack}\n防御力     {m_character.Status.deffence}";
     }
 }
