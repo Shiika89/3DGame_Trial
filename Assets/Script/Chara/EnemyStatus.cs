@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// <summary>
 /// プレイヤーやエネミーのステータスやダメージ処理
 /// </summary>
-public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
+public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
 {
     [SerializeField] private StatusModel m_Status;
     public StatusModel Status => m_Status;
@@ -21,6 +21,9 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
     private void Start()
     {
         m_slinder = m_HPUI.transform.Find("HPBar").GetComponent<Slider>();
+        Status.maxLife *= Gamemanager.m_stage;
+        Status.attack *= Gamemanager.m_stage;
+        Status.deffence *= Gamemanager.m_stage;
         Status.currentLife = Status.maxLife; // 現在HPを初期HPに
         m_slinder.maxValue = Status.maxLife; // HPスライダーの最大値を初期HPと同じに
         
@@ -37,6 +40,7 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
         m_slinder.value -= Mathf.Max(0, damage - Status.deffence);
         if (Status.currentLife <= 0)
         {
+            Debug.Log("my health is less than or equal to 0");
             GameObject death = Instantiate(m_DeathObject);
             death.transform.position = this.transform.position;
             Destroy(this.gameObject);
@@ -48,6 +52,7 @@ public interface IStatusModelHolder
 {
     StatusModel Status { get; }
 }
+
 
 [Serializable]
 public class StatusModel

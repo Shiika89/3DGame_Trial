@@ -5,7 +5,7 @@ using UnityEngine;
 public class EquipmentData : MonoBehaviour
 {
     GameObject m_player;
-    Character m_chara;
+    EnemyStatus m_chara;
     List<JewerData> m_eqip;
 
     [Tooltip("生成するUIの親")]
@@ -16,7 +16,7 @@ public class EquipmentData : MonoBehaviour
     void Start()
     {
         m_player = GameObject.FindGameObjectWithTag("Player");
-        m_chara = m_player.GetComponent<Character>();
+        m_chara = m_player.GetComponent<EnemyStatus>();
     }
 
     // Update is called once per frame

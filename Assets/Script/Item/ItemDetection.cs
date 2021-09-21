@@ -15,15 +15,11 @@ public class ItemDetection : MonoBehaviour
     [SerializeField] Text m_text;
     ItemData m_data;
     bool m_falg = false;
-    GameObject m_player;
-    Character m_chara;
     int m_heal;
 
     private void Start()
     {
         m_data = new ItemData(m_jewelType);
-        m_player = GameObject.FindGameObjectWithTag("Player");
-        m_chara = m_player.GetComponent<Character>();
         ItemText();
     }
 
@@ -76,8 +72,8 @@ public class ItemDetection : MonoBehaviour
     void ItemPickUp()
     {
         ItemManager.Instance.ItemGet(m_data);
-        m_chara.Status.attack += m_data.Para1;
-        m_chara.Status.deffence += m_data.Para2;
+        PlayerStatus.m_attack += m_data.Para1;
+        PlayerStatus.m_deffence += m_data.Para2;
         Debug.Log(m_data.Para1);
         Debug.Log(m_data.Para2);
         Destroy(gameObject);
@@ -85,18 +81,18 @@ public class ItemDetection : MonoBehaviour
 
     void PlayerHealPickUp()
     {
-        if (m_chara.Status.currentLife < 100)
+        if (PlayerStatus.m_currentLife < 100)
         {
             m_heal = m_data.Para1 + m_data.Para2;
-            if (m_chara.Status.currentLife + m_heal >100)
+            if (PlayerStatus.m_currentLife + m_heal >100)
             {
-                m_chara.Status.currentLife = 100;
+                PlayerStatus.m_currentLife = 100;
                 //m_chara.m_slinder.value = 100;
                 Debug.Log("HPは満タンになった");
             }
             else
             {
-                m_chara.Status.currentLife += m_heal;
+                PlayerStatus.m_currentLife += m_heal;
                 //m_chara.m_slinder.value += m_heal;
                 Debug.Log($"HPが{m_heal}回復した");
                 Destroy(gameObject);

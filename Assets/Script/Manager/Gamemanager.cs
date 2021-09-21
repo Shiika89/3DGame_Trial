@@ -9,6 +9,7 @@ public class Gamemanager : MonoBehaviour
 {
     [Tooltip("装備画面のUI")]
     [SerializeField] GameObject m_EquipmentUI;
+    public static int m_stage = 1;
 
     /// <summary> 装備画面のUIのオンオフ </summary>
     private bool m_UIflag = false;
