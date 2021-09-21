@@ -23,7 +23,7 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
         m_slinder = m_HPUI.transform.Find("HPBar").GetComponent<Slider>();
         Status.currentLife = Status.maxLife; // 現在HPを初期HPに
         m_slinder.maxValue = Status.maxLife; // HPスライダーの最大値を初期HPと同じに
-
+        
     }
 
     private void Update()
@@ -43,4 +43,19 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
             Destroy(this.gameObject);
         }
     }
+}
+
+public interface IStatusModelHolder
+{
+    StatusModel Status { get; }
+}
+
+
+[Serializable]
+public class StatusModel
+{
+    public int maxLife;
+    public int currentLife;
+    public int attack;
+    public int deffence;
 }
