@@ -83,6 +83,7 @@
     <Compile Include="Assets\Script\ItemManager.cs" />
     <Compile Include="Assets\Script\JewelText.cs" />
     <Compile Include="Assets\Script\JewerData.cs" />
+    <Compile Include="Assets\Script\NextStage.cs" />
     <Compile Include="Assets\Script\PlayerDesroy.cs" />
     <Compile Include="Assets\Script\PlayerMove.cs" />
     <Compile Include="Assets\Script\RandomStage.cs" />

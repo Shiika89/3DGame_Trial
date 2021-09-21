@@ -37,7 +37,6 @@ public class Character : MonoBehaviour, IStatusModelHolder, IDamagable
         m_slinder.value -= Mathf.Max(0, damage - Status.deffence);
         if (Status.currentLife <= 0)
         {
-            Debug.Log("my health is less than or equal to 0");
             GameObject death = Instantiate(m_DeathObject);
             death.transform.position = this.transform.position;
             Destroy(this.gameObject);
@@ -49,7 +48,6 @@ public interface IStatusModelHolder
 {
     StatusModel Status { get; }
 }
-
 
 [Serializable]
 public class StatusModel
