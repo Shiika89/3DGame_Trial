@@ -29,10 +29,8 @@ public class PlayerStatus : MonoBehaviour, IDamagable
     public void Damage(int damage)
     {
         m_currentLife -= Mathf.Max(0, damage - m_deffence);
-        m_slinder.value -= Mathf.Max(0, damage - m_deffence);
         if (m_currentLife <= 0)
         {
-            Debug.Log("my health is less than or equal to 0");
             GameObject death = Instantiate(m_DeathObject);
             death.transform.position = this.transform.position;
             Destroy(this.gameObject);

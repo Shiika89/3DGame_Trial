@@ -6,13 +6,17 @@ public class EnemyAttack : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        var parent = transform.parent.gameObject;
-        var chara = parent.GetComponent<EnemyStatus>();
-
-        var attack = other.GetComponent<PlayerStatus>();
-        if (attack != null)
+        if (other.gameObject.tag == "Player")
         {
-            attack.Damage(chara.Status.attack);
+            var parent = transform.parent.gameObject;
+            var chara = parent.GetComponent<EnemyStatus>();
+
+            var attack = other.GetComponent<PlayerStatus>();
+            if (attack != null)
+            {
+                attack.Damage(chara.Status.attack);
+            }
         }
+        
     }
 }

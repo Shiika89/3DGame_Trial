@@ -37,10 +37,8 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
     public void Damage(int damage)
     {
         Status.currentLife -= Mathf.Max(0, damage - Status.deffence);
-        m_slinder.value -= Mathf.Max(0, damage - Status.deffence);
         if (Status.currentLife <= 0)
         {
-            Debug.Log("my health is less than or equal to 0");
             GameObject death = Instantiate(m_DeathObject);
             death.transform.position = this.transform.position;
             Destroy(this.gameObject);

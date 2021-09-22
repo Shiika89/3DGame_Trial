@@ -9,10 +9,14 @@ public class PlayerAttack : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        var attack = other.GetComponent<EnemyStatus>();
-        if (attack != null)
+        if (other.gameObject.tag == "Enemy")
         {
-            attack.Damage(PlayerStatus.m_attack);
+            var attack = other.GetComponent<EnemyStatus>();
+            if (attack != null)
+            {
+                attack.Damage(PlayerStatus.m_attack);
+            }
         }
+        
     }
 }

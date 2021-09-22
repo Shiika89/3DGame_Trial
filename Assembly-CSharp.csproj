@@ -83,6 +83,7 @@
     <Compile Include="Assets\Script\Item\ItemManager.cs" />
     <Compile Include="Assets\Script\Item\JewelText.cs" />
     <Compile Include="Assets\Script\Item\JewerData.cs" />
+    <Compile Include="Assets\Script\Item\Key.cs" />
     <Compile Include="Assets\Script\Manager\CursorManager.cs" />
     <Compile Include="Assets\Script\Manager\EquipmentData.cs" />
     <Compile Include="Assets\Script\Manager\Gamemanager.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Script\Manager\NextStage.cs" />
     <Compile Include="Assets\Script\Manager\RandomStage.cs" />
     <Compile Include="Assets\Script\Manager\StageData.cs" />
+    <Compile Include="Assets\Script\Manager\StageText.cs" />
     <Compile Include="Assets\Script\Manager\StatusText.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\CameraController.cs" />
