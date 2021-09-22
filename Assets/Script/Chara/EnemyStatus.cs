@@ -7,8 +7,10 @@ using UnityEngine.UI;
 /// </summary>
 public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
 {
-    [SerializeField] private StatusModel m_Status;
-    public StatusModel Status => m_Status;
+    [SerializeField] EnemyParameter m_enemyParameter;
+
+    private StatusModel m_status = new StatusModel();
+    public StatusModel Status => m_status;
 
     [SerializeField] GameObject m_DeathObject;
 
@@ -21,9 +23,11 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
     private void Start()
     {
         m_slinder = m_HPUI.transform.Find("HPBar").GetComponent<Slider>();
-        Status.maxLife *= Gamemanager.m_stage;
-        Status.attack *= Gamemanager.m_stage;
-        Status.deffence *= Gamemanager.m_stage;
+
+        Status.maxLife = m_enemyParameter.GetMaxLife(Gamemanager.m_stage -1);
+        Status.attack = m_enemyParameter.GetAttack(Gamemanager.m_stage  - 1);
+        Status.deffence = m_enemyParameter.GetDeffence(Gamemanager.m_stage - 1);
+
         Status.currentLife = Status.maxLife; // 現在HPを初期HPに
         m_slinder.maxValue = Status.maxLife; // HPスライダーの最大値を初期HPと同じに
         

@@ -434,6 +434,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1240847847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1962682658489160318, guid: 7f4c4157840be1147bc7b818889615d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1962682657999843348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1435429248 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5244194459446437932, guid: 491e04d7cbb95b34b80e9b9cc168e2ca,
@@ -622,6 +628,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1962682658489160318, guid: 7f4c4157840be1147bc7b818889615d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1962682658676099682, guid: 7f4c4157840be1147bc7b818889615d2,
         type: 3}
       propertyPath: m_Name
@@ -692,6 +703,11 @@ PrefabInstance:
       propertyPath: m_Status.attack
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1962682658676099694, guid: 7f4c4157840be1147bc7b818889615d2,
+        type: 3}
+      propertyPath: m_model
+      value: 
+      objectReference: {fileID: 1240847847}
     - target: {fileID: 1962682658995424001, guid: 7f4c4157840be1147bc7b818889615d2,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1140,6 +1156,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EquipmentUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428462593772180522, guid: 5a42da3d5bc850645a3c65dd4b885a24,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6428462593772180526, guid: 5a42da3d5bc850645a3c65dd4b885a24,
         type: 3}
