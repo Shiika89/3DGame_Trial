@@ -9,6 +9,7 @@ public class PlayerStatus : MonoBehaviour, IDamagable
     public static int m_attack = 15;
     public static int m_deffence = 8;
     public static float m_sutamina = 100;
+
     [SerializeField] GameObject m_DeathObject;
     [SerializeField] Slider m_hpSlider;
     [SerializeField] Slider m_sutaminaSlider;
