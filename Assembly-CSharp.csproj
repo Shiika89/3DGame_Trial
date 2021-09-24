@@ -90,6 +90,7 @@
     <Compile Include="Assets\Script\Manager\Gamemanager.cs" />
     <Compile Include="Assets\Script\Manager\HPUIRotateScript.cs" />
     <Compile Include="Assets\Script\Manager\NextStage.cs" />
+    <Compile Include="Assets\Script\Manager\QuestText.cs" />
     <Compile Include="Assets\Script\Manager\RandomStage.cs" />
     <Compile Include="Assets\Script\Manager\StageData.cs" />
     <Compile Include="Assets\Script\Manager\StageText.cs" />
