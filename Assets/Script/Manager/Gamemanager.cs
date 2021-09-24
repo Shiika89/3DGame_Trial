@@ -18,6 +18,7 @@ public class Gamemanager : MonoBehaviour
     private void Start()
     {
         m_EquipmentUI.SetActive(false);
+        m_key = false;
     }
 
     // Update is called once per frame

@@ -4,12 +4,14 @@ using UnityEngine.UI;
 
 public class PlayerStatus : MonoBehaviour, IDamagable
 {
-    public static int m_maxLife = 100;
-    public static int m_currentLife = 100;
-    public static int m_attack = 15;
-    public static int m_deffence = 8;
-    public static float m_sutamina = 100;
+    public static int m_maxLife = 300;
+    public static int m_currentLife = 300;
+    public static int m_attack = 50;
+    public static int m_deffence = 35;
+    public static float m_maxSutamina = 100;
+    public static float m_sutamina;
 
+    [SerializeField] float m_sutaminaHeal;
     [SerializeField] GameObject m_DeathObject;
     [SerializeField] Slider m_hpSlider;
     [SerializeField] Slider m_sutaminaSlider;
@@ -19,7 +21,8 @@ public class PlayerStatus : MonoBehaviour, IDamagable
     void Start()
     {
         m_hpSlider.maxValue = m_maxLife; // HPスライダーの最大値を初期HPと同じに
-        m_sutaminaSlider.maxValue = m_sutamina;
+        m_sutaminaSlider.maxValue = m_maxSutamina;
+        m_sutamina = m_maxSutamina;
     }
 
     // Update is called once per frame
@@ -30,7 +33,7 @@ public class PlayerStatus : MonoBehaviour, IDamagable
 
         if (m_sutamina < 100)
         {
-            m_sutamina += 0.2f;
+            m_sutamina += m_sutaminaHeal;
         }
     }
 

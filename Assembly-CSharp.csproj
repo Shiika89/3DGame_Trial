@@ -64,7 +64,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\CameraLook.cs" />
+    <Compile Include="Assets\Script\CameraMove.cs" />
     <Compile Include="Assets\Script\Chara\AttackController.cs" />
+    <Compile Include="Assets\Script\Chara\BossMove.cs" />
+    <Compile Include="Assets\Script\Chara\BossStatus.cs" />
     <Compile Include="Assets\Script\Chara\DeathAnimation.cs" />
     <Compile Include="Assets\Script\Chara\EnemyAttack.cs" />
     <Compile Include="Assets\Script\Chara\EnemyAttackController.cs" />
@@ -95,6 +99,7 @@
     <Compile Include="Assets\Script\Manager\StageData.cs" />
     <Compile Include="Assets\Script\Manager\StageText.cs" />
     <Compile Include="Assets\Script\Manager\StatusText.cs" />
+    <Compile Include="Assets\Script\Wallbreak.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\CameraController.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\FaceUpdate.cs" />

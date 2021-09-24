@@ -13,12 +13,20 @@ public class RandomStage : MonoBehaviour
     [SerializeField] GameObject[] m_gimmicks; // 作ったギミックを入れるための配列
     [SerializeField] int[] m_gimmickNum; // どのギミックを何個生成するかを決める変数
     [SerializeField] GameObject m_goal; // ゴールに置くギミック用の変数
+    [SerializeField] GameObject m_bossFloor; // ボスのFloor
 
     void Start()
     {
-        // StageDataで作った中からランダムで選んで生成
-        int r = Random.Range(0, stageDatas.Length);
-        StageCreate(stageDatas[r]);
+        if (Gamemanager.m_stage % 5 == 0)
+        {
+            Instantiate(m_bossFloor).transform.position = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            // StageDataで作った中からランダムで選んで生成
+            int r = Random.Range(0, stageDatas.Length);
+            StageCreate(stageDatas[r]);
+        }
     }
 
     /// <summary>

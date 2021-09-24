@@ -11,16 +11,16 @@ public class EnemyParameter : ScriptableObject
     [SerializeField] private float levelBaf;
     public int GetMaxLife(int level) 
     { 
-        return maxLife + (int)(maxLife * levelBaf * level);
+        return maxLife + (int)(maxLife * levelBaf * level * level);
     }
 
     public int GetAttack(int level)
     {
-        return attack + (int)(attack * levelBaf * level);
+        return attack + (int)(attack * levelBaf * level * level);
     }
 
     public int GetDeffence(int level)
     {
-        return deffence + (int)(deffence * levelBaf * level);
+        return deffence + (int)(deffence * levelBaf * level * level);
     }
 }

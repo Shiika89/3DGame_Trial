@@ -10,7 +10,7 @@ using UnityEngine.AI;
 public class EnemyMove : MonoBehaviour
 {
     [Tooltip("移動目標")]
-    [SerializeField] Transform m_target;
+    Transform m_target;
     [SerializeField] Animator m_anim;
     [Tooltip("攻撃を開始する距離")]
     [SerializeField] float m_attackRange = 1.5f;
@@ -35,6 +35,7 @@ public class EnemyMove : MonoBehaviour
             {
                 //相手が検知にいれば移動目標を相手に設定
                 m_navMeshAgent.destination = m_target.transform.position;
+                transform.LookAt(m_target.transform);
 
                 MoveAnimation();
                 AttackAnimation();

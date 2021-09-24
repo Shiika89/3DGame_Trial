@@ -19,6 +19,7 @@ public class ItemDetection : MonoBehaviour
 
     private void Start()
     {
+        
         m_data = new ItemData(m_jewelType);
         ItemText();
     }
@@ -74,6 +75,7 @@ public class ItemDetection : MonoBehaviour
         ItemManager.Instance.ItemGet(m_data);
         PlayerStatus.m_attack += m_data.Para1;
         PlayerStatus.m_deffence += m_data.Para2;
+        PlayerStatus.m_maxSutamina += m_data.Para3;
         Debug.Log(m_data.Para1);
         Debug.Log(m_data.Para2);
         Destroy(gameObject);
@@ -81,14 +83,15 @@ public class ItemDetection : MonoBehaviour
 
     void PlayerHealPickUp()
     {
-        if (PlayerStatus.m_currentLife < 100)
+        m_heal = ((m_data.Para1 + m_data.Para2 + m_data.Para3) * 3);
+        if (PlayerStatus.m_currentLife < 300)
         {
-            m_heal = m_data.Para1 + m_data.Para2;
-            if (PlayerStatus.m_currentLife + m_heal >100)
+            if (PlayerStatus.m_currentLife + m_heal >300)
             {
-                PlayerStatus.m_currentLife = 100;
+                PlayerStatus.m_currentLife = 300;
                 //m_chara.m_slinder.value = 100;
                 Debug.Log("HPは満タンになった");
+                Destroy(gameObject);
             }
             else
             {
@@ -106,7 +109,7 @@ public class ItemDetection : MonoBehaviour
 
     private void ItemText()
     {
-        m_text.text = $"攻撃力  {m_data.Para1}        防御力  {m_data.Para2}\n回復力  {m_data.Para1 + m_data.Para2}";
+        m_text.text = $"攻撃力  {m_data.Para1}\n防御力  {m_data.Para2}     回復力  {((m_data.Para1 + m_data.Para2 + m_data.Para3) * 3)}\nスタミナ  {m_data.Para3}";
     }
 }
 

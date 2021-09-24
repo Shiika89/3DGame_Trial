@@ -17,6 +17,14 @@ public class PlayerAttack : MonoBehaviour
                 attack.Damage(PlayerStatus.m_attack);
             }
         }
-        
+
+        if (other.gameObject.tag == "Boss")
+        {
+            var attack = other.GetComponent<BossStatus>();
+            if (attack != null)
+            {
+                attack.Damage(PlayerStatus.m_attack);
+            }
+        }
     }
 }
