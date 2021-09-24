@@ -10,11 +10,13 @@ public class PlayerMove : MonoBehaviour
     public bool m_IsAttacking = false;
     [SerializeField] Animator m_anim;
     Rigidbody m_rb;
-    bool m_kaihi;
+    public bool m_kaihi;
     float m_kaihiTimer;
     [SerializeField] float m_kaihiTime = 0.5f;
     [SerializeField] GameObject m_model;
     [SerializeField] ParticleSystem m_effect;
+    [SerializeField] AudioSource m_audioSource;
+    [SerializeField] AudioClip m_audioClip;
 
     void Start()
     {
@@ -76,6 +78,8 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 m_anim.SetTrigger("Attack");
+                m_audioSource.clip = m_audioClip;
+                m_audioSource.Play();
             }
         }
     }

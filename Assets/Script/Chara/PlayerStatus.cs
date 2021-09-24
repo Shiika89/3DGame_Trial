@@ -16,6 +16,7 @@ public class PlayerStatus : MonoBehaviour, IDamagable
     [SerializeField] Slider m_hpSlider;
     [SerializeField] Slider m_sutaminaSlider;
     [SerializeField] GameObject m_attackRange;
+    [SerializeField] PlayerMove m_playerMove;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,10 @@ public class PlayerStatus : MonoBehaviour, IDamagable
 
     public void Damage(int damage)
     {
+        if (m_playerMove.m_kaihi)
+        {
+            return;
+        }
         m_currentLife -= Mathf.Max(0, damage - m_deffence);
         if (m_currentLife <= 0)
         {

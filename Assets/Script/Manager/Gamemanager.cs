@@ -12,6 +12,10 @@ public class Gamemanager : MonoBehaviour
     [Tooltip("装備画面のUI")]
     [SerializeField] GameObject m_EquipmentUI;
     [SerializeField] Text m_timeText;
+    [SerializeField] AudioClip audioClip1;
+    [SerializeField] AudioClip audioClip2;
+    private AudioSource audioSource;
+
     public static int m_stage = 1;
     public static bool m_key = false;
     public static bool m_timeAttack = false;
@@ -24,6 +28,19 @@ public class Gamemanager : MonoBehaviour
     {
         m_EquipmentUI.SetActive(false);
         m_key = false;
+
+        if (m_stage % 5 == 0)
+        {
+            audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.clip = audioClip1;
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.clip = audioClip2;
+            audioSource.Play();
+        }
     }
 
     // Update is called once per frame
@@ -41,7 +58,6 @@ public class Gamemanager : MonoBehaviour
                 m_timeAttack = false;
             }
         }
-
 
         //　装備画面のUIをスペースキーでオンオフに切り替え
         if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == false)
