@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Zonbi
   m_EditorClassIdentifier: 
   maxLife: 100
-  attack: 9
-  deffence: 5
-  levelBaf: 0.5
+  attack: 36
+  deffence: 25
+  levelBaf: 0.3

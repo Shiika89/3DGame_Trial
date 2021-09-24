@@ -81,6 +81,7 @@
     <Compile Include="Assets\Script\Chara\PlayerDesroy.cs" />
     <Compile Include="Assets\Script\Chara\PlayerMove.cs" />
     <Compile Include="Assets\Script\Chara\PlayerStatus.cs" />
+    <Compile Include="Assets\Script\ClearText.cs" />
     <Compile Include="Assets\Script\Item\InventoryManager.cs" />
     <Compile Include="Assets\Script\Item\ItemData.cs" />
     <Compile Include="Assets\Script\Item\ItemDetection.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Assets\Script\Manager\StageData.cs" />
     <Compile Include="Assets\Script\Manager\StageText.cs" />
     <Compile Include="Assets\Script\Manager\StatusText.cs" />
+    <Compile Include="Assets\Script\TitleSerect.cs" />
     <Compile Include="Assets\Script\Wallbreak.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\CameraController.cs" />
