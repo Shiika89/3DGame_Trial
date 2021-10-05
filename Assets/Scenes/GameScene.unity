@@ -1487,8 +1487,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 2
-  m_Text: "HP           100\n\u30B9\u30BF\u30DF\u30CA 100\n\u653B\u6483\u529B    
-    15\n\u9632\u5FA1\u529B     8"
+  m_Text: "HP           300\n\u30B9\u30BF\u30DF\u30CA 100\n\u653B\u6483\u529B    
+    50\n\u9632\u5FA1\u529B     35"
 --- !u!222 &384457004
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8564,7 +8564,7 @@ PrefabInstance:
     - target: {fileID: 2115207222718214339, guid: 90f0ad37d4e31494c8f6adc1fbdfab0d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.026611546
+      value: -0.02658177
       objectReference: {fileID: 0}
     - target: {fileID: 2115207222718214339, guid: 90f0ad37d4e31494c8f6adc1fbdfab0d,
         type: 3}
@@ -8835,7 +8835,7 @@ PrefabInstance:
     - target: {fileID: 2633602022959287745, guid: 02e954a923783ae43a3a79c5f73508ab,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.026611546
+      value: -0.02658177
       objectReference: {fileID: 0}
     - target: {fileID: 2633602022959287745, guid: 02e954a923783ae43a3a79c5f73508ab,
         type: 3}
@@ -9357,7 +9357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b038808d5d58d41bc763162af5d7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_sutaminaHeal: 0.2
+  m_sutaminaHeal: 0.1
   m_DeathObject: {fileID: 1266516239550522523, guid: f259f8f7b95729c409d42e827a533833,
     type: 3}
   m_hpSlider: {fileID: 1398826086}

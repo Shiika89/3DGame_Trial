@@ -7,7 +7,7 @@ public class BossStatus : MonoBehaviour, IDamagable
 {
     [SerializeField] int m_maxLife = 100;
     [SerializeField] int m_currentLife = 100;
-    [SerializeField] int m_attack = 15;
+    [SerializeField] public int m_attack = 15;
     [SerializeField] int m_deffence = 8;
 
     [SerializeField] GameObject m_DeathObject;

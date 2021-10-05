@@ -16,7 +16,7 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] AudioClip audioClip2;
     private AudioSource audioSource;
 
-    public static int m_stage = 1;
+    public static int m_stage = 5;
     public static bool m_key = false;
     public static bool m_timeAttack = false;
     public static float m_timer;
