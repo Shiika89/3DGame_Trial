@@ -91,6 +91,7 @@
     <Compile Include="Assets\Script\Item\JewelText.cs" />
     <Compile Include="Assets\Script\Item\JewerData.cs" />
     <Compile Include="Assets\Script\Item\Key.cs" />
+    <Compile Include="Assets\Script\Manager\CameraFollow.cs" />
     <Compile Include="Assets\Script\Manager\CursorManager.cs" />
     <Compile Include="Assets\Script\Manager\EquipmentData.cs" />
     <Compile Include="Assets\Script\Manager\Gamemanager.cs" />
@@ -310,6 +311,12 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

@@ -30,12 +30,37 @@ public class PlayerMove : MonoBehaviour
         Animation();
         Kaihi();
     }
+
+    public void Move()
+    {
+        if (m_IsAttacking || m_kaihi) // 攻撃中・回避中だったら操作を受け付けない
+        {
+            return;
+        }
+
+        float v = Input.GetAxisRaw("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+
+        Vector3 dir = (Vector3.forward * v + Vector3.right * h).normalized;
+        if (dir == Vector3.zero)
+        {
+            // 方向の入力がニュートラルの時は、y 軸方向の速度を保持するだけ
+            m_rb.velocity = new Vector3(0f, m_rb.velocity.y, 0f);
+        }
+        else
+        {
+            this.transform.forward = dir;
+
+            m_rb.velocity = this.transform.forward * m_movingSpeed;
+        }
+    }
+
     /// <summary>
     /// プレイヤーの操作（カメラの方向を基準に移動）
     /// </summary>
-    public void Move()
+    public void CameraMove()
     {
-        if (m_IsAttacking || m_kaihi) // 攻撃中だったら操作を受け付けない
+        if (m_IsAttacking || m_kaihi) // 攻撃中・回避中だったら操作を受け付けない
         {
             return;
         }
@@ -62,6 +87,7 @@ public class PlayerMove : MonoBehaviour
             m_rb.velocity = velo;
         }
     }
+
     /// <summary>
     /// プレイヤーのアニメーション
     /// </summary>
@@ -90,6 +116,50 @@ public class PlayerMove : MonoBehaviour
         {
             return;
         }
+
+        if (Input.GetButtonDown("Fire2") && !m_kaihi && PlayerStatus.m_sutamina >= 20f)
+        {
+            m_kaihi = true;
+            m_model.SetActive(false);
+            m_effect.Play();
+            PlayerStatus.m_sutamina -= 20f;
+
+            float v = Input.GetAxisRaw("Vertical");
+            float h = Input.GetAxisRaw("Horizontal");
+
+            Vector3 dir = (Vector3.forward * v + Vector3.right * h).normalized;
+
+            if (dir != Vector3.zero)
+            {
+                this.transform.forward = dir;
+
+                Vector3 velo = this.transform.forward * m_movingSpeed;
+                m_rb.AddForce(velo * 2, ForceMode.Impulse);
+            }
+
+            m_kaihiTimer = m_kaihiTime;
+
+        }
+
+        if (m_kaihiTimer > 0 && m_kaihi)
+        {
+            m_kaihiTimer -= Time.deltaTime;
+            if (m_kaihiTimer <= 0)
+            {
+                m_kaihi = false;
+                m_model.SetActive(true);
+                m_effect.Stop();
+            }
+        }
+    }
+
+    public void CameraMoveKaihi()
+    {
+        if (m_IsAttacking)
+        {
+            return;
+        }
+
         if (Input.GetButtonDown("Fire2") && !m_kaihi && PlayerStatus.m_sutamina >= 20f)
         {
             m_kaihi = true;
