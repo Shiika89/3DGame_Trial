@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
     /// <summary>プレイヤーが攻撃中かを判定するフラグ</summary>
     public bool m_IsAttacking = false;
     [SerializeField] Animator m_anim;
-    Rigidbody m_rb;
+    public Rigidbody m_rb;
     public bool m_kaihi;
     float m_kaihiTimer;
     [SerializeField] float m_kaihiTime = 0.5f;

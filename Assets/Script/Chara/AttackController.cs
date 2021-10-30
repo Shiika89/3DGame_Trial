@@ -8,7 +8,7 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     [SerializeField] Collider m_attackRange;
-    [SerializeField] PlayerMove m_attackStop;
+    [SerializeField] PlayerMove m_playerMove;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +31,12 @@ public class AttackController : MonoBehaviour
 
     public void BeginStop()
     {
-        m_attackStop.m_IsAttacking = true;
+        m_playerMove.m_IsAttacking = true;
+        m_playerMove.m_rb.velocity = new Vector3(0f, m_playerMove.m_rb.velocity.y, 0f);
     }
 
     public void EndStop()
     {
-        m_attackStop.m_IsAttacking = false;
+        m_playerMove.m_IsAttacking = false;
     }    
 }
