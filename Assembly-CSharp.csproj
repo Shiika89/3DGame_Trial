@@ -83,6 +83,8 @@
     <Compile Include="Assets\Script\Chara\PlayerMove.cs" />
     <Compile Include="Assets\Script\Chara\PlayerStatus.cs" />
     <Compile Include="Assets\Script\ClearText.cs" />
+    <Compile Include="Assets\Script\Item\DragArea.cs" />
+    <Compile Include="Assets\Script\Item\DragItem.cs" />
     <Compile Include="Assets\Script\Item\InventoryManager.cs" />
     <Compile Include="Assets\Script\Item\ItemData.cs" />
     <Compile Include="Assets\Script\Item\ItemDetection.cs" />

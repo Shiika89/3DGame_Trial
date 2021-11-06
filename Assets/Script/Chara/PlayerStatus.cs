@@ -6,7 +6,7 @@ public class PlayerStatus : MonoBehaviour, IDamagable
 {
     public static int m_maxLife = 300;
     public static int m_currentLife = 300;
-    public static int m_attack = 50;
+    public static int m_attack = 500;
     public static int m_deffence = 35;
     public static float m_maxSutamina = 100;
     public static float m_sutamina;
