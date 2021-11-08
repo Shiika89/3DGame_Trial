@@ -68,30 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92b5c17a58d46f4e889cd30d8bbbf8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7648397927421196942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7456543838015630681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a92b5c17a58d46f4e889cd30d8bbbf8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6110815842437669776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7456543839025513074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a92b5c17a58d46f4e889cd30d8bbbf8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &588943939538663855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,12 +188,12 @@ PrefabInstance:
     - target: {fileID: 8022791623719616777, guid: 4916944ed903f314884362f1e5867da1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8022791624808345074, guid: 4916944ed903f314884362f1e5867da1,
+    - target: {fileID: 8022791624808345072, guid: 4916944ed903f314884362f1e5867da1,
         type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4916944ed903f314884362f1e5867da1, type: 3}
@@ -240,20 +216,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5420884229020003176}
     m_Modifications:
-    - target: {fileID: 5997677297314419802, guid: 0910d5cde305cf6458b660e70ade5baa,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5997677298945816985, guid: 0910d5cde305cf6458b660e70ade5baa,
         type: 3}
       propertyPath: m_Name
       value: GreenJewelUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5997677298945816985, guid: 0910d5cde305cf6458b660e70ade5baa,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5997677298945816990, guid: 0910d5cde305cf6458b660e70ade5baa,
         type: 3}
@@ -381,20 +347,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5420884229020003176}
     m_Modifications:
-    - target: {fileID: 2219085937254374521, guid: 76a3dbd5113333e4bac8f93d198f426e,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2219085938524513142, guid: 76a3dbd5113333e4bac8f93d198f426e,
         type: 3}
       propertyPath: m_Name
       value: BlueJewelUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2219085938524513142, guid: 76a3dbd5113333e4bac8f93d198f426e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2219085938524513143, guid: 76a3dbd5113333e4bac8f93d198f426e,
         type: 3}
