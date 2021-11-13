@@ -2,25 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// カメラの高さを変えれるようにするためのクラス
+/// </summary>
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject target;
+    // ターゲットにするオブジェクト
+    [SerializeField] GameObject target;
+    // カメラの位置を固定するための変数
     private Vector3 distance;
 
+    Vector3 m_posY;
+    Vector3 m_posZ;
+    // カメラのズームスピードを変えるための変数
     [SerializeField] float m_zoomSpeed;
+    // 追従するカメラを入れる変数
     [SerializeField] Camera m_camera;
 
     void Start()
     {
+        // カメラの位置を記憶
         distance = transform.position - target.transform.position;
     }
 
     void Update()
     {
-        var pos = target.transform.position + distance;
-        transform.position = new Vector3(pos.x, transform.position.y, pos.z);
+        // マウスのホイールでカメラとターゲットの距離をyとzだけ調整
+        var scrollY = Input.mouseScrollDelta.y;
+        distance.y -= scrollY * m_zoomSpeed;
+        distance.z += scrollY * m_zoomSpeed;
+        //m_posY += transform.forward * scrollY * m_zoomSpeed;
 
-        var scroll = Input.mouseScrollDelta.y;
-        m_camera.transform.position += -m_camera.transform.forward * scroll * m_zoomSpeed;
+        // カメラのxとzだけを固定する
+        var pos = target.transform.position + distance;
+        transform.position = new Vector3(pos.x, pos.y, pos.z);
+
+        
     }
 }

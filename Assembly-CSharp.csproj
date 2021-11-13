@@ -85,6 +85,7 @@
     <Compile Include="Assets\Script\ClearText.cs" />
     <Compile Include="Assets\Script\Item\DragArea.cs" />
     <Compile Include="Assets\Script\Item\DragItem.cs" />
+    <Compile Include="Assets\Script\Item\EquipmentJewel.cs" />
     <Compile Include="Assets\Script\Item\InventoryManager.cs" />
     <Compile Include="Assets\Script\Item\ItemData.cs" />
     <Compile Include="Assets\Script\Item\ItemDetection.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets\Script\Item\JewelText.cs" />
     <Compile Include="Assets\Script\Item\JewerData.cs" />
     <Compile Include="Assets\Script\Item\Key.cs" />
+    <Compile Include="Assets\Script\Item\SelectJewel.cs" />
     <Compile Include="Assets\Script\Manager\CameraFollow.cs" />
     <Compile Include="Assets\Script\Manager\CursorManager.cs" />
     <Compile Include="Assets\Script\Manager\EquipmentData.cs" />
