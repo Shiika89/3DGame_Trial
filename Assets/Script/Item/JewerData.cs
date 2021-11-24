@@ -8,7 +8,7 @@ using UnityEngine;
 public class JewerData : MonoBehaviour
 {
     [Tooltip("アイテムの種類を格納")]
-    [SerializeField] GameObject[] m_viweItem;
+    [SerializeField] SelectJewel[] m_viweItem;
 
     /// <summary>
     /// アイテムの種類によってどのJewelをアクティブにするか判定
@@ -19,13 +19,13 @@ public class JewerData : MonoBehaviour
         switch (itemData.JewelType)
         {
             case JewelType.Red:
-                m_viweItem[0].SetActive(true);
+                m_viweItem[0].StartSet(itemData);
                 break;
             case JewelType.Blue:
-                m_viweItem[1].SetActive(true);
+                m_viweItem[1].StartSet(itemData);
                 break;
             case JewelType.Green:
-                m_viweItem[2].SetActive(true);
+                m_viweItem[2].StartSet(itemData);
                 break;
             default:
                 break;

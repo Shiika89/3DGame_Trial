@@ -23,10 +23,11 @@ public class Gamemanager : MonoBehaviour
 
     /// <summary> 装備画面のUIのオンオフ </summary>
     private bool m_UIflag = false;
-
+    Vector2 m_startPos = default;
     private void Start()
     {
-        m_EquipmentUI.SetActive(false);
+        m_startPos = m_EquipmentUI.GetComponent<RectTransform>().position;
+        m_EquipmentUI.GetComponent<RectTransform>().position = new Vector2(3000,3000);
         m_key = false;
 
         if (m_stage % 5 == 0)
@@ -62,12 +63,14 @@ public class Gamemanager : MonoBehaviour
         //　装備画面のUIをスペースキーでオンオフに切り替え
         if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == false)
         {
-            m_EquipmentUI.SetActive(true);
+            InventoryManager.Instance.OpenInventory();
+            m_EquipmentUI.GetComponent<RectTransform>().position = m_startPos;
             m_UIflag = true;
         }
         else if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == true)
         {
-            m_EquipmentUI.SetActive(false);
+            InventoryManager.Instance.SelectItem();
+            m_EquipmentUI.GetComponent<RectTransform>().position = new Vector2(3000, 3000);
             m_UIflag = false;
         }
     }

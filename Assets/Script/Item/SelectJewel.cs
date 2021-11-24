@@ -9,47 +9,65 @@ public class SelectJewel : MonoBehaviour
 
     [SerializeField] bool m_select;
 
-    public ItemData m_itemData { get; set; }
+    [SerializeField] GameObject m_mark;
 
-    EquipmentJewel m_slot1;
-    EquipmentJewel m_slot2;
-    EquipmentJewel m_slot3;
+    public ItemData m_itemData { get; set; }
 
     [SerializeField] GameObject m_slot1Button;
     [SerializeField] GameObject m_slot2Button;
     [SerializeField] GameObject m_slot3Button;
 
     // Start is called before the first frame update
-    void Start()
+    public void StartSet(ItemData itemData)
     {
-        m_itemData = new ItemData(m_jewelType);
+        m_itemData = itemData;
+        gameObject.SetActive(true);
     }
     
     public void ActiveButton()
     {
+        if (m_select) return;
+        InventoryManager.Instance.SelectItem();
         m_slot1Button.SetActive(true);
         m_slot2Button.SetActive(true);
         m_slot3Button.SetActive(true);
+        InventoryManager.Instance.OnSelectItem += InactiveButton;
+    }
+
+    public void InactiveButton()
+    {
+        m_slot1Button.SetActive(false);
+        m_slot2Button.SetActive(false);
+        m_slot3Button.SetActive(false);
+        InventoryManager.Instance.OnSelectItem -= InactiveButton;
     }
 
     public void Select1()
     {
-        m_slot1 = GameObject.Find("Slot1").GetComponent<EquipmentJewel>();
-        m_select = true;
-        m_slot1.Eqipment(this);
+        Equipment();
+        InventoryManager.Instance.EquipmentJewels[0].Eqipment(this);
     }
 
     public void Select2()
     {
-        m_slot2 = GameObject.Find("Slot2").GetComponent<EquipmentJewel>();
-        m_select = true;
-        m_slot2.Eqipment(this);
+        Equipment();
+        InventoryManager.Instance.EquipmentJewels[1].Eqipment(this);
     }
 
     public void Select3()
     {
-        m_slot3 = GameObject.Find("Slot3").GetComponent<EquipmentJewel>();
+        Equipment();
+        InventoryManager.Instance.EquipmentJewels[2].Eqipment(this);
+    }
+
+    public void SelectOut()
+    {
+        m_select = false;
+        m_mark.SetActive(false);
+    }
+    public void Equipment()
+    {
         m_select = true;
-        m_slot3.Eqipment(this);
+        m_mark.SetActive(true);
     }
 }

@@ -1361,6 +1361,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_JewelUIParent: {fileID: 4719667304279020151, guid: 3ef090b7469c4cb4f8f2e30e3f05523b,
     type: 3}
+  m_equipmentJewels:
+  - {fileID: 663220131}
+  - {fileID: 1068034731}
+  - {fileID: 1843033556}
 --- !u!1 &6428462593727047659
 GameObject:
   m_ObjectHideFlags: 0
