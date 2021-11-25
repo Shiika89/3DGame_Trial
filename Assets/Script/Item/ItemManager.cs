@@ -9,8 +9,10 @@ public class ItemManager : MonoBehaviour
 {
     /// <summary>ItemManagerをInstanceにする</summary>
     public static ItemManager Instance { get; private set; }
+
     /// <summary>ItemのDataが入ってるリスト</summary>
     static List<ItemData> m_haveItem = default;
+
     /// <summary>アイテムを入手するたびに呼ばれるイベント</summary>
     public event Action OnItemGet;
     
@@ -19,14 +21,18 @@ public class ItemManager : MonoBehaviour
 
     private void Awake()
     {
+        // シーンが読み込まれた時、リストが生成されてなければ生成（2階層以降、新しく作らないようにするため）
         if (m_haveItem == null)
         {
             m_haveItem = new List<ItemData>();
         }
+
         Instance = this;
     }
+
     private void Start()
     {
+        // InventoryManagerのOnDiscardイベントに登録
         InventoryManager.Instance.OnDiscard += DiscardItem;
     }
 

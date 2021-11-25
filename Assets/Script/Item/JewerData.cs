@@ -11,7 +11,7 @@ public class JewerData : MonoBehaviour
     [SerializeField] SelectJewel[] m_viweItem;
 
     /// <summary>
-    /// アイテムの種類によってどのJewelをアクティブにするか判定
+    /// アイテムの種類によって子のジュエルのStartSetを呼んで自分をアクティブにする
     /// </summary>
     /// <param name="itemData"></param>
     public void SetData(ItemData itemData)

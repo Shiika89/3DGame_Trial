@@ -27,7 +27,7 @@ public class Gamemanager : MonoBehaviour
     private void Start()
     {
         m_startPos = m_EquipmentUI.GetComponent<RectTransform>().position;
-        m_EquipmentUI.GetComponent<RectTransform>().position = new Vector2(3000,3000);
+        m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700,0);
         m_key = false;
 
         if (m_stage % 5 == 0)
@@ -70,7 +70,7 @@ public class Gamemanager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == true)
         {
             InventoryManager.Instance.SelectItem();
-            m_EquipmentUI.GetComponent<RectTransform>().position = new Vector2(3000, 3000);
+            m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700, 0);
             m_UIflag = false;
         }
     }
