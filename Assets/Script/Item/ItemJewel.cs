@@ -11,6 +11,16 @@ public enum JewelType
     Blue,
     Green,
 }
+
+/// <summary>
+/// Jewelのレア度
+/// </summary>
+public enum JewelRarity
+{
+    Normal,
+    Rare,
+    SuperRare,
+}
 public class ItemJewel
 {
     

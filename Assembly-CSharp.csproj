@@ -85,6 +85,7 @@
     <Compile Include="Assets\Script\ClearText.cs" />
     <Compile Include="Assets\Script\Item\DragArea.cs" />
     <Compile Include="Assets\Script\Item\DragItem.cs" />
+    <Compile Include="Assets\Script\Item\EquipmentHelp.cs" />
     <Compile Include="Assets\Script\Item\EquipmentJewel.cs" />
     <Compile Include="Assets\Script\Item\InventoryManager.cs" />
     <Compile Include="Assets\Script\Item\ItemData.cs" />

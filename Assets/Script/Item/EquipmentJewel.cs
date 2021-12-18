@@ -11,6 +11,8 @@ public class EquipmentJewel : MonoBehaviour
     [Tooltip("自分のスロットのイメージを登録")]
     [SerializeField] Image m_image;
 
+    [SerializeField] EquipmentHelp m_help = default;
+
     /// <summary> 装備するアイテムのクラスを受け取るための変数 </summary>
     SelectJewel m_selectJewel = default;
 
@@ -74,6 +76,8 @@ public class EquipmentJewel : MonoBehaviour
                 m_image.color = Color.white;
                 break;
         }
+
+        m_help.ColorChange(m_image);
 
         Debug.Log($"装備しました こ{data.m_itemData.Para1} + ぼ{data.m_itemData.Para2} + す{data.m_itemData.Para3}");
     }
