@@ -41,19 +41,19 @@ public class ItemData
                 switch (JewelRarity)
                 {
                     case JewelRarity.Normal:
-                        Para1 = Random.Range(3, 7);
-                        Para2 = Random.Range(0, 2);
-                        Para3 = Random.Range(-3, 0);
+                        Para1 = Random.Range(3, 5);
+                        Para2 = Random.Range(0, 3);
+                        Para3 = Random.Range(-3, 1);
                         break;
                     case JewelRarity.Rare:
-                        Para1 = Random.Range(4, 9);
-                        Para2 = Random.Range(2, 6);
-                        Para3 = Random.Range(0, 3);
+                        Para1 = Random.Range(5, 10);
+                        Para2 = Random.Range(3, 5);
+                        Para3 = Random.Range(1, 3);
                         break;
                     case JewelRarity.SuperRare:
-                        Para1 = Random.Range(3, 10);
-                        Para2 = Random.Range(0, 1);
-                        Para3 = Random.Range(-1, -3);
+                        Para1 = Random.Range(10, 20);
+                        Para2 = Random.Range(5, 10);
+                        Para3 = Random.Range(3, 6);
                         break;
                     default:
                         break;
@@ -63,19 +63,19 @@ public class ItemData
                 switch (JewelRarity)
                 {
                     case JewelRarity.Normal:
-                        Para1 = Random.Range(3, 7);
-                        Para2 = Random.Range(0, 2);
-                        Para3 = Random.Range(-3, 0);
-                        break;
-                    case JewelRarity.Rare:
-                        Para1 = Random.Range(4, 9);
-                        Para2 = Random.Range(2, 6);
+                        Para1 = Random.Range(-3, 1);
+                        Para2 = Random.Range(3, 5);
                         Para3 = Random.Range(0, 3);
                         break;
+                    case JewelRarity.Rare:
+                        Para1 = Random.Range(1, 3);
+                        Para2 = Random.Range(5, 10);
+                        Para3 = Random.Range(3, 5);
+                        break;
                     case JewelRarity.SuperRare:
-                        Para1 = Random.Range(3, 10);
-                        Para2 = Random.Range(0, 1);
-                        Para3 = Random.Range(-1, -3);
+                        Para1 = Random.Range(3, 6);
+                        Para2 = Random.Range(10, 20);
+                        Para3 = Random.Range(5, 10);
                         break;
                     default:
                         break;
@@ -85,19 +85,19 @@ public class ItemData
                 switch (JewelRarity)
                 {
                     case JewelRarity.Normal:
-                        Para1 = Random.Range(3, 7);
-                        Para2 = Random.Range(0, 2);
-                        Para3 = Random.Range(-3, 0);
+                        Para1 = Random.Range(0, 3);
+                        Para2 = Random.Range(-3, 1);
+                        Para3 = Random.Range(3, 5);
                         break;
                     case JewelRarity.Rare:
-                        Para1 = Random.Range(4, 9);
-                        Para2 = Random.Range(2, 6);
-                        Para3 = Random.Range(0, 3);
+                        Para1 = Random.Range(3, 5);
+                        Para2 = Random.Range(1, 3);
+                        Para3 = Random.Range(5, 10);
                         break;
                     case JewelRarity.SuperRare:
-                        Para1 = Random.Range(3, 10);
-                        Para2 = Random.Range(0, 1);
-                        Para3 = Random.Range(-1, -3);
+                        Para1 = Random.Range(5, 10);
+                        Para2 = Random.Range(3, 6);
+                        Para3 = Random.Range(10, 20);
                         break;
                     default:
                         break;
