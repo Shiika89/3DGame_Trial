@@ -79,6 +79,8 @@ public class EquipmentJewel : MonoBehaviour
 
         m_help.ColorChange(m_image);
 
+        m_help.EquipmentText(data);
+
         Debug.Log($"装備しました こ{data.m_itemData.Para1} + ぼ{data.m_itemData.Para2} + す{data.m_itemData.Para3}");
     }
 }

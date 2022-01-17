@@ -7,8 +7,15 @@ public class EquipmentHelp : MonoBehaviour
 {
     [SerializeField] Image m_help = default;
 
+    [SerializeField] Text m_text = default;
+
     public void ColorChange(Image slot)
     {
         m_help.color = slot.color;
+    }
+
+    public void EquipmentText(SelectJewel data)
+    {
+        m_text.text = $"攻 {data.m_itemData.Para1}  防 {data.m_itemData.Para2}　ス {data.m_itemData.Para3}";
     }
 }
