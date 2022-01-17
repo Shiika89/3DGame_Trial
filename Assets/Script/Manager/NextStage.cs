@@ -7,9 +7,9 @@ public class NextStage : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (Gamemanager.m_key)
+        if (Gamemanager.Instance.m_key)
         {
-            Gamemanager.m_stage++;
+            Gamemanager.Instance.m_stage++;
             SceneManager.LoadScene("GameScene");
         }
     }

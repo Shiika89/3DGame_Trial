@@ -10,6 +10,6 @@ public class ClearText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_text.text = $"{Gamemanager.m_timer}";
+        m_text.text = $"{Gamemanager.Instance.m_timer}";
     }
 }

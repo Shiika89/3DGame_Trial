@@ -24,9 +24,9 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
     {
         m_slinder = m_HPUI.transform.Find("HPBar").GetComponent<Slider>();
 
-        Status.maxLife = m_enemyParameter.GetMaxLife(Gamemanager.m_stage -1);
-        Status.attack = m_enemyParameter.GetAttack(Gamemanager.m_stage  - 1);
-        Status.deffence = m_enemyParameter.GetDeffence(Gamemanager.m_stage - 1);
+        Status.maxLife = m_enemyParameter.GetMaxLife(Gamemanager.Instance.m_stage -1);
+        Status.attack = m_enemyParameter.GetAttack(Gamemanager.Instance.m_stage  - 1);
+        Status.deffence = m_enemyParameter.GetDeffence(Gamemanager.Instance.m_stage - 1);
 
         Status.currentLife = Status.maxLife; // 現在HPを初期HPに
         m_slinder.maxValue = Status.maxLife; // HPスライダーの最大値を初期HPと同じに

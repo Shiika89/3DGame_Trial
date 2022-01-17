@@ -27,6 +27,10 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
+        if (Gamemanager.Instance.m_UIflag)
+        {
+            return;
+        }
         // マウスのホイールでカメラとターゲットの距離をyとzだけ調整
         var scrollY = Input.mouseScrollDelta.y;
         distance.y -= scrollY * m_zoomSpeed;
@@ -36,7 +40,5 @@ public class CameraFollow : MonoBehaviour
         // カメラのxとzだけを固定する
         var pos = target.transform.position + distance;
         transform.position = new Vector3(pos.x, pos.y, pos.z);
-
-        
     }
 }

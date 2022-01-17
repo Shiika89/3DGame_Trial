@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class Gamemanager : MonoBehaviour
 {
+    public static Gamemanager Instance { get; set; }
+
     [Tooltip("装備画面のUI")]
     [SerializeField] GameObject m_EquipmentUI;
     [SerializeField] Text m_timeText;
@@ -16,17 +18,23 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] AudioClip audioClip2;
     private AudioSource audioSource;
 
-    public static int m_stage = 1;
-    public static bool m_key = false;
-    public static bool m_timeAttack = false;
-    public static float m_timer;
+    public int m_stage = 1;
+    public bool m_key = false;
+    public bool m_timeAttack = false;
+    public float m_timer;
 
     /// <summary> 装備画面のUIのオンオフ </summary>
-    private bool m_UIflag = false;
+    public bool m_UIflag = false;
     Vector2 m_startPos = default;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
-        m_startPos = m_EquipmentUI.GetComponent<RectTransform>().position;
+        m_startPos = m_EquipmentUI.GetComponent<RectTransform>().localPosition;
         m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700,0);
         m_key = false;
 
@@ -64,7 +72,7 @@ public class Gamemanager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == false)
         {
             InventoryManager.Instance.OpenInventory();
-            m_EquipmentUI.GetComponent<RectTransform>().position = m_startPos;
+            m_EquipmentUI.GetComponent<RectTransform>().localPosition = m_startPos;
             m_UIflag = true;
         }
         else if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == true)

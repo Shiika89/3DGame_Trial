@@ -7,7 +7,7 @@ public class TitleSerect : MonoBehaviour
 {
     public void TimeAttack()
     {
-        Gamemanager.m_timeAttack = true;
+        Gamemanager.Instance.m_timeAttack = true;
         SceneManager.LoadScene("GameScene");
     }
 

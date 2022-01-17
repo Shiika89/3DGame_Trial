@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
 
     public void Move()
     {
-        if (m_IsAttacking || m_kaihi) // 攻撃中・回避中だったら操作を受け付けない
+        if (m_IsAttacking || m_kaihi || Gamemanager.Instance.m_UIflag) // 攻撃中・回避中・ステータス画面だったら操作を受け付けない
         {
             return;
         }
@@ -101,7 +101,7 @@ public class PlayerMove : MonoBehaviour
             m_anim.SetFloat("Speed", velocity.magnitude);
 
             //攻撃ボタンを押したら Attack をセットする
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !Gamemanager.Instance.m_UIflag)
             {
                 m_anim.SetTrigger("Attack");
                 m_audioSource.clip = m_audioClip;
