@@ -49,6 +49,8 @@ public class SelectJewel : MonoBehaviour
         m_slot2Button.SetActive(true);
         m_slot3Button.SetActive(true);
 
+        SelectJewelText.Instance.SelectText(m_itemData);
+
         // OnSelectItemのイベントにInactiveButtonの関数を登録
         InventoryManager.Instance.OnSelectItem += InactiveButton;
     }

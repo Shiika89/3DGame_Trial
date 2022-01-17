@@ -96,6 +96,7 @@
     <Compile Include="Assets\Script\Item\JewerData.cs" />
     <Compile Include="Assets\Script\Item\Key.cs" />
     <Compile Include="Assets\Script\Item\SelectJewel.cs" />
+    <Compile Include="Assets\Script\Item\SelectJewelText.cs" />
     <Compile Include="Assets\Script\Manager\CameraFollow.cs" />
     <Compile Include="Assets\Script\Manager\CursorManager.cs" />
     <Compile Include="Assets\Script\Manager\EquipmentData.cs" />
