@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
             var attack = other.GetComponent<EnemyStatus>();
             if (attack != null)
             {
-                attack.Damage(PlayerStatus.m_attack);
+                attack.Damage(PlayerStatus.Instance.Attack);
             }
         }
 
@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
             var attack = other.GetComponent<BossStatus>();
             if (attack != null)
             {
-                attack.Damage(PlayerStatus.m_attack);
+                attack.Damage(PlayerStatus.Instance.Attack);
             }
         }
     }

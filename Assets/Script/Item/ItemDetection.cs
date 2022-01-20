@@ -84,18 +84,18 @@ public class ItemDetection : MonoBehaviour
     void PlayerHealPickUp()
     {
         m_heal = ((m_data.Para1 + m_data.Para2 + m_data.Para3) * 3);
-        if (PlayerStatus.m_currentLife < 300)
+        if (PlayerStatus.Instance.CurrentLife < 300)
         {
-            if (PlayerStatus.m_currentLife + m_heal >300)
+            if (PlayerStatus.Instance.CurrentLife + m_heal >300)
             {
-                PlayerStatus.m_currentLife = 300;
+                PlayerStatus.Instance.CurrentLife = 300;
                 //m_chara.m_slinder.value = 100;
                 Debug.Log("HPは満タンになった");
                 Destroy(gameObject);
             }
             else
             {
-                PlayerStatus.m_currentLife += m_heal;
+                PlayerStatus.Instance.CurrentLife += m_heal;
                 //m_chara.m_slinder.value += m_heal;
                 Debug.Log($"HPが{m_heal}回復した");
                 Destroy(gameObject);

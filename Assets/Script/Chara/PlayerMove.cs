@@ -117,12 +117,12 @@ public class PlayerMove : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Fire2") && !m_kaihi && PlayerStatus.m_sutamina >= 20f)
+        if (Input.GetButtonDown("Fire2") && !m_kaihi && PlayerStatus.Instance.Sutamina >= 20f)
         {
             m_kaihi = true;
             m_model.SetActive(false);
             m_effect.Play();
-            PlayerStatus.m_sutamina -= 20f;
+            PlayerStatus.Instance.Sutamina -= 20f;
 
             float v = Input.GetAxisRaw("Vertical");
             float h = Input.GetAxisRaw("Horizontal");
@@ -160,12 +160,12 @@ public class PlayerMove : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Fire2") && !m_kaihi && PlayerStatus.m_sutamina >= 20f)
+        if (Input.GetButtonDown("Fire2") && !m_kaihi && PlayerStatus.Instance.Sutamina >= 20f)
         {
             m_kaihi = true;
             m_model.SetActive(false);
             m_effect.Play();
-            PlayerStatus.m_sutamina -= 20f;
+            PlayerStatus.Instance.Sutamina -= 20f;
             float v = Input.GetAxisRaw("Vertical");
             float h = Input.GetAxisRaw("Horizontal");
 
