@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class RandomStage : MonoBehaviour
 {
+    public static RandomStage Instance;
+
     [SerializeField] StageData[] stageDatas;
     [SerializeField] GameObject[] m_floorPrefab; // 作ったfloorを入れるための配列
     [SerializeField] float m_floorSize = 20; // floorの大きさ
@@ -14,6 +16,11 @@ public class RandomStage : MonoBehaviour
     [SerializeField] int[] m_gimmickNum; // どのギミックを何個生成するかを決める変数
     [SerializeField] GameObject m_goal; // ゴールに置くギミック用の変数
     [SerializeField] GameObject m_bossFloor; // ボスのFloor
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -97,6 +104,29 @@ public class RandomStage : MonoBehaviour
                     Instantiate(m_goal, floor.transform).transform.position = floor.transform.position;
                 }
             }
+        }
+    }
+
+    public void StageClear()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            //削除する
+            Destroy(child.gameObject);
+        }
+    }
+
+    public void NextStage()
+    {
+        if (Gamemanager.Instance.m_stage % 5 == 0)
+        {
+            Instantiate(m_bossFloor).transform.position = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            // StageDataで作った中からランダムで選んで生成
+            int r = Random.Range(0, stageDatas.Length);
+            StageCreate(stageDatas[r]);
         }
     }
 }

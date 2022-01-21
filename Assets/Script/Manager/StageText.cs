@@ -10,12 +10,12 @@ public class StageText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_stageText.text = $"STAGE  {Gamemanager.Instance.m_stage}";
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        m_stageText.text = $"STAGE  {Gamemanager.Instance.m_stage}";
     }
 }

@@ -7,10 +7,21 @@ public class NextStage : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        //if (Gamemanager.Instance.m_key)
+        //{
+        //    Gamemanager.Instance.m_stage++;
+        //    SceneManager.LoadScene("GameScene");
+        //}
+
         if (Gamemanager.Instance.m_key)
         {
+            RandomStage.Instance.StageClear();
+
+            PlayerStatus.Instance.gameObject.transform.position = Vector3.zero;
             Gamemanager.Instance.m_stage++;
-            SceneManager.LoadScene("GameScene");
+            Gamemanager.Instance.m_key = false;
+
+            RandomStage.Instance.NextStage();
         }
     }
 }
