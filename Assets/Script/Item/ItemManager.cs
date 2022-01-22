@@ -43,7 +43,8 @@ public class ItemManager : MonoBehaviour
         {
             m_haveItem[i].ID = i;
         }
-        OnItemGet?.Invoke();
+        InventoryManager.Instance.ItemGet();
+        //OnItemGet?.Invoke();
     }
 
     private void DiscardItem(int id)

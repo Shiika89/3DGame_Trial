@@ -73,11 +73,6 @@ public class ItemDetection : MonoBehaviour
     void ItemPickUp()
     {
         ItemManager.Instance.ItemGet(m_data);
-        //PlayerStatus.m_attack += m_data.Para1;
-        //PlayerStatus.m_deffence += m_data.Para2;
-        //PlayerStatus.m_maxSutamina += m_data.Para3;
-        //Debug.Log(m_data.Para1);
-        //Debug.Log(m_data.Para2);
         Destroy(gameObject);
     }
 

@@ -21,11 +21,12 @@ public class Gamemanager : MonoBehaviour
     public int m_stage = 1;
     public bool m_key = false;
     public bool m_timeAttack = false;
-    public float m_timer;
+    float m_timer;
+    public int m_nowTimer;
+    public int m_minuteTime;
 
     /// <summary> 装備画面のUIのオンオフ </summary>
     public bool m_UIflag = false;
-    Vector2 m_startPos = default;
 
     private void Awake()
     {
@@ -34,7 +35,6 @@ public class Gamemanager : MonoBehaviour
 
     private void Start()
     {
-        m_startPos = m_EquipmentUI.GetComponent<RectTransform>().localPosition;
         m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700,0);
         m_key = false;
 
@@ -55,11 +55,17 @@ public class Gamemanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_timeText.text = $"{m_timer}";
+        m_timeText.text = $"{m_minuteTime}分{m_nowTimer}秒";
 
         if (m_timeAttack)
         {
             m_timer += Time.deltaTime;
+            m_nowTimer = (int)m_timer;
+            if (m_nowTimer == 60)
+            {
+                m_minuteTime++;
+                m_timer = 0;
+            }
 
             if (m_stage == 6)
             {
@@ -72,7 +78,7 @@ public class Gamemanager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == false)
         {
             InventoryManager.Instance.OpenInventory();
-            m_EquipmentUI.GetComponent<RectTransform>().localPosition = m_startPos;
+            m_EquipmentUI.GetComponent<RectTransform>().localPosition = Vector2.zero;
             m_UIflag = true;
         }
         else if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == true)

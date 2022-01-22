@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerStatus : MonoBehaviour, IDamagable
 {
-    public static PlayerStatus Instance;
+    public static PlayerStatus Instance { get; set; }
 
     [SerializeField] int m_maxLife = 300;
     public int MaxLife { get => m_maxLife; set => m_maxLife = value; }

@@ -27,7 +27,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        ItemManager.Instance.OnItemGet += ItemGet;
+        //ItemManager.Instance.OnItemGet += ItemGet;
         m_jewerData = new List<JewerData>();
         ItemSet();
     }
@@ -35,7 +35,7 @@ public class InventoryManager : MonoBehaviour
     /// <summary>
     /// アイテムを入手するたびリスト中身を消してリスト内のアイテムを表示
     /// </summary>
-    private void ItemGet()
+    public void ItemGet()
     {
         //foreach (var item in m_jewerData)
         //{
@@ -83,5 +83,18 @@ public class InventoryManager : MonoBehaviour
     public void OpenInventory()
     {
         OnOpenInventory?.Invoke();
+    }
+
+    public void Sort()
+    {
+        //foreach (var item in m_jewerData)
+        //{
+        //    transform.SetSiblingIndex(0);
+        //}
+        
+        for (int i = 0; i < m_jewerData.Count; i++)
+        {
+            m_jewerData[i].transform.SetSiblingIndex(i);
+        }
     }
 }

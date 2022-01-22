@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossStatus : MonoBehaviour, IDamagable
 {
     [SerializeField] int m_maxLife = 100;
-    [SerializeField] int m_currentLife = 100;
+    int m_currentLife;
     [SerializeField] public int m_attack = 15;
     [SerializeField] int m_deffence = 8;
 
@@ -19,6 +19,7 @@ public class BossStatus : MonoBehaviour, IDamagable
     void Start()
     {
         m_hpSlider.maxValue = m_maxLife; // HPスライダーの最大値を初期HPと同じに
+        m_currentLife = m_maxLife;
 
         m_key = GameObject.Find("KeyUI");
         m_key.SetActive(false);

@@ -2846,10 +2846,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c584f6e7e721f6643a06d6f1fda5dbe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxLife: 500
-  m_currentLife: 500
-  m_attack: 300
-  m_deffence: 300
+  m_maxLife: 10
+  m_attack: 40
+  m_deffence: 10
   m_DeathObject: {fileID: 8503892259650942226, guid: 56dbdd8c4f419d049bf97ba11480d777,
     type: 3}
   m_hpSlider: {fileID: 6038499314062134278}
