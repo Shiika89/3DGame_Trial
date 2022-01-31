@@ -25,6 +25,10 @@ public class Gamemanager : MonoBehaviour
     public int m_nowTimer;
     public int m_minuteTime;
 
+    public float m_enemyStatusTimer;
+    public int m_gameLevel;
+    [SerializeField] int m_levelUpTime;
+
     /// <summary> 装備画面のUIのオンオフ </summary>
     public bool m_UIflag = false;
 
@@ -55,6 +59,8 @@ public class Gamemanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameLevel();
+
         m_timeText.text = $"{m_minuteTime}分{m_nowTimer}秒";
 
         if (m_timeAttack)
@@ -86,6 +92,18 @@ public class Gamemanager : MonoBehaviour
             InventoryManager.Instance.SelectItem();
             m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700, 0);
             m_UIflag = false;
+        }
+    }
+
+    void GameLevel()
+    {
+        m_enemyStatusTimer += Time.deltaTime;
+
+        if (m_enemyStatusTimer > m_levelUpTime)
+        {
+            m_gameLevel++;
+            m_enemyStatusTimer = 0;
+            Debug.Log("敵の強さが上がった");
         }
     }
 }

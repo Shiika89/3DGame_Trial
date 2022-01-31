@@ -814,6 +814,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 524230253, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 718621732, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_Name
       value: JewelList
@@ -4992,6 +4996,9 @@ MonoBehaviour:
   m_timeAttack: 1
   m_nowTimer: 0
   m_minuteTime: 0
+  m_enemyStatusTimer: 0
+  m_gameLevel: 0
+  m_levelUpTime: 30
   m_UIflag: 0
 --- !u!4 &2111588479
 Transform:

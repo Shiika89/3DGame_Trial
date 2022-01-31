@@ -447,8 +447,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3844c09a6e637bb43b8ca03e7dc0d718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_target: {fileID: 1962682658676099683, guid: 7f4c4157840be1147bc7b818889615d2,
-    type: 3}
   m_anim: {fileID: 5332815367254055042}
   m_attackRange: 1.5
   m_inArea: 0
@@ -486,7 +484,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f1b77cdd58c86468e33d2f46bb9e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyParameter: {fileID: 11400000, guid: b4c6b90bbf25af94a90c50083268fa79, type: 2}
+  m_enemyParameters:
+  - {fileID: 11400000, guid: b2d323dfc53f57040896edeec9f74916, type: 2}
+  - {fileID: 11400000, guid: 8828e336bfe929e4a8b314c2638da61a, type: 2}
+  - {fileID: 11400000, guid: fae6bebaab0e4464d923eddb63b49de8, type: 2}
   m_DeathObject: {fileID: 7214655733647128672, guid: 376fd4ba4a6d7d140a8130d3f30545d9,
     type: 3}
   m_HPUI: {fileID: 3210286719694599093}
