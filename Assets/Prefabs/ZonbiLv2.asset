@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ZonbiLv2
   m_EditorClassIdentifier: 
   level: 2
-  maxLife: 100
-  attack: 36
-  deffence: 25
+  maxLife: 150
+  attack: 54
+  deffence: 37
