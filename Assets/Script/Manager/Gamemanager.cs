@@ -16,6 +16,9 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] Text m_timeText;
     [SerializeField] AudioClip audioClip1;
     [SerializeField] AudioClip audioClip2;
+    [SerializeField] Text m_enemyLevelText;
+    [SerializeField] int m_levelUpTime;
+
     private AudioSource audioSource;
 
     public int m_stage = 1;
@@ -27,7 +30,7 @@ public class Gamemanager : MonoBehaviour
 
     public float m_enemyStatusTimer;
     public int m_gameLevel;
-    [SerializeField] int m_levelUpTime;
+    
 
     /// <summary> 装備画面のUIのオンオフ </summary>
     public bool m_UIflag = false;
@@ -99,11 +102,12 @@ public class Gamemanager : MonoBehaviour
     {
         m_enemyStatusTimer += Time.deltaTime;
 
-        if (m_enemyStatusTimer > m_levelUpTime)
+        if (m_enemyStatusTimer > m_levelUpTime && m_gameLevel < 2)
         {
             m_gameLevel++;
             m_enemyStatusTimer = 0;
-            Debug.Log("敵の強さが上がった");
+            m_enemyLevelText.text = $"LEVEL{m_gameLevel + 1}";
+            Debug.Log($"敵の強さが上がった、レベル{m_gameLevel + 1}");
         }
     }
 }
