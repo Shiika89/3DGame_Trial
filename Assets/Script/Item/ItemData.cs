@@ -14,6 +14,9 @@ public class ItemData
     public int paraAdd { get; private set; }
     public bool Instance { get; set; } 
     public int ID { get; set; }
+    public Skill Skill { get; set; }
+
+
     /// <summary>
     /// Jewelの種類によってパラメータを付与する関数
     /// </summary>

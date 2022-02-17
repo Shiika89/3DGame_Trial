@@ -267,6 +267,7 @@ MonoBehaviour:
   m_jewelType: 2
   m_canvas: {fileID: 5787020030564882105}
   m_text: {fileID: 1566899897364261024}
+  m_sill: {fileID: 11400000, guid: a6ff4236923b27645a5e0d170c9810ea, type: 2}
 --- !u!1 &2433085803434990367
 GameObject:
   m_ObjectHideFlags: 0

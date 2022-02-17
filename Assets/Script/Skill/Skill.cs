@@ -11,8 +11,12 @@ public class Skill : ScriptableObject
     {
         AttackUp,
         GuardianArea,
-        AvoidanceAttack,
+        KaihiAttack,
     }
 
-
+    [SerializeField] public JewelType jewelType;
+    [SerializeField] public SkillType skillType;
+    [SerializeField] public JewelRarity jewelRarity;
+    [SerializeField] public int skillLevel;
+    [SerializeField] public GameObject skill;
 }

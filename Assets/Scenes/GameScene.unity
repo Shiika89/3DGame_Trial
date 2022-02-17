@@ -900,6 +900,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 488279102, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -912,10 +920,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 663220131, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 1962682657799277024}
     - target: {fileID: 718621732, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_Name
       value: JewelList
       objectReference: {fileID: 0}
+    - target: {fileID: 1068034731, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 1962682657799277024}
     - target: {fileID: 1103191038, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -936,6 +952,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1843033556, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 1962682657799277024}
     - target: {fileID: 1920795282, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

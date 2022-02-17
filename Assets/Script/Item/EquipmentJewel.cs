@@ -34,6 +34,10 @@ public class EquipmentJewel : MonoBehaviour
         Debug.Log($"装備しました こ{data.Para1} + ぼ{data.Para2} + す{data.Para3}");
     }
 
+    GameObject m_skill;
+
+    [SerializeField] GameObject m_player;
+
     /// <summary>
     /// 選択したアイテムを装備する時に呼ばれる関数
     /// </summary>
@@ -48,6 +52,8 @@ public class EquipmentJewel : MonoBehaviour
             PlayerStatus.Instance.Deffence -= m_selectJewel.m_itemData.Para2;
             PlayerStatus.Instance.MaxSutamina -= m_selectJewel.m_itemData.Para3;
 
+            Destroy(m_skill);
+
             // 装備が外れたことをアイテム自身に伝える
             m_selectJewel.SelectOut();
         }
@@ -59,6 +65,9 @@ public class EquipmentJewel : MonoBehaviour
         PlayerStatus.Instance.Attack += data.m_itemData.Para1;
         PlayerStatus.Instance.Deffence += data.m_itemData.Para2;
         PlayerStatus.Instance.MaxSutamina += data.m_itemData.Para3;
+
+        m_skill = Instantiate(data.m_itemData.Skill.skill, m_player.transform.position, Quaternion.identity);
+        m_skill.transform.parent = m_player.transform;
 
         // ジュエルの色によって装備スロットの色を変える
         switch (data.JewelType)

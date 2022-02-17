@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// アイテム自身に持たせて自分を装備するかを選択する
+/// アイテムのUI自身に持たせて自分を装備するかを選択する
 /// </summary>
 public class SelectJewel : MonoBehaviour
 {

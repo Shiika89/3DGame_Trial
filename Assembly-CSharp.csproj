@@ -93,12 +93,12 @@
     <Compile Include="Assets\Script\Item\ItemDetection.cs" />
     <Compile Include="Assets\Script\Item\ItemJewel.cs" />
     <Compile Include="Assets\Script\Item\ItemManager.cs" />
+    <Compile Include="Assets\Script\Item\JewelParameter.cs" />
     <Compile Include="Assets\Script\Item\JewelText.cs" />
     <Compile Include="Assets\Script\Item\JewerData.cs" />
     <Compile Include="Assets\Script\Item\Key.cs" />
     <Compile Include="Assets\Script\Item\SelectJewel.cs" />
     <Compile Include="Assets\Script\Item\SelectJewelText.cs" />
-    <Compile Include="Assets\Script\Item\Skill.cs" />
     <Compile Include="Assets\Script\Manager\CameraFollow.cs" />
     <Compile Include="Assets\Script\Manager\CursorManager.cs" />
     <Compile Include="Assets\Script\Manager\EquipmentData.cs" />
@@ -110,6 +110,10 @@
     <Compile Include="Assets\Script\Manager\StageData.cs" />
     <Compile Include="Assets\Script\Manager\StageText.cs" />
     <Compile Include="Assets\Script\Manager\StatusText.cs" />
+    <Compile Include="Assets\Script\Skill\AttackUp.cs" />
+    <Compile Include="Assets\Script\Skill\GuardianArea.cs" />
+    <Compile Include="Assets\Script\Skill\KaihiAttack.cs" />
+    <Compile Include="Assets\Script\Skill\Skill.cs" />
     <Compile Include="Assets\Script\TitleSerect.cs" />
     <Compile Include="Assets\Script\Wallbreak.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />
