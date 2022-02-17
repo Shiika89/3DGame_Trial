@@ -24,6 +24,15 @@ public class PlayerStatus : MonoBehaviour, IDamagable
     float m_sutamina;
     public float Sutamina { get => m_sutamina; set => m_sutamina = value; }
 
+    int m_attackUpLevel;
+    public int AttackUpLevel { get => m_attackUpLevel; set => m_attackUpLevel = value; }
+
+    int m_guardianAreaLevel;
+    public int GuardianAreaLevel { get => m_guardianAreaLevel; set => m_guardianAreaLevel = value; }
+
+    int m_kaihiAttackLevel;
+    public int KaihiAttackLevel { get => m_kaihiAttackLevel; set => m_kaihiAttackLevel = value; }
+
     [SerializeField] float m_sutaminaHeal;
     [SerializeField] GameObject m_DeathObject;
     [SerializeField] Slider m_hpSlider;

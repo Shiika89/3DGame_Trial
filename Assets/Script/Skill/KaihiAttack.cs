@@ -5,11 +5,25 @@ using UnityEngine;
 public class KaihiAttack : MonoBehaviour
 {
     [SerializeField] float m_kaihiDamage;
+    [SerializeField] ParticleSystem m_effect;
     PlayerMove m_playerMove;
 
     private void Start()
     {
         m_playerMove = FindObjectOfType<PlayerMove>();
+        m_effect.Stop();
+    }
+
+    private void Update()
+    {
+        if (m_playerMove.m_kaihi)
+        {
+            m_effect.Play();
+        }
+        else
+        {
+            m_effect.Stop();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

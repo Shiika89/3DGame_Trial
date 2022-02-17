@@ -66,6 +66,21 @@ public class EquipmentJewel : MonoBehaviour
         PlayerStatus.Instance.Deffence += data.m_itemData.Para2;
         PlayerStatus.Instance.MaxSutamina += data.m_itemData.Para3;
 
+        switch (data.m_itemData.Skill.skillType)
+        {
+            case Skill.SkillType.AttackUp:
+                PlayerStatus.Instance.AttackUpLevel += data.m_itemData.Skill.skillLevel;
+                break;
+            case Skill.SkillType.GuardianArea:
+                PlayerStatus.Instance.GuardianAreaLevel += data.m_itemData.Skill.skillLevel;
+                break;
+            case Skill.SkillType.KaihiAttack:
+                PlayerStatus.Instance.KaihiAttackLevel += data.m_itemData.Skill.skillLevel;
+                break;
+            default:
+                break;
+        }
+
         m_skill = Instantiate(data.m_itemData.Skill.skill, m_player.transform.position, Quaternion.identity);
         m_skill.transform.parent = m_player.transform;
 
