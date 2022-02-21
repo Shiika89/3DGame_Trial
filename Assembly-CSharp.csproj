@@ -113,6 +113,7 @@
     <Compile Include="Assets\Script\Skill\AttackUp.cs" />
     <Compile Include="Assets\Script\Skill\GuardianArea.cs" />
     <Compile Include="Assets\Script\Skill\KaihiAttack.cs" />
+    <Compile Include="Assets\Script\Skill\PlayerSkillList.cs" />
     <Compile Include="Assets\Script\Skill\Skill.cs" />
     <Compile Include="Assets\Script\TitleSerect.cs" />
     <Compile Include="Assets\Script\Wallbreak.cs" />
