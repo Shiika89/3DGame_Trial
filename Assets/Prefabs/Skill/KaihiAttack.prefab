@@ -4858,6 +4858,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_kaihiDamage: 50
+  m_skillLv: 0
+  m_skillType: 2
   m_effect: {fileID: 5870012296026700994}
 --- !u!136 &5064727306786365076
 CapsuleCollider:

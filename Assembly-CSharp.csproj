@@ -115,6 +115,7 @@
     <Compile Include="Assets\Script\Skill\KaihiAttack.cs" />
     <Compile Include="Assets\Script\Skill\PlayerSkillList.cs" />
     <Compile Include="Assets\Script\Skill\Skill.cs" />
+    <Compile Include="Assets\Script\Skill\SkillBase.cs" />
     <Compile Include="Assets\Script\TitleSerect.cs" />
     <Compile Include="Assets\Script\Wallbreak.cs" />
     <Compile Include="Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs" />

@@ -14,8 +14,14 @@ public class PlayerStatus : MonoBehaviour, IDamagable
     int m_currentLife = 300;
     public int CurrentLife { get => m_currentLife; set => m_currentLife = value; }
 
+    
+    float m_buff = default;
+    public float Buff { get => m_buff; set => m_buff = value; }
+
     [SerializeField] int m_attack = 500;
-    public int Attack { get => m_attack; set => m_attack = value; }
+    public int Attack { get => m_attack + (int)(m_attack * m_buff);}
+
+    public int BaseAttack { get => m_attack; set => m_attack = value; }
 
     [SerializeField] int m_deffence = 35;
     public int Deffence { get => m_deffence; set => m_deffence = value; }

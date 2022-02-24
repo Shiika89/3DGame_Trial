@@ -38082,6 +38082,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_areaDamege: 1
+  m_skillLv: 0
+  m_skillType: 1
 --- !u!136 &4508996368101356196
 CapsuleCollider:
   m_ObjectHideFlags: 0

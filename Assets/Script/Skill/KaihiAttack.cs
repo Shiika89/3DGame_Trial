@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KaihiAttack : MonoBehaviour
+public class KaihiAttack : SkillBase
 {
     [SerializeField] float m_kaihiDamage;
     [SerializeField] ParticleSystem m_effect;

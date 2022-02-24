@@ -18,7 +18,7 @@ public class EquipmentJewel : MonoBehaviour
 
     public void Eqipment(int para1, int para2, int para3)
     {
-        PlayerStatus.Instance.Attack += para1;
+        PlayerStatus.Instance.BaseAttack += para1;
         PlayerStatus.Instance.Deffence += para2;
         PlayerStatus.Instance.MaxSutamina += para3;
 
@@ -27,7 +27,7 @@ public class EquipmentJewel : MonoBehaviour
 
     public void Eqipment(ItemData data)
     {
-        PlayerStatus.Instance.Attack += data.Para1;
+        PlayerStatus.Instance.BaseAttack += data.Para1;
         PlayerStatus.Instance.Deffence += data.Para2;
         PlayerStatus.Instance.MaxSutamina += data.Para3;
 
@@ -48,11 +48,13 @@ public class EquipmentJewel : MonoBehaviour
         if (m_selectJewel != null)
         {
             // 装備していたステータスを下げる
-            PlayerStatus.Instance.Attack -= m_selectJewel.m_itemData.Para1;
+            PlayerStatus.Instance.BaseAttack -= m_selectJewel.m_itemData.Para1;
             PlayerStatus.Instance.Deffence -= m_selectJewel.m_itemData.Para2;
             PlayerStatus.Instance.MaxSutamina -= m_selectJewel.m_itemData.Para3;
 
-            Destroy(m_skill);
+            //Destroy(m_skill);
+
+            PlayerSkillList.Instance.m_haveSkillList.Remove(m_selectJewel.m_itemData.Skill);
 
             // 装備が外れたことをアイテム自身に伝える
             m_selectJewel.SelectOut();
@@ -62,11 +64,14 @@ public class EquipmentJewel : MonoBehaviour
         m_selectJewel = data;
 
         // 受け取ったアイテムのパラメータを加算する
-        PlayerStatus.Instance.Attack += data.m_itemData.Para1;
+        PlayerStatus.Instance.BaseAttack += data.m_itemData.Para1;
         PlayerStatus.Instance.Deffence += data.m_itemData.Para2;
         PlayerStatus.Instance.MaxSutamina += data.m_itemData.Para3;
 
-        PlayerStatus.Instance.SkillList.Add(data.m_itemData.Skill);
+        PlayerSkillList.Instance.m_haveSkillList.Add(data.m_itemData.Skill);
+        PlayerSkillList.Instance.SkillSet();
+
+        //PlayerStatus.Instance.SkillList.Add(data.m_itemData.Skill);
 
         //switch (data.m_itemData.Skill.skillType)
         //{
@@ -83,8 +88,8 @@ public class EquipmentJewel : MonoBehaviour
         //        break;
         //}
 
-        m_skill = Instantiate(data.m_itemData.Skill.skill, m_player.transform.position, Quaternion.identity);
-        m_skill.transform.parent = m_player.transform;
+        //m_skill = Instantiate(data.m_itemData.Skill.skill, m_player.transform.position, Quaternion.identity);
+        //m_skill.transform.parent = m_player.transform;
 
         // ジュエルの色によって装備スロットの色を変える
         switch (data.JewelType)
