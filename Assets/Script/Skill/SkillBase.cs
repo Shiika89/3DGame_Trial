@@ -14,8 +14,8 @@ public class SkillBase : MonoBehaviour
 
     public bool IsSkillActive { get; set; }
 
-    public virtual void SkillEffect()
-    {
+    //public virtual void SkillEffect()
+    //{
 
-    }
+    //}
 }

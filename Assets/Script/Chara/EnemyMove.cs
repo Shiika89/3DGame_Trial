@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 /// <summary>
-/// Enemyの移動と攻撃を管理
+/// Enemyの移動と攻撃を管理するクラス
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMove : MonoBehaviour

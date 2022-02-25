@@ -28,8 +28,10 @@ public class Gamemanager : MonoBehaviour
     public int m_nowTimer;
     public int m_minuteTime;
 
-    public float m_enemyStatusTimer;
-    public int m_gameLevel;
+    float m_enemyStatusTimer;
+    [SerializeField] int[] m_enemyLevel;
+    public int[] EnemyLevel { get => m_enemyLevel;}
+    public int m_nowEnemyLv { get; private set; } = 1;
     
 
     /// <summary> 装備画面のUIのオンオフ </summary>
@@ -102,12 +104,15 @@ public class Gamemanager : MonoBehaviour
     {
         m_enemyStatusTimer += Time.deltaTime;
 
-        if (m_enemyStatusTimer > m_levelUpTime && m_gameLevel < 2)
+        for (int i = m_nowEnemyLv; i < m_enemyLevel.Length; i++)
         {
-            m_gameLevel++;
-            m_enemyStatusTimer = 0;
-            m_enemyLevelText.text = $"LEVEL{m_gameLevel + 1}";
-            Debug.Log($"敵の強さが上がった、レベル{m_gameLevel + 1}");
+            if (m_enemyStatusTimer > m_levelUpTime)
+            {
+                m_nowEnemyLv++;
+                m_enemyStatusTimer = 0;
+                m_enemyLevelText.text = $"LEVEL{m_enemyLevel[i]}";
+                Debug.Log($"敵の強さが上がった、レベル{m_enemyLevel[i]}");
+            }
         }
     }
 }

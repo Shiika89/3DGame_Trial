@@ -378,8 +378,8 @@ GameObject:
   - component: {fileID: 3210286719794234394}
   - component: {fileID: 3210286719794234395}
   - component: {fileID: 3210286719794234392}
-  - component: {fileID: 3210286719794234390}
   - component: {fileID: 3210286719794234389}
+  - component: {fileID: 3210286719794234390}
   m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
@@ -450,6 +450,23 @@ MonoBehaviour:
   m_anim: {fileID: 5332815367254055042}
   m_attackRange: 1.5
   m_inArea: 0
+--- !u!114 &3210286719794234389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3210286719794234396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f1b77cdd58c86468e33d2f46bb9e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_enemyParameters: {fileID: 11400000, guid: 8ef86d3c3d30ff04cba9dbd3952d8854, type: 2}
+  m_DeathObject: {fileID: 7214655733647128672, guid: 376fd4ba4a6d7d140a8130d3f30545d9,
+    type: 3}
+  m_HPUI: {fileID: 3210286719694599093}
+  m_attackRange: {fileID: 3210286719029543112}
 --- !u!195 &3210286719794234390
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -472,26 +489,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3210286719794234389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3210286719794234396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62f1b77cdd58c86468e33d2f46bb9e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_enemyParameters:
-  - {fileID: 11400000, guid: b2d323dfc53f57040896edeec9f74916, type: 2}
-  - {fileID: 11400000, guid: 8828e336bfe929e4a8b314c2638da61a, type: 2}
-  - {fileID: 11400000, guid: fae6bebaab0e4464d923eddb63b49de8, type: 2}
-  m_DeathObject: {fileID: 7214655733647128672, guid: 376fd4ba4a6d7d140a8130d3f30545d9,
-    type: 3}
-  m_HPUI: {fileID: 3210286719694599093}
-  m_attackRange: {fileID: 3210286719029543112}
 --- !u!1 &3210286719949315155
 GameObject:
   m_ObjectHideFlags: 0

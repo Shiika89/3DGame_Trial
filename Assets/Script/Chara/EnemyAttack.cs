@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// エネミーが攻撃するためのクラス
+/// </summary>
 public class EnemyAttack : MonoBehaviour
 {
+    /// <summary>
+    /// 攻撃した時にプレイヤーが入っていれば自分とプレイヤーのステータスを持ってきて
+    /// 自分の攻撃力を参照してダメージ関数を呼ぶ
+    /// </summary>
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")

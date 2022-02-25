@@ -9,15 +9,12 @@ public class AttackUp : SkillBase
     float m_attackUp;
     bool m_isAttackUp;
 
-    public override void SkillEffect()
-    {
-        
-    }
     private void OnDisable()
     {
         PlayerStatus.Instance.Buff = 0;
         m_isAttackUp = false;
     }
+
     private void OnEnable()
     {
         m_isAttackUp = true;

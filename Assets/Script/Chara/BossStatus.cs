@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// ボスのステータスを決めるクラス
+/// </summary>
 public class BossStatus : MonoBehaviour, IDamagable
 {
-    [SerializeField] int m_maxLife = 100;
-    int m_currentLife;
-    [SerializeField] public int m_attack = 15;
-    [SerializeField] int m_deffence = 8;
+    [SerializeField] int m_maxLife = default; // 最大体力値
+    int m_currentLife; // 現在の体力値
+    [SerializeField] public int m_attack = default; // 攻撃力
+    [SerializeField] int m_deffence = default; // 防御力
 
+    [Tooltip("ボスが死んだときに出す死亡アニメーションを持ったボスのプレハブ")]
     [SerializeField] GameObject m_DeathObject;
-    [SerializeField] Slider m_hpSlider;
-    [SerializeField] GameObject m_attackRange;
-    GameObject m_key;
+
+    [SerializeField] Slider m_hpSlider; // ボスのHPバー
+
+    GameObject m_key; // ボスが死んだら出す鍵
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +26,7 @@ public class BossStatus : MonoBehaviour, IDamagable
         m_hpSlider.maxValue = m_maxLife; // HPスライダーの最大値を初期HPと同じに
         m_currentLife = m_maxLife;
 
+        // 最初は鍵のアクティブをオフにする
         m_key = GameObject.Find("KeyUI");
         m_key.SetActive(false);
     }
@@ -29,10 +35,8 @@ public class BossStatus : MonoBehaviour, IDamagable
     void Update()
     {
         m_hpSlider.value = m_currentLife;  //　スライダーの値を現在HPと同じに
-    }
-    public void Damage(int damage)
-    {
-        m_currentLife -= Mathf.Max(0, damage - m_deffence);
+
+        // HPが0になったら鍵と死亡アニメーションのプレハブを出して自信を消す
         if (m_currentLife <= 0 && m_DeathObject)
         {
             Gamemanager.Instance.m_key = true;
@@ -40,6 +44,17 @@ public class BossStatus : MonoBehaviour, IDamagable
             GameObject death = Instantiate(m_DeathObject, this.gameObject.transform.position, this.gameObject.transform.rotation);
             Destroy(this.gameObject);
         }
+    }
+
+    /// <summary>
+    /// 攻撃されたときに引数の数値を参照して相手からダメージを与える
+    /// ために呼ばれる関数
+    /// </summary>
+    /// <param name="damage"></param>
+    public void Damage(int damage)
+    {
+        // ダメージが0以下にはならない
+        m_currentLife -= Mathf.Max(0, damage - m_deffence);
     }
 
 }

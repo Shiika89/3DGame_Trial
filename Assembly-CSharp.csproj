@@ -70,12 +70,12 @@
     <Compile Include="Assets\Script\Chara\BossAttack.cs" />
     <Compile Include="Assets\Script\Chara\BossMove.cs" />
     <Compile Include="Assets\Script\Chara\BossStatus.cs" />
-    <Compile Include="Assets\Script\Chara\DeathAnimation.cs" />
     <Compile Include="Assets\Script\Chara\EnemyAttack.cs" />
     <Compile Include="Assets\Script\Chara\EnemyAttackController.cs" />
-    <Compile Include="Assets\Script\Chara\EnemyDesroy.cs" />
+    <Compile Include="Assets\Script\Chara\EnemyDeathItemDrop.cs" />
     <Compile Include="Assets\Script\Chara\EnemyMove.cs" />
     <Compile Include="Assets\Script\Chara\EnemyParameter.cs" />
+    <Compile Include="Assets\Script\Chara\EnemyParameterBase.cs" />
     <Compile Include="Assets\Script\Chara\EnemySpown.cs" />
     <Compile Include="Assets\Script\Chara\EnemyStatus.cs" />
     <Compile Include="Assets\Script\Chara\IDamagable.cs" />

@@ -3,14 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// プレイヤーやエネミーのステータスやダメージ処理
+/// エネミーのステータスやダメージ処理
 /// </summary>
 public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
 {
-    //[SerializeField] EnemyParameter m_enemyParameter;
+    [Tooltip("敵のステータスのスクリプタブルオブジェクトを入れる")]
+    [SerializeField] EnemyParameter m_enemyParameter;
 
-    [SerializeField] EnemyParameter[] m_enemyParameters;
-
+    // 敵のステータスの受け皿
     private StatusModel m_status = new StatusModel();
     public StatusModel Status => m_status;
 
@@ -24,41 +24,19 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
 
     private void Start()
     {
+        EnemyStatusSet();
+
         m_slinder = m_HPUI.transform.Find("HPBar").GetComponent<Slider>();
-
-        //Status.maxLife = m_enemyParameter.GetMaxLife(Gamemanager.Instance.m_stage -1);
-        //Status.attack = m_enemyParameter.GetAttack(Gamemanager.Instance.m_stage  - 1);
-        //Status.deffence = m_enemyParameter.GetDeffence(Gamemanager.Instance.m_stage - 1);
-
-        switch (Gamemanager.Instance.m_gameLevel)
-        {
-            case 0:
-                Status.maxLife = m_enemyParameters[0].maxLife;
-                Status.attack = m_enemyParameters[0].attack;
-                Status.deffence = m_enemyParameters[0].deffence;
-                break;
-            case 1:
-                Status.maxLife = m_enemyParameters[1].maxLife;
-                Status.attack = m_enemyParameters[1].attack;
-                Status.deffence = m_enemyParameters[1].deffence;
-                break;
-            case 2:
-                Status.maxLife = m_enemyParameters[2].maxLife;
-                Status.attack = m_enemyParameters[2].attack;
-                Status.deffence = m_enemyParameters[2].deffence;
-                break;
-            default:
-                break;
-        }
 
         Status.currentLife = Status.maxLife; // 現在HPを初期HPに
         m_slinder.maxValue = Status.maxLife; // HPスライダーの最大値を初期HPと同じに
-        
     }
 
     private void Update()
     {
         m_slinder.value = Status.currentLife;  //　スライダーの値を現在HPと同じに
+
+        // 死んだらプレハブを生成して自身を消す
         if (Status.currentLife <= 0)
         {
             GameObject death = Instantiate(m_DeathObject);
@@ -67,6 +45,24 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
         }
     }
 
+    /// <summary>
+    /// 敵のステータスをセットする
+    /// </summary>
+    void EnemyStatusSet()
+    {
+        // GameManagerに登録したレベルの配列の現在の敵のレベルを呼び出し
+        int enemyLv = Gamemanager.Instance.EnemyLevel[Gamemanager.Instance.m_nowEnemyLv - 1];
+
+        // スクリプタブルオブジェクトに登録してあるenemyLvのステータスを書き写し
+        Status.maxLife = m_enemyParameter.ParaData(enemyLv).MaxLife;
+        Status.attack = m_enemyParameter.ParaData(enemyLv).Attack;
+        Status.deffence = m_enemyParameter.ParaData(enemyLv).Deffence;
+    }
+
+    /// <summary>
+    /// 攻撃をくらった時に数値を参照してダメージを計算する関数
+    /// </summary>
+    /// <param name="damage"></param>
     public void Damage(int damage)
     {
         Status.currentLife -= Mathf.Max(0, damage - Status.deffence);

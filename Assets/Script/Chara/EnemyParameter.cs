@@ -2,26 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// エネミーのパラメータを決めるためのクラス
+/// レベルに応じて何種類かのステータスを用意できる
+/// </summary>
 [CreateAssetMenu]
 public class EnemyParameter : ScriptableObject
 {
-    [SerializeField] public int level;
-    [SerializeField] public int maxLife;
-    [SerializeField] public int attack;
-    [SerializeField] public int deffence;
-    //[SerializeField] private float levelBaf;
-    //public int GetMaxLife(int level) 
-    //{ 
-    //    return maxLife + (int)(maxLife * levelBaf * level * level);
-    //}
+    [SerializeField] List<EnemyParameterBase> enemyParameterBases = new List<EnemyParameterBase>();
 
-    //public int GetAttack(int level)
-    //{
-    //    return attack + (int)(attack * levelBaf * level * level);
-    //}
-
-    //public int GetDeffence(int level)
-    //{
-    //    return deffence + (int)(deffence * levelBaf * level * level);
-    //}
+    public EnemyParameterBase ParaData(int paraData) => enemyParameterBases[paraData];
+    
 }
