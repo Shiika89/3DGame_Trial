@@ -356,6 +356,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedJewel
       objectReference: {fileID: 0}
+    - target: {fileID: 5244194459446438103, guid: 491e04d7cbb95b34b80e9b9cc168e2ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 491e04d7cbb95b34b80e9b9cc168e2ca, type: 3}
 --- !u!1 &70552970
@@ -592,7 +597,7 @@ GameObject:
   - component: {fileID: 169796390}
   - component: {fileID: 169796393}
   m_Layer: 5
-  m_Name: Text
+  m_Name: StageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -971,11 +976,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 341967745, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 488279102, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchorMax.x
@@ -983,6 +992,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488279102, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488279102, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 524230253, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
@@ -1015,6 +1028,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425663819, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425663819, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1634070020, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
@@ -1356,6 +1373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GreenJewel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1748736480244629941, guid: f24b8709315c1784aae6d663916e8681,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1748736480244629950, guid: f24b8709315c1784aae6d663916e8681,
         type: 3}
@@ -2573,6 +2595,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlueJewel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3641750152173383474, guid: b1b67415f711c5741a60e5864946510b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3641750152173383479, guid: b1b67415f711c5741a60e5864946510b,
         type: 3}
@@ -5858,8 +5885,7 @@ MonoBehaviour:
   m_timeAttack: 1
   m_nowTimer: 0
   m_minuteTime: 0
-  m_enemyStatusTimer: 0
-  m_gameLevel: 0
+  m_enemyLevel: 000000000100000002000000
   m_UIflag: 0
 --- !u!4 &2111588479
 Transform:
@@ -6269,6 +6295,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6842287567206956586, guid: d632522e249d1b74bbf4f985661e3113,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842287567206956586, guid: d632522e249d1b74bbf4f985661e3113,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842287567414319568, guid: d632522e249d1b74bbf4f985661e3113,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6842287567414319570, guid: d632522e249d1b74bbf4f985661e3113,
         type: 3}
       propertyPath: m_camera
@@ -6278,6 +6319,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_attack
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842287567534334381, guid: d632522e249d1b74bbf4f985661e3113,
+        type: 3}
+      propertyPath: m_sutaminaHeal
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d632522e249d1b74bbf4f985661e3113, type: 3}

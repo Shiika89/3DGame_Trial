@@ -15,7 +15,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] EquipmentJewel[] m_equipmentJewels;
     public EquipmentJewel[] EquipmentJewels { get => m_equipmentJewels; }
     /// <summary>インベントリに表示中のアイテムのデータ</summary>
-    List<JewerData> m_jewerData;
+    public List<JewerData> m_jewerData { get; set; }
 
     public event Action OnSelectItem;
     public event Action OnOpenInventory;

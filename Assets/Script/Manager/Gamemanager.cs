@@ -94,6 +94,8 @@ public class Gamemanager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == true)
         {
+            PanelChange.Instance.ActiveFalse();
+
             InventoryManager.Instance.SelectItem();
             m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700, 0);
             m_UIflag = false;
@@ -110,8 +112,8 @@ public class Gamemanager : MonoBehaviour
             {
                 m_nowEnemyLv++;
                 m_enemyStatusTimer = 0;
-                m_enemyLevelText.text = $"LEVEL{m_enemyLevel[i]}";
-                Debug.Log($"敵の強さが上がった、レベル{m_enemyLevel[i]}");
+                m_enemyLevelText.text = $"LEVEL{m_nowEnemyLv}";
+                Debug.Log($"敵の強さが上がった、レベル{m_nowEnemyLv}");
             }
         }
     }

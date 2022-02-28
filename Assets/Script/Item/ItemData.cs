@@ -8,9 +8,9 @@ public class ItemData
     /// <summary>ItemJewelのenumで設定したJewelの種類</summary>
     public JewelType JewelType { get; private set; }
     public JewelRarity JewelRarity { get; private set; }
-    public int Para1 { get; private set; }
-    public int Para2 { get; private set; }
-    public int Para3 { get; private set; }
+    public int Para1 { get; set; }
+    public int Para2 { get; set; }
+    public int Para3 { get; set; }
     public int paraAdd { get; private set; }
     public bool Instance { get; set; } 
     public int ID { get; set; }

@@ -24,6 +24,10 @@ public class SelectJewel : MonoBehaviour
     [SerializeField] GameObject m_slot2Button;
     [SerializeField] GameObject m_slot3Button;
 
+    // 合成スロットを登録する
+    [SerializeField] GameObject m_GouseiSlot1;
+    [SerializeField] GameObject m_GouseiSlot2;
+
     /// <summary>
     /// 親が生成された時に呼ばれる変数、自分をアクティブにしてアイテムデータを読み込む
     /// </summary>
@@ -39,33 +43,45 @@ public class SelectJewel : MonoBehaviour
     /// </summary>
     public void ActiveButton()
     {
+        SelectJewelText.Instance.SelectText(m_itemData);
+
+        if (PanelChange.Instance.IsGouseiPanel)
+        {
+            m_GouseiSlot1.SetActive(true);
+            m_GouseiSlot2.SetActive(true);
+        }
+        
         // 装備中はボタンを表示しない
         if (m_select) return;
 
         // 装備せずに違うアイテムを選んだ時にスロットボタンを消す、他に何も選んでなければ何も要録されていないからスルーする
         InventoryManager.Instance.SelectItem();
 
-        m_slot1Button.SetActive(true);
-        m_slot2Button.SetActive(true);
-        m_slot3Button.SetActive(true);
-
-        SelectJewelText.Instance.SelectText(m_itemData);
+        if (!PanelChange.Instance.IsGouseiPanel)
+        {
+            m_slot1Button.SetActive(true);
+            m_slot2Button.SetActive(true);
+            m_slot3Button.SetActive(true);
+        }
 
         // OnSelectItemのイベントにInactiveButtonの関数を登録
-        InventoryManager.Instance.OnSelectItem += InactiveButton;
+        InventoryManager.Instance.OnSelectItem += InActiveButton;
     }
 
     /// <summary>
     /// 表示しているスロットボタンを消すための関数
     /// </summary>
-    public void InactiveButton()
+    public void InActiveButton()
     {
+        m_GouseiSlot1.SetActive(false);
+        m_GouseiSlot2.SetActive(false);
+
         m_slot1Button.SetActive(false);
         m_slot2Button.SetActive(false);
         m_slot3Button.SetActive(false);
-
+        
         // OnSelectItemのイベントからInactiveButtonの関数を消す
-        InventoryManager.Instance.OnSelectItem -= InactiveButton;
+        InventoryManager.Instance.OnSelectItem -= InActiveButton;
     }
 
     // 選択したスロットから装備する関数を呼び出すためにボタンに設定する関数
@@ -73,18 +89,33 @@ public class SelectJewel : MonoBehaviour
     {
         Equipment();
         InventoryManager.Instance.EquipmentJewels[0].Eqipment(this);
+        InventoryManager.Instance.SelectItem();
     }
 
     public void Select2()
     {
         Equipment();
         InventoryManager.Instance.EquipmentJewels[1].Eqipment(this);
+        InventoryManager.Instance.SelectItem();
     }
 
     public void Select3()
     {
         Equipment();
         InventoryManager.Instance.EquipmentJewels[2].Eqipment(this);
+        InventoryManager.Instance.SelectItem();
+    }
+
+    public void Set1()
+    {
+        Gousei.Instance.SetJewel1(this);
+        Gousei.Instance.IsSlot1 = true;
+    }
+
+    public void Set2()
+    {
+        Gousei.Instance.SetJewel2(this);
+        Gousei.Instance.IsSlot2 = true;
     }
 
     /// <summary>
@@ -103,5 +134,12 @@ public class SelectJewel : MonoBehaviour
     {
         m_select = true;
         m_mark.SetActive(true);
+    }
+
+    public void JewelOut()
+    {
+        var data = gameObject.GetComponentInParent<JewerData>();
+        InventoryManager.Instance.m_jewerData.Remove(data);
+        data.MyDestroy();
     }
 }

@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f1b77cdd58c86468e33d2f46bb9e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyParameters: {fileID: 11400000, guid: 8ef86d3c3d30ff04cba9dbd3952d8854, type: 2}
+  m_enemyParameter: {fileID: 11400000, guid: 8ef86d3c3d30ff04cba9dbd3952d8854, type: 2}
   m_DeathObject: {fileID: 7214655733647128672, guid: 376fd4ba4a6d7d140a8130d3f30545d9,
     type: 3}
   m_HPUI: {fileID: 3210286719694599093}
