@@ -32,10 +32,10 @@ public class PlayerSkillList : MonoBehaviour
         {
             foreach (var skillList in m_skillList)
             {
-                if (haveSkillList.skillType == skillList.SkillType)
+                if (haveSkillList.SkillType == skillList.SkillType)
                 {
                     skillList.IsSkillActive = true;
-                    skillList.SkillLv += haveSkillList.skillLevel;
+                    skillList.SkillLv += haveSkillList.SkillLevel;
                     skillList.gameObject.SetActive(true);
                 }
             }

@@ -28,6 +28,9 @@ public class SelectJewel : MonoBehaviour
     [SerializeField] GameObject m_GouseiSlot1;
     [SerializeField] GameObject m_GouseiSlot2;
 
+    /// <summary> 合成スロットに選択されているか判別するフラグ </summary>
+    public bool IsGouseiSelect { get; set; }
+
     /// <summary>
     /// 親が生成された時に呼ばれる変数、自分をアクティブにしてアイテムデータを読み込む
     /// </summary>
@@ -45,7 +48,8 @@ public class SelectJewel : MonoBehaviour
     {
         SelectJewelText.Instance.SelectText(m_itemData);
 
-        if (PanelChange.Instance.IsGouseiPanel)
+        // 合成パネルを開いていて自分がスロットに設定されていなければ
+        if (PanelChange.Instance.IsGouseiPanel && !IsGouseiSelect)
         {
             m_GouseiSlot1.SetActive(true);
             m_GouseiSlot2.SetActive(true);
@@ -106,16 +110,19 @@ public class SelectJewel : MonoBehaviour
         InventoryManager.Instance.SelectItem();
     }
 
+    // 合成パネルにセットする関数、ボタンにつける
     public void Set1()
     {
         Gousei.Instance.SetJewel1(this);
         Gousei.Instance.IsSlot1 = true;
+        IsGouseiSelect = true;
     }
 
     public void Set2()
     {
         Gousei.Instance.SetJewel2(this);
         Gousei.Instance.IsSlot2 = true;
+        IsGouseiSelect = true;
     }
 
     /// <summary>

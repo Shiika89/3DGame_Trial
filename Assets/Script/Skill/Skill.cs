@@ -10,13 +10,32 @@ public enum SkillType
     KaihiAttack,
 }
 
-[Serializable]
-[CreateAssetMenu(fileName = "Skill", menuName = "CreateSkill")]
-public class Skill : ScriptableObject
+//[Serializable]
+//[CreateAssetMenu(fileName = "Skill", menuName = "CreateSkill")]
+public class Skill
 {
-    [SerializeField] public JewelType jewelType;
-    [SerializeField] public SkillType skillType;
-    [SerializeField] public JewelRarity jewelRarity;
-    [SerializeField] public int skillLevel;
-    [SerializeField] public GameObject skill;
+    public SkillType SkillType { get; private set; }
+    public JewelRarity JewelRarity { get; set; }
+    public int SkillLevel { get; set; }
+
+    public Skill(JewelType type)
+    {
+        switch (type)
+        {
+            case JewelType.Red:
+                SkillType = SkillType.AttackUp;
+                SkillLevel = 1;
+                break;
+            case JewelType.Blue:
+                SkillType = SkillType.GuardianArea;
+                SkillLevel = 1;
+                break;
+            case JewelType.Green:
+                SkillType = SkillType.KaihiAttack;
+                SkillLevel = 1;
+                break;
+            default:
+                break;
+        }
+    }
 }

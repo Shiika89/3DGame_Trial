@@ -13,7 +13,7 @@ public class ItemDetection : MonoBehaviour
     [Tooltip("子についてるUI")]
     [SerializeField] Canvas m_canvas;
     [SerializeField] Text m_text;
-    [SerializeField] Skill m_sill;
+    Skill m_skill;
     ItemData m_data;
     bool m_falg = false;
     int m_heal;
@@ -21,6 +21,7 @@ public class ItemDetection : MonoBehaviour
     private void Start()
     {
         m_data = new ItemData(m_jewelType);
+        m_skill = new Skill(m_jewelType);
         SkillSet();
         ItemText();
     }
@@ -43,7 +44,7 @@ public class ItemDetection : MonoBehaviour
 
     void SkillSet()
     {
-        m_data.Skill = m_sill;
+        m_data.Skill = m_skill;
 
         //foreach (var item in m_sill)
         //{
