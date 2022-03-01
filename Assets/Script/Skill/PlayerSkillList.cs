@@ -9,7 +9,6 @@ public class PlayerSkillList : MonoBehaviour
 
     [SerializeField] List<SkillBase> m_skillList = new List<SkillBase>();
 
-
     /// <summary> 現在装備しているスキルのリスト /// </summary>
     public List<Skill> m_haveSkillList { get; set; } = new List<Skill>();
 

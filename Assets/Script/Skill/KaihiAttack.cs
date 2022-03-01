@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class KaihiAttack : SkillBase
 {
-    [SerializeField] float m_kaihiDamage;
+    [SerializeField] float m_baseKaihiDamage;
     [SerializeField] ParticleSystem m_effect;
+
+    float m_totalDamege;
     PlayerMove m_playerMove;
 
     private void Start()
@@ -31,9 +33,11 @@ public class KaihiAttack : SkillBase
         if (other.gameObject.tag == "Enemy" && m_playerMove.m_kaihi)
         {
             var attack = other.GetComponent<EnemyStatus>();
+            m_totalDamege = SkillLv * m_baseKaihiDamage;
+
             if (attack != null)
             {
-                attack.Status.currentLife -= (int)m_kaihiDamage;
+                attack.Status.currentLife -= (int)m_totalDamege;
             }
         }
     }
