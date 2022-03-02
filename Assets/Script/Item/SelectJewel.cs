@@ -54,9 +54,13 @@ public class SelectJewel : MonoBehaviour
             m_GouseiSlot1.SetActive(true);
             m_GouseiSlot2.SetActive(true);
         }
-        
+
         // 装備中はボタンを表示しない
-        if (m_select) return;
+        if (m_select)
+        {
+            InventoryManager.Instance.OnSelectItem += InActiveButton;
+            return;
+        }
 
         // 装備せずに違うアイテムを選んだ時にスロットボタンを消す、他に何も選んでなければ何も要録されていないからスルーする
         InventoryManager.Instance.SelectItem();
