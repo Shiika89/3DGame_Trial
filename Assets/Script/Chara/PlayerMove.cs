@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    static public PlayerMove Instance;
+
     [Tooltip("動く速さ")]
     [SerializeField] public float m_movingSpeed = 5f;
     /// <summary>プレイヤーが攻撃中かを判定するフラグ</summary>
@@ -18,9 +20,20 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] AudioSource m_audioSource;
     [SerializeField] AudioClip m_audioClip;
 
+    [SerializeField] AttackUp m_attackUp;
+    [SerializeField] AttackController m_attackController;
+
+    public int DualAttackNum { get; set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
+        //DualAttackNum = m_anim.GetInteger("DualAttack");
     }
 
     // Update is called once per frame
@@ -100,10 +113,46 @@ public class PlayerMove : MonoBehaviour
             velocity.y = 0f;
             m_anim.SetFloat("Speed", velocity.magnitude);
 
-            //攻撃ボタンを押したら Attack をセットする
+            // ステータス画面を開いてなくて攻撃ボタンを押したら Attack をセットする
             if (Input.GetButtonDown("Fire1") && !Gamemanager.Instance.m_UIflag)
             {
-                m_anim.SetTrigger("Attack");
+                if (m_attackUp.IsSkillActive)
+                {
+                    if (DualAttackNum == 0)
+                    {
+                        DualAttackNum++;
+                        m_anim.SetInteger("DualAttack", DualAttackNum);
+                    }
+                    else if(DualAttackNum == 1 && m_attackController.IsDualAttack1)
+                    {
+                        DualAttackNum++;
+                        m_anim.SetInteger("DualAttack", DualAttackNum);
+                    }
+                    else if (DualAttackNum == 2 && m_attackController.IsDualAttack2)
+                    {
+                        DualAttackNum++;
+                        m_anim.SetInteger("DualAttack", DualAttackNum);
+                    }
+                }
+                //if (m_attackUp.IsAttackUp)
+                //{
+                //    if (m_attackController.IsDualAttack2)
+                //    {
+                //        m_anim.SetTrigger("DualAttack3");
+                //    }
+                //    else if (m_attackController.IsDualAttack1)
+                //    {
+                //        m_anim.SetTrigger("DualAttack2");
+                //    }
+                //    else if (!m_attackController.IsDualAttack1)
+                //    {
+                //        m_anim.SetTrigger("DualAttack1");
+                //    }
+                //}
+                else
+                {
+                    m_anim.SetTrigger("Attack");
+                }
                 m_audioSource.clip = m_audioClip;
                 m_audioSource.Play();
             }

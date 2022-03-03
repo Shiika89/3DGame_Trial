@@ -7135,6 +7135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword_DH
       objectReference: {fileID: 0}
+    - target: {fileID: 6469419126622919607, guid: 468b3b0d3eb86124bb3dcfee1f269869,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6472212315601412583, guid: 468b3b0d3eb86124bb3dcfee1f269869,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -9,6 +9,11 @@ public class AttackController : MonoBehaviour
 {
     [SerializeField] Collider m_attackRange;
     [SerializeField] PlayerMove m_playerMove;
+    [SerializeField] Animator m_anim;
+
+    public bool IsDualAttack1 { get; set; }
+    public bool IsDualAttack2 { get; private set; }
+    public bool IsDualAttack3 { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -43,5 +48,50 @@ public class AttackController : MonoBehaviour
     public void EndStop()
     {
         m_playerMove.m_IsAttacking = false;
-    }    
+    }
+
+    public void DualAttack1Start()
+    {
+        IsDualAttack1 = true;
+    }
+
+    public void DualAttack1End()
+    {
+        IsDualAttack1 = false;
+        if (m_playerMove.DualAttackNum == 1)
+        {
+            m_playerMove.m_IsAttacking = false;
+            m_playerMove.DualAttackNum = 0;
+        }
+        m_anim.SetInteger("DualAttack", m_playerMove.DualAttackNum);
+    }
+
+    public void DualAttack2Start()
+    {
+        IsDualAttack2 = true;
+    }
+
+    public void DualAttack2End()
+    {
+        IsDualAttack1 = false;
+        IsDualAttack2 = false;
+        if (m_playerMove.DualAttackNum == 2)
+        {
+            m_playerMove.m_IsAttacking = false;
+            m_playerMove.DualAttackNum = 0;
+        }
+        m_anim.SetInteger("DualAttack", m_playerMove.DualAttackNum);
+    }
+
+    public void DualAttack3End()
+    {
+        IsDualAttack1 = false;
+        IsDualAttack2 = false;
+        if (m_playerMove.DualAttackNum == 3)
+        {
+            m_playerMove.m_IsAttacking = false;
+            m_playerMove.DualAttackNum = 0;
+        }
+        m_anim.SetInteger("DualAttack", m_playerMove.DualAttackNum);
+    }
 }
