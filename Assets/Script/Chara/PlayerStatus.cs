@@ -52,13 +52,14 @@ public class PlayerStatus : MonoBehaviour, IDamagable
     void Start()
     {
         m_hpSlider.maxValue = m_maxLife; // HPスライダーの最大値を初期HPと同じに
-        m_sutaminaSlider.maxValue = m_maxSutamina;
+        
         m_sutamina = m_maxSutamina;
     }
 
     // Update is called once per frame
     void Update()
     {
+        m_sutaminaSlider.maxValue = m_maxSutamina;
         m_hpSlider.value = m_currentLife;  //　スライダーの値を現在HPと同じに
         m_sutaminaSlider.value = m_sutamina;
 

@@ -31,6 +31,10 @@ public class SelectJewel : MonoBehaviour
     /// <summary> 合成スロットに選択されているか判別するフラグ </summary>
     public bool IsGouseiSelect { get; set; }
 
+    public bool IsSlot1 { get; private set; }
+    public bool IsSlot2 { get; private set; }
+    public bool IsSlot3 { get; private set; }
+
     /// <summary>
     /// 親が生成された時に呼ばれる変数、自分をアクティブにしてアイテムデータを読み込む
     /// </summary>
@@ -95,23 +99,23 @@ public class SelectJewel : MonoBehaviour
     // 選択したスロットから装備する関数を呼び出すためにボタンに設定する関数
     public void Select1()
     {
-        Equipment();
         InventoryManager.Instance.EquipmentJewels[0].Eqipment(this);
         InventoryManager.Instance.SelectItem();
+        IsSlot1 = true;
     }
 
     public void Select2()
     {
-        Equipment();
         InventoryManager.Instance.EquipmentJewels[1].Eqipment(this);
         InventoryManager.Instance.SelectItem();
+        IsSlot2 = true;
     }
 
     public void Select3()
     {
-        Equipment();
         InventoryManager.Instance.EquipmentJewels[2].Eqipment(this);
         InventoryManager.Instance.SelectItem();
+        IsSlot3 = true;
     }
 
     // 合成パネルにセットする関数、ボタンにつける
@@ -136,6 +140,10 @@ public class SelectJewel : MonoBehaviour
     {
         m_select = false;
         m_mark.SetActive(false);
+
+        IsSlot1 = false;
+        IsSlot2 = false;
+        IsSlot3 = false;
     }
 
     /// <summary>

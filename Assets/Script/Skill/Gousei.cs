@@ -15,6 +15,8 @@ public class Gousei : MonoBehaviour
     [SerializeField] Text m_slot2Text;
     [SerializeField] Text m_slot3Text;
 
+    [SerializeField] EquipmentJewel[] m_eqipList;
+
     public bool IsSlot1 { get; set; }
     public bool IsSlot2 { get; set; }
 
@@ -41,6 +43,14 @@ public class Gousei : MonoBehaviour
                 {
                     m_slot3Text.text += $"\nSkill Lv { data1.Skill.SkillLevel + 1}";
                 }
+                else
+                {
+                    m_slot3Text.text += $"\nSkill Lv { data1.Skill.SkillLevel}";
+                }
+            }
+            else
+            {
+                m_slot3Text.text += $"\nSkill Lv { data1.Skill.SkillLevel}";
             }
         }
         else
@@ -114,25 +124,67 @@ public class Gousei : MonoBehaviour
 
             if (m_selectJewel1.m_itemData.Skill.SkillType == m_selectJewel2.m_itemData.Skill.SkillType)
             {
-                if (m_selectJewel1.m_itemData.Skill.SkillLevel == m_selectJewel1.m_itemData.Skill.SkillLevel)
+                if (m_selectJewel1.m_itemData.Skill.SkillLevel == m_selectJewel2.m_itemData.Skill.SkillLevel)
                 {
                     m_selectJewel1.m_itemData.Skill.SkillLevel++;
                 }
             }
         }
 
-        SlotReset();
+        SlotReset1();
+        SlotReset2();
+        m_slot3.color = Color.white;
     }
 
-    void SlotReset()
+    void SlotReset1()
     {
+        m_selectJewel1.IsGouseiSelect = false;
+
+        if (m_selectJewel1.IsSlot1)
+        {
+            m_selectJewel1.Select1();
+        }
+        else if (m_selectJewel1.IsSlot2)
+        {
+            m_selectJewel1.Select2();
+        }
+        else if (m_selectJewel1.IsSlot3)
+        {
+            m_selectJewel1.Select3();
+        }
+
+        m_slot1.color = Color.white;
+        IsSlot1 = false;
+        m_selectJewel1 = null;
+        
+
+        m_slot1Text.text = null;
+    }
+
+    void SlotReset2()
+    {
+        if (m_selectJewel2.IsSlot1)
+        {
+            m_eqipList[0].GouseiOut();
+            Debug.Log("1");
+        }
+        else if (m_selectJewel2.IsSlot2)
+        {
+            m_eqipList[1].GouseiOut();
+            Debug.Log("2");
+        }
+        else if (m_selectJewel2.IsSlot3)
+        {
+            m_eqipList[2].GouseiOut();
+        }
+
         m_selectJewel2.JewelOut();
         m_slot2.color = Color.white;
         IsSlot2 = false;
         m_selectJewel2 = null;
 
         m_slot2Text.text = null;
-        TextSet(m_selectJewel1, m_slot1Text);
+        //TextSet(m_selectJewel1, m_slot1Text);
         //m_slot1Text.text = $"攻{m_selectJewel1.m_itemData.Para1}防{m_selectJewel1.m_itemData.Para2}ス{m_selectJewel1.m_itemData.Para3}\nSkill Lv {m_selectJewel1.m_itemData.Skill.SkillLevel}";
     }
 
@@ -149,4 +201,6 @@ public class Gousei : MonoBehaviour
         var data = selectJewel.m_itemData;
         text.text = $"攻{data.Para1}防{data.Para2}ス{data.Para3}\nSkill Lv {data.Skill.SkillLevel}";
     }
+
+
 }

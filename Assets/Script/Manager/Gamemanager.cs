@@ -91,9 +91,11 @@ public class Gamemanager : MonoBehaviour
             InventoryManager.Instance.OpenInventory();
             m_EquipmentUI.GetComponent<RectTransform>().localPosition = Vector2.zero;
             m_UIflag = true;
+            Time.timeScale = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == true)
         {
+            Time.timeScale = 1;
             PanelChange.Instance.ActiveFalse();
 
             InventoryManager.Instance.SelectItem();

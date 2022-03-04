@@ -20,11 +20,46 @@ MonoBehaviour:
     deffence: 25
   - EnemyLevel: Lv2
     level: 2
-    maxLife: 150
-    attack: 54
-    deffence: 37
+    maxLife: 125
+    attack: 45
+    deffence: 30
   - EnemyLevel: Lv3
     level: 3
-    maxLife: 200
-    attack: 72
+    maxLife: 150
+    attack: 60
     deffence: 50
+  - EnemyLevel: Lv4
+    level: 4
+    maxLife: 180
+    attack: 80
+    deffence: 70
+  - EnemyLevel: Lv5
+    level: 5
+    maxLife: 200
+    attack: 100
+    deffence: 90
+  - EnemyLevel: Lv6
+    level: 6
+    maxLife: 230
+    attack: 125
+    deffence: 115
+  - EnemyLevel: Lv7
+    level: 3
+    maxLife: 260
+    attack: 155
+    deffence: 130
+  - EnemyLevel: Lv8
+    level: 8
+    maxLife: 300
+    attack: 180
+    deffence: 160
+  - EnemyLevel: Lv9
+    level: 9
+    maxLife: 400
+    attack: 230
+    deffence: 200
+  - EnemyLevel: Lv10
+    level: 10
+    maxLife: 500
+    attack: 300
+    deffence: 250
