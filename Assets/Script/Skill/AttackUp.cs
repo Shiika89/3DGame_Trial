@@ -6,35 +6,46 @@ public class AttackUp : SkillBase
 {
     [SerializeField] float m_attackBuff;
     [SerializeField] GameObject m_dualSword;
+    //[SerializeField] float m_speed;
+
+    [SerializeField] GameObject m_swordParticle1;
+    [SerializeField] GameObject m_swordParticle2;
+
+    //[SerializeField] GameObject m_lvUpParticle;
 
     float m_totalAttackUp;
-    public bool IsAttackUp { get; set; }
 
-    bool hatudou;
-    [SerializeField] float time;
+    //public bool IsAttackUp { get; set; }
+
+    //bool hatudou;
+    //[SerializeField] float time;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && PlayerStatus.Instance.Sutamina > 20 && !IsSkillActive)
-        {
-            IsSkillActive = true;
-            Debug.Log("a");
-            m_dualSword.SetActive(true);
-            m_totalAttackUp = SkillLv * m_attackBuff;
-            PlayerStatus.Instance.Buff = m_totalAttackUp;
-        }
+        SkillEffect();
+    }
+
+    public override void SkillEffect()
+    {
+        base.SkillEffect();
 
         if (IsSkillActive)
         {
-            PlayerStatus.Instance.Sutamina -= 1;
-            if (PlayerStatus.Instance.Sutamina < 5)
-            {
-                Debug.Log("b");
-                IsSkillActive = false;
-                m_dualSword.SetActive(false);
-                m_totalAttackUp = 0;
-                PlayerStatus.Instance.Buff = m_totalAttackUp;
-            }
+            m_dualSword.SetActive(true);
+            m_totalAttackUp = SkillLv * m_attackBuff;
+            PlayerStatus.Instance.Buff = m_totalAttackUp;
+
+            m_swordParticle1.SetActive(true);
+            m_swordParticle2.SetActive(true);
+        }
+        else
+        {
+            m_dualSword.SetActive(false);
+            m_totalAttackUp = 0;
+            PlayerStatus.Instance.Buff = m_totalAttackUp;
+
+            m_swordParticle1.SetActive(false);
+            m_swordParticle2.SetActive(false);
         }
     }
 

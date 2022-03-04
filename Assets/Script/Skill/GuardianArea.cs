@@ -9,10 +9,15 @@ public class GuardianArea : SkillBase
 
     float m_totalDamege;
     float m_timer;
-        
+
+    private void Update()
+    {
+        SkillEffect();
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && IsSkillActive)
         {
             var attack = other.GetComponent<EnemyStatus>();
             m_totalDamege = SkillLv * m_baseAreaDamege;

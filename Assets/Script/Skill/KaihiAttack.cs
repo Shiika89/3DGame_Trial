@@ -13,24 +13,26 @@ public class KaihiAttack : SkillBase
     private void Start()
     {
         m_playerMove = FindObjectOfType<PlayerMove>();
-        m_effect.Stop();
+        //m_effect.Stop();
     }
 
     private void Update()
     {
-        if (m_playerMove.m_kaihi)
-        {
-            m_effect.Play();
-        }
-        else
-        {
-            m_effect.Stop();
-        }
+        SkillEffect();
+
+        //if (m_playerMove.m_kaihi)
+        //{
+        //    m_effect.Play();
+        //}
+        //else
+        //{
+        //    m_effect.Stop();
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && m_playerMove.m_kaihi)
+        if (other.gameObject.tag == "Enemy" && m_playerMove.m_kaihi && IsSkillActive)
         {
             var attack = other.GetComponent<EnemyStatus>();
             m_totalDamege = SkillLv * m_baseKaihiDamage;
