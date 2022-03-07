@@ -11,6 +11,11 @@ public class Gousei : MonoBehaviour
     [SerializeField] Image m_slot2;
     [SerializeField] Image m_slot3;
 
+    [SerializeField] Sprite m_redSprite;
+    [SerializeField] Sprite m_blueSprite;
+    [SerializeField] Sprite m_greenSprite;
+    [SerializeField] Sprite m_toumeiSprite;
+
     [SerializeField] Text m_slot1Text;
     [SerializeField] Text m_slot2Text;
     [SerializeField] Text m_slot3Text;
@@ -68,20 +73,20 @@ public class Gousei : MonoBehaviour
         switch (data.JewelType)
         {
             case JewelType.Red:
-                m_slot1.color = Color.red;
+                m_slot1.sprite = m_redSprite;
                 break;
             case JewelType.Blue:
-                m_slot1.color = Color.blue;
+                m_slot1.sprite = m_blueSprite;
                 break;
             case JewelType.Green:
-                m_slot1.color = Color.green;
+                m_slot1.sprite = m_greenSprite;
                 break;
             default:
-                m_slot1.color = Color.white;
+                m_slot1.sprite = m_toumeiSprite;
                 break;
         }
 
-        m_slot3.color = m_slot1.color;
+        m_slot3.sprite = m_redSprite;
 
         TextSet(m_selectJewel1, m_slot1Text);
         //m_slot1Text.text = $"攻{data.m_itemData.Para1}防{data.m_itemData.Para2}ス{data.m_itemData.Para3}\nSkill Lv {m_selectJewel1.m_itemData.Skill.SkillLevel}";
@@ -96,16 +101,16 @@ public class Gousei : MonoBehaviour
         switch (data.JewelType)
         {
             case JewelType.Red:
-                m_slot2.color = Color.red;
+                m_slot2.sprite = m_redSprite;
                 break;
             case JewelType.Blue:
-                m_slot2.color = Color.blue;
+                m_slot2.sprite = m_blueSprite;
                 break;
             case JewelType.Green:
-                m_slot2.color = Color.green;
+                m_slot2.sprite = m_greenSprite;
                 break;
             default:
-                m_slot2.color = Color.white;
+                m_slot2.sprite = m_toumeiSprite;
                 break;
         }
 
@@ -133,7 +138,7 @@ public class Gousei : MonoBehaviour
 
         SlotReset1();
         SlotReset2();
-        m_slot3.color = Color.white;
+        m_slot3.sprite = m_toumeiSprite;
     }
 
     void SlotReset1()
@@ -153,7 +158,7 @@ public class Gousei : MonoBehaviour
             m_selectJewel1.Select3();
         }
 
-        m_slot1.color = Color.white;
+        m_slot1.sprite = m_toumeiSprite;
         IsSlot1 = false;
         m_selectJewel1 = null;
         
@@ -179,7 +184,7 @@ public class Gousei : MonoBehaviour
         }
 
         m_selectJewel2.JewelOut();
-        m_slot2.color = Color.white;
+        m_slot2.sprite = m_toumeiSprite;
         IsSlot2 = false;
         m_selectJewel2 = null;
 

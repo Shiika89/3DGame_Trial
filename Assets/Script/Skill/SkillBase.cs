@@ -23,7 +23,7 @@ public class SkillBase : MonoBehaviour
 
     public virtual void SkillEffect()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && PlayerStatus.Instance.Sutamina > 0 && !IsSkillActive)
+        if (Input.GetKeyDown(KeyCode.F) && PlayerStatus.Instance.Sutamina > 0 && !IsSkillActive)
         {
             IsSkillActive = true;
             Debug.Log("スキル発動");

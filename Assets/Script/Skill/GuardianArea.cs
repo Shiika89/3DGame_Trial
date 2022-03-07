@@ -9,6 +9,8 @@ public class GuardianArea : SkillBase
 
     float m_totalDamege;
     float m_timer;
+    bool m_isGuardianSkill;
+    int total;
 
     private void Update()
     {
@@ -31,6 +33,30 @@ public class GuardianArea : SkillBase
                     attack.Status.currentLife -= (int)m_totalDamege;
                 }
             }
+        }
+    }
+
+    public override void SkillEffect()
+    {
+        base.SkillEffect();
+
+        
+
+        if (IsSkillActive && !m_isGuardianSkill)
+        {
+            m_isGuardianSkill = true;
+
+            total = (int)((PlayerStatus.Instance.Deffence * 1.5) - PlayerStatus.Instance.Deffence);
+            PlayerStatus.Instance.Deffence += total;
+            //m_playerMove.KaihiSpeed = m_playerMove.KaihiSpeed * 2;
+            //m_playerMove.KaihiTime = m_playerMove.KaihiTime / 2;
+        }
+        else if (!IsSkillActive && m_isGuardianSkill)
+        {
+            m_isGuardianSkill = false;
+            PlayerStatus.Instance.Deffence -= total;
+            //m_playerMove.KaihiSpeed = m_playerMove.KaihiSpeed / 2;
+            //m_playerMove.KaihiTime = m_playerMove.KaihiTime * 2;
         }
     }
 }

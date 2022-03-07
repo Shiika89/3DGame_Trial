@@ -9,6 +9,6 @@ public class StatusText : MonoBehaviour
 
     void Update()
     {
-        m_text.text = $"HP           {PlayerStatus.Instance.CurrentLife}\nスタミナ {PlayerStatus.Instance.MaxSutamina}\n攻撃力     {PlayerStatus.Instance.Attack}\n防御力     {PlayerStatus.Instance.Deffence}";
+        m_text.text = $"{PlayerStatus.Instance.CurrentLife}\n{PlayerStatus.Instance.MaxSutamina}\n{PlayerStatus.Instance.Attack}\n{PlayerStatus.Instance.Deffence}";
     }
 }

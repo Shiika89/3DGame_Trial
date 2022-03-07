@@ -8,7 +8,7 @@ public class Key : MonoBehaviour
 
     private void Start()
     {
-        m_key = GameObject.Find("KeyUI");
+        m_key = GameObject.Find("Key");
         m_key.SetActive(false);
     }
 

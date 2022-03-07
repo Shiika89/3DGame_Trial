@@ -111,6 +111,7 @@
     <Compile Include="Assets\Script\Manager\StageData.cs" />
     <Compile Include="Assets\Script\Manager\StageText.cs" />
     <Compile Include="Assets\Script\Manager\StatusText.cs" />
+    <Compile Include="Assets\Script\SceneLoad.cs" />
     <Compile Include="Assets\Script\Skill\AttackUp.cs" />
     <Compile Include="Assets\Script\Skill\Gousei.cs" />
     <Compile Include="Assets\Script\Skill\GuardianArea.cs" />
@@ -711,6 +712,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Unity/3DGame_Trial/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>C:/Unity/3DGame_Trial/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>C:/Unity/3DGame_Trial/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>

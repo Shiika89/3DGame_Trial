@@ -37,8 +37,11 @@ public class CameraFollow : MonoBehaviour
         distance.z += scrollY * m_zoomSpeed;
         //m_posY += transform.forward * scrollY * m_zoomSpeed;
 
-        // カメラのxとzだけを固定する
-        var pos = target.transform.position + distance;
-        transform.position = new Vector3(pos.x, pos.y, pos.z);
+        if (target != null)
+        {
+            // カメラのxとzだけを固定する
+            var pos = target.transform.position + distance;
+            transform.position = new Vector3(pos.x, pos.y, pos.z);
+        }
     }
 }

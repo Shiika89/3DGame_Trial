@@ -14,7 +14,10 @@ public class PlayerMove : MonoBehaviour
     public Rigidbody m_rb;
     public bool m_kaihi;
     float m_kaihiTimer;
-    [SerializeField] float m_kaihiTime = 0.5f;
+    [SerializeField] float m_kaihiSpeed;
+    public float KaihiSpeed { get => m_kaihiSpeed; set => m_kaihiSpeed = value; }
+    [SerializeField] float m_kaihiTime;
+    public float KaihiTime { get => m_kaihiTime; set => m_kaihiTime = value; }
     [SerializeField] GameObject m_model;
     [SerializeField] ParticleSystem m_effect;
     [SerializeField] AudioSource m_audioSource;
@@ -183,7 +186,7 @@ public class PlayerMove : MonoBehaviour
                 this.transform.forward = dir;
 
                 Vector3 velo = this.transform.forward * m_movingSpeed;
-                m_rb.AddForce(velo * 2, ForceMode.Impulse);
+                m_rb.AddForce(velo * m_kaihiSpeed, ForceMode.Impulse);
             }
 
             m_kaihiTimer = m_kaihiTime;

@@ -18,6 +18,7 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] AudioClip audioClip2;
     [SerializeField] Text m_enemyLevelText;
     [SerializeField] int m_levelUpTime;
+    [SerializeField] GameObject m_gameOver;
 
     private AudioSource audioSource;
 
@@ -102,6 +103,11 @@ public class Gamemanager : MonoBehaviour
             m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700, 0);
             m_UIflag = false;
         }
+
+        if (PlayerStatus.Instance.CurrentLife <= 0)
+        {
+            m_gameOver.SetActive(true);
+        }
     }
 
     void GameLevel()
@@ -114,7 +120,7 @@ public class Gamemanager : MonoBehaviour
             {
                 m_nowEnemyLv++;
                 m_enemyStatusTimer = 0;
-                m_enemyLevelText.text = $"LEVEL{m_nowEnemyLv}";
+                m_enemyLevelText.text = $"Lv{m_nowEnemyLv}";
                 Debug.Log($"敵の強さが上がった、レベル{m_nowEnemyLv}");
             }
         }

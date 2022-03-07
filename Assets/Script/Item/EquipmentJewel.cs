@@ -34,7 +34,10 @@ public class EquipmentJewel : MonoBehaviour
         Debug.Log($"装備しました こ{data.Para1} + ぼ{data.Para2} + す{data.Para3}");
     }
 
-    [SerializeField] GameObject m_player;
+    [SerializeField] Sprite m_redSprite;
+    [SerializeField] Sprite m_blueSprite;
+    [SerializeField] Sprite m_greenSprite;
+    [SerializeField] Sprite m_toumeiSprite;
 
     int m_para1;
     int m_para2;
@@ -62,7 +65,7 @@ public class EquipmentJewel : MonoBehaviour
             PlayerStatus.Instance.Deffence -= m_para2;
             PlayerStatus.Instance.MaxSutamina -= m_para3;
 
-            m_image.color = Color.white;
+            m_image.sprite = m_toumeiSprite;
 
             // 装備が外れたことをアイテム自身に伝える
             m_selectJewel.SelectOut();
@@ -98,20 +101,21 @@ public class EquipmentJewel : MonoBehaviour
         switch (m_selectJewel.JewelType)
         {
             case JewelType.Red:
-                m_image.color = Color.red;
+                m_image.sprite = m_redSprite;
+                m_help.ColorChange(m_redSprite);
                 break;
             case JewelType.Blue:
-                m_image.color = Color.blue;
+                m_image.sprite = m_blueSprite;
+                m_help.ColorChange(m_blueSprite);
                 break;
             case JewelType.Green:
-                m_image.color = Color.green;
+                m_image.sprite = m_greenSprite;
+                m_help.ColorChange(m_greenSprite);
                 break;
             default:
-                m_image.color = Color.white;
+                m_image.sprite = m_toumeiSprite;
                 break;
         }
-
-        m_help.ColorChange(m_image);
 
         m_help.EquipmentText(m_selectJewel);
 
@@ -125,8 +129,8 @@ public class EquipmentJewel : MonoBehaviour
         PlayerStatus.Instance.Deffence -= m_para2;
         PlayerStatus.Instance.MaxSutamina -= m_para3;
 
-        m_image.color = Color.white;
-        m_help.SlotOut();
+        m_image.sprite = m_toumeiSprite;
+        m_help.SlotOut(m_toumeiSprite);
 
         PlayerSkillList.Instance.m_haveSkillList.Remove(m_selectJewel.m_itemData.Skill);
         PlayerSkillList.Instance.SkillSet();
