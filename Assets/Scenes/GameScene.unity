@@ -1233,7 +1233,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000038146973
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 488279102, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1241,6 +1245,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488279102, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488279102, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1103191038, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
@@ -6550,7 +6558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -366, y: -199}
+  m_AnchoredPosition: {x: -374, y: -174}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1902061475
@@ -6585,8 +6593,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "WASD:\u79FB\u52D5  \u5DE6\u30AF\u30EA\u30C3\u30AF:\u653B\u6483 \u53F3\u30AF\u30EA\u30C3\u30AF:\u30C0\u30C3\u30B7\u30E5
-    \u30B9\u30AD\u30EB\u767A\u52D5:F \u30B9\u30DA\u30FC\u30B9:\u30E1\u30CB\u30E5\u30FC"
+  m_Text: "                                               \u30B9\u30AD\u30EB\u767A\u52D5:F\nWASD:\u79FB\u52D5 
+    \u5DE6\u30AF\u30EA\u30C3\u30AF:\u653B\u6483 \u53F3\u30AF\u30EA\u30C3\u30AF:\u30C0\u30C3\u30B7\u30E5
+    \u30AD\u30E3\u30F3\u30BB\u30EB:C \u30B9\u30DA\u30FC\u30B9:\u30E1\u30CB\u30E5\u30FC"
 --- !u!222 &1902061476
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7073,7 +7082,7 @@ MonoBehaviour:
   m_enemyLevelText: {fileID: 2078112307}
   m_levelUpTime: 60
   m_gameOver: {fileID: 1331338266}
-  m_stage: 1
+  m_stage: 5
   m_key: 0
   m_timeAttack: 1
   m_nowTimer: 0
