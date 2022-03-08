@@ -74,19 +74,20 @@ public class Gousei : MonoBehaviour
         {
             case JewelType.Red:
                 m_slot1.sprite = m_redSprite;
+                m_slot3.sprite = m_redSprite;
                 break;
             case JewelType.Blue:
                 m_slot1.sprite = m_blueSprite;
+                m_slot3.sprite = m_blueSprite;
                 break;
             case JewelType.Green:
                 m_slot1.sprite = m_greenSprite;
+                m_slot3.sprite = m_greenSprite;
                 break;
             default:
                 m_slot1.sprite = m_toumeiSprite;
                 break;
         }
-
-        m_slot3.sprite = m_redSprite;
 
         TextSet(m_selectJewel1, m_slot1Text);
         //m_slot1Text.text = $"攻{data.m_itemData.Para1}防{data.m_itemData.Para2}ス{data.m_itemData.Para3}\nSkill Lv {m_selectJewel1.m_itemData.Skill.SkillLevel}";

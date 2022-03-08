@@ -120,7 +120,7 @@ public class EquipmentJewel : MonoBehaviour
         m_help.EquipmentText(m_selectJewel);
 
         Debug.Log($"装備しました こ{m_selectJewel.m_itemData.Para1} + ぼ{m_selectJewel.m_itemData.Para2} + す{m_selectJewel.m_itemData.Para3}");
-        Debug.Log("in");
+        
     }
 
     public void GouseiOut()

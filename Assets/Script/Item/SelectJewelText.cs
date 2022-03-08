@@ -15,6 +15,6 @@ public class SelectJewelText : MonoBehaviour
 
     public void SelectText(ItemData data)
     {
-        m_text.text = $"攻　{data.Para1}\n防　{data.Para2}\nス　{data.Para3}\nSkill Lv {data.Skill.SkillLevel}";
+        m_text.text = $"ス　{data.Para3}\n攻　{data.Para1}\n防　{data.Para2}\nSkill Lv {data.Skill.SkillLevel}";
     }
 }
