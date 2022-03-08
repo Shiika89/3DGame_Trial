@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// アイテムのUI自身に持たせて自分を装備するかを選択する
@@ -16,6 +17,9 @@ public class SelectJewel : MonoBehaviour
 
     [Tooltip("装備中に表示するマーク")]
     [SerializeField] GameObject m_mark;
+
+    [Tooltip("宝玉UIのスキルレベルが分かるように付けるテキスト")]
+    [SerializeField] Text m_skillLvText;
 
     public ItemData m_itemData { get; set; }
 
@@ -34,6 +38,12 @@ public class SelectJewel : MonoBehaviour
     public bool IsSlot1 { get; private set; }
     public bool IsSlot2 { get; private set; }
     public bool IsSlot3 { get; private set; }
+
+
+    private void Update()
+    {
+        m_skillLvText.text = $"{m_itemData.Skill.SkillLevel}";
+    }
 
     /// <summary>
     /// 親が生成された時に呼ばれる変数、自分をアクティブにしてアイテムデータを読み込む
