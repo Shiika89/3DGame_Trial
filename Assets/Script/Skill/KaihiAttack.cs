@@ -48,14 +48,28 @@ public class KaihiAttack : SkillBase
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && m_playerMove.m_kaihi && m_IsKaihiSkill)
+        if (m_playerMove.m_kaihi && m_IsKaihiSkill)
         {
-            var attack = other.GetComponent<EnemyStatus>();
-            m_totalDamege = SkillLv * m_baseKaihiDamage;
-
-            if (attack != null)
+            if (other.gameObject.tag == "Enemy")
             {
-                attack.Status.currentLife -= (int)m_totalDamege;
+                var attack = other.GetComponent<EnemyStatus>();
+                m_totalDamege = SkillLv * m_baseKaihiDamage;
+
+                if (attack != null)
+                {
+                    attack.Status.currentLife -= (int)m_totalDamege;
+                }
+            }
+
+            if (other.gameObject.tag == "Boss")
+            {
+                var attack = other.GetComponent<BossStatus>();
+                m_totalDamege = SkillLv * m_baseKaihiDamage;
+
+                if (attack != null)
+                {
+                    attack.Status.currentLife -= (int)m_totalDamege;
+                }
             }
         }
     }

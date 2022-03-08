@@ -26,8 +26,12 @@ public class BossMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ターゲットの方に向いてアニメーションをする
-        transform.LookAt(m_target.transform);
+        if (m_target != null)
+        {
+            // ターゲットの方に向いてアニメーションをする
+            transform.LookAt(m_target.transform);
+        }
+        
         AttackAnim();
     }
 
@@ -36,28 +40,31 @@ public class BossMove : MonoBehaviour
     /// </summary>
     private void AttackAnim()
     {
-        // 近接距離に入ってれば近接通常攻撃
-        if (Vector3.Distance(transform.position, m_target.position) <= m_attackRange)
+        if (m_target != null)
         {
-            m_anim.SetBool("Attack", true);
-            m_anim.SetBool("JampAttack", false);
-            m_anim.SetBool("Walk", false);
-        }
-        // 近接通常攻撃より遠く、歩く距離より近い場合ジャンプ攻撃
-        else if (Vector3.Distance(transform.position, m_target.position) <= m_jampAttackRange)
-        {
-            m_anim.SetBool("Attack", false);
-            m_anim.SetBool("JampAttack", true);
-            m_anim.SetBool("Walk", false);
-        }
-        // ジャンプ攻撃が届かない距離は歩く
-        else
-        {
-            m_anim.SetBool("Attack", false);
-            m_anim.SetBool("JampAttack", false);
-            m_anim.SetBool("Walk", true);
-            m_navMeshAgent.destination = m_target.transform.position;
-            MoveAnimation();
+            // 近接距離に入ってれば近接通常攻撃
+            if (Vector3.Distance(transform.position, m_target.position) <= m_attackRange)
+            {
+                m_anim.SetBool("Attack", true);
+                m_anim.SetBool("JampAttack", false);
+                m_anim.SetBool("Walk", false);
+            }
+            // 近接通常攻撃より遠く、歩く距離より近い場合ジャンプ攻撃
+            else if (Vector3.Distance(transform.position, m_target.position) <= m_jampAttackRange)
+            {
+                m_anim.SetBool("Attack", false);
+                m_anim.SetBool("JampAttack", true);
+                m_anim.SetBool("Walk", false);
+            }
+            // ジャンプ攻撃が届かない距離は歩く
+            else
+            {
+                m_anim.SetBool("Attack", false);
+                m_anim.SetBool("JampAttack", false);
+                m_anim.SetBool("Walk", true);
+                m_navMeshAgent.destination = m_target.transform.position;
+                MoveAnimation();
+            }
         }
     }
 

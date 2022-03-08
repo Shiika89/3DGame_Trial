@@ -19,18 +19,37 @@ public class GuardianArea : SkillBase
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && IsSkillActive)
+        if (IsSkillActive)
         {
-            var attack = other.GetComponent<EnemyStatus>();
-            m_totalDamege = SkillLv * m_baseAreaDamege;
-
-            if (attack != null)
+            if (other.gameObject.tag == "Enemy")
             {
-                m_timer += Time.deltaTime;
-                if (m_timer > m_damegeInterval)
+                var attack = other.GetComponent<EnemyStatus>();
+                m_totalDamege = SkillLv * m_baseAreaDamege;
+
+                if (attack != null)
                 {
-                    m_timer = 0;
-                    attack.Status.currentLife -= (int)m_totalDamege;
+                    m_timer += Time.deltaTime;
+                    if (m_timer > m_damegeInterval)
+                    {
+                        m_timer = 0;
+                        attack.Status.currentLife -= (int)m_totalDamege;
+                    }
+                }
+            }
+
+            if (other.gameObject.tag == "Boss")
+            {
+                var attack = other.GetComponent<BossStatus>();
+                m_totalDamege = SkillLv * m_baseAreaDamege;
+
+                if (attack != null)
+                {
+                    m_timer += Time.deltaTime;
+                    if (m_timer > m_damegeInterval)
+                    {
+                        m_timer = 0;
+                        attack.Status.currentLife -= (int)m_totalDamege;
+                    }
                 }
             }
         }

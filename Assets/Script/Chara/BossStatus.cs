@@ -6,15 +6,24 @@ using UnityEngine.UI;
 /// <summary>
 /// ボスのステータスを決めるクラス
 /// </summary>
-public class BossStatus : MonoBehaviour, IDamagable
+public class BossStatus : MonoBehaviour, IDamagable, IStatusModelHolder
 {
-    [SerializeField] int m_maxLife = default; // 最大体力値
-    int m_currentLife; // 現在の体力値
-    [SerializeField] public int m_attack = default; // 攻撃力
-    [SerializeField] int m_deffence = default; // 防御力
+    [Tooltip("敵のステータスのスクリプタブルオブジェクトを入れる")]
+    [SerializeField] EnemyParameter m_bossParameter;
+
+    // 敵のステータスの受け皿
+    private StatusModel m_status = new StatusModel();
+    public StatusModel Status => m_status;
 
     [Tooltip("ボスが死んだときに出す死亡アニメーションを持ったボスのプレハブ")]
     [SerializeField] GameObject m_DeathObject;
+
+    //[SerializeField] int m_maxLife = default; // 最大体力値
+    //int m_currentLife; // 現在の体力値
+    //[SerializeField] public int m_attack = default; // 攻撃力
+    //[SerializeField] int m_deffence = default; // 防御力
+
+    
 
     [SerializeField] Slider m_hpSlider; // ボスのHPバー
 
@@ -23,21 +32,26 @@ public class BossStatus : MonoBehaviour, IDamagable
     // Start is called before the first frame update
     void Start()
     {
-        m_hpSlider.maxValue = m_maxLife; // HPスライダーの最大値を初期HPと同じに
-        m_currentLife = m_maxLife;
+        EnemyStatusSet();
+
+        Status.currentLife = Status.maxLife; // 現在HPを初期HPに
+        m_hpSlider.maxValue = Status.maxLife; // HPスライダーの最大値を初期HPと同じに
+
+        //m_hpSlider.maxValue = m_maxLife; // HPスライダーの最大値を初期HPと同じに
+        //m_currentLife = m_maxLife;
 
         // 最初は鍵のアクティブをオフにする
-        m_key = GameObject.Find("KeyUI");
+        m_key = GameObject.Find("Key");
         m_key.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_hpSlider.value = m_currentLife;  //　スライダーの値を現在HPと同じに
+        m_hpSlider.value = Status.currentLife;  //　スライダーの値を現在HPと同じに
 
         // HPが0になったら鍵と死亡アニメーションのプレハブを出して自信を消す
-        if (m_currentLife <= 0 && m_DeathObject)
+        if (Status.currentLife <= 0)
         {
             Gamemanager.Instance.m_key = true;
             m_key.SetActive(true);
@@ -54,7 +68,17 @@ public class BossStatus : MonoBehaviour, IDamagable
     public void Damage(int damage)
     {
         // ダメージが0以下にはならない
-        m_currentLife -= Mathf.Max(0, damage - m_deffence);
+        Status.currentLife -= Mathf.Max(0, damage - Status.deffence);
     }
 
+    void EnemyStatusSet()
+    {
+        // GameManagerに登録したレベルの配列の現在の敵のレベルを呼び出し
+        int enemyLv = Gamemanager.Instance.EnemyLevel[Gamemanager.Instance.m_nowEnemyLv - 1];
+
+        // スクリプタブルオブジェクトに登録してあるenemyLvのステータスを書き写し
+        Status.maxLife = m_bossParameter.ParaData(enemyLv).MaxLife;
+        Status.attack = m_bossParameter.ParaData(enemyLv).Attack;
+        Status.deffence = m_bossParameter.ParaData(enemyLv).Deffence;
+    }
 }

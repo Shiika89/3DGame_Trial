@@ -120,7 +120,7 @@ public class ItemDetection : MonoBehaviour
     private void ItemText()
     {
         Debug.Log(m_data.JewelRarity);
-        m_text.text = $"攻撃力  {m_data.Para1}     回復力  {((m_data.Para1 + m_data.Para2 + m_data.Para3) * 3)}\n防御力  {m_data.Para2}     SKILL Lv 1\nスタミナ  {m_data.Para3}";
+        m_text.text = $"攻撃力  {m_data.Para1}    回復力  {((m_data.Para1 + m_data.Para2 + m_data.Para3) * 3)}\n防御力  {m_data.Para2}    SKILL Lv 1\nスタミナ  {m_data.Para3}";
     }
 }
 

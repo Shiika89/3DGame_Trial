@@ -2808,10 +2808,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_anim: {fileID: 2577613472445018357}
+  m_navMeshAgent: {fileID: 2577613470931594596}
   m_attackRange: 10
   m_jampAttackRange: 15
-  m_walkRange: 0
-  m_navMeshAgent: {fileID: 2577613470931594596}
 --- !u!195 &2577613470931594596
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2846,13 +2845,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c584f6e7e721f6643a06d6f1fda5dbe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxLife: 10
-  m_attack: 40
-  m_deffence: 10
+  m_bossParameter: {fileID: 11400000, guid: 42ef029fb5f8baa4f816f39191fa6c02, type: 2}
   m_DeathObject: {fileID: 8503892259650942226, guid: 56dbdd8c4f419d049bf97ba11480d777,
     type: 3}
   m_hpSlider: {fileID: 6038499314062134278}
-  m_attackRange: {fileID: 0}
 --- !u!114 &557264905103043224
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class BossAttack : MonoBehaviour
             var attack = other.GetComponent<PlayerStatus>();
             if (attack != null)
             {
-                attack.Damage(chara.m_attack);
+                attack.Damage(chara.Status.attack);
             }
         }
 
