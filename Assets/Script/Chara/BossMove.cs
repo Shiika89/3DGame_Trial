@@ -31,7 +31,8 @@ public class BossMove : MonoBehaviour
             // ターゲットの方に向いてアニメーションをする
             transform.LookAt(m_target.transform);
         }
-        
+
+        MoveAnimation();
         AttackAnim();
     }
 
@@ -62,8 +63,6 @@ public class BossMove : MonoBehaviour
                 m_anim.SetBool("Attack", false);
                 m_anim.SetBool("JampAttack", false);
                 m_anim.SetBool("Walk", true);
-                m_navMeshAgent.destination = m_target.transform.position;
-                MoveAnimation();
             }
         }
     }
@@ -88,5 +87,18 @@ public class BossMove : MonoBehaviour
             velocity.y = 0f;
             m_anim.SetFloat("Speed", velocity.magnitude);
         }
+    }
+
+    public void MoveOn()
+    {
+        if (m_target != null)
+        {
+            m_navMeshAgent.destination = m_target.transform.position;
+        }
+    }
+
+    public void MoveOff()
+    {
+        m_navMeshAgent.destination = transform.position;
     }
 }

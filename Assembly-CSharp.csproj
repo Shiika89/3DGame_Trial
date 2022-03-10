@@ -80,6 +80,7 @@
     <Compile Include="Assets\Script\CameraMove.cs" />
     <Compile Include="Assets\Script\Chara\AttackController.cs" />
     <Compile Include="Assets\Script\Chara\BossAttack.cs" />
+    <Compile Include="Assets\Script\Chara\BossAttackController.cs" />
     <Compile Include="Assets\Script\Chara\BossMove.cs" />
     <Compile Include="Assets\Script\Chara\BossStatus.cs" />
     <Compile Include="Assets\Script\Chara\EnemyAttack.cs" />
