@@ -6,11 +6,12 @@ public class GuardianArea : SkillBase
 {
     [SerializeField] float m_baseAreaDamege;
     [SerializeField] float m_damegeInterval;
+    [SerializeField] float m_DeffenceBuff;
 
     float m_totalDamege;
     float m_timer;
     bool m_isGuardianSkill;
-    int total;
+    int m_buffTotal;
 
     private void Update()
     {
@@ -65,15 +66,15 @@ public class GuardianArea : SkillBase
         {
             m_isGuardianSkill = true;
 
-            total = (int)((PlayerStatus.Instance.Deffence * 1.5) - PlayerStatus.Instance.Deffence);
-            PlayerStatus.Instance.Deffence += total;
+            m_buffTotal = (int)((PlayerStatus.Instance.Deffence * m_DeffenceBuff) - PlayerStatus.Instance.Deffence);
+            PlayerStatus.Instance.Deffence += m_buffTotal;
             //m_playerMove.KaihiSpeed = m_playerMove.KaihiSpeed * 2;
             //m_playerMove.KaihiTime = m_playerMove.KaihiTime / 2;
         }
         else if (!IsSkillActive && m_isGuardianSkill)
         {
             m_isGuardianSkill = false;
-            PlayerStatus.Instance.Deffence -= total;
+            PlayerStatus.Instance.Deffence -= m_buffTotal;
             //m_playerMove.KaihiSpeed = m_playerMove.KaihiSpeed / 2;
             //m_playerMove.KaihiTime = m_playerMove.KaihiTime * 2;
         }
