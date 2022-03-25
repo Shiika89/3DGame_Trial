@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーの動きやアニメーションの処理
+/// </summary>
 public class PlayerMove : MonoBehaviour
 {
     static public PlayerMove Instance;
 
     [Tooltip("動く速さ")]
     [SerializeField] public float m_movingSpeed = 5f;
+
     /// <summary>プレイヤーが攻撃中かを判定するフラグ</summary>
-    public bool m_IsAttacking = false;
+    public bool m_IsAttacking { get;  } = false;
+
     [SerializeField] Animator m_anim;
     public Rigidbody m_rb;
     public bool m_kaihi;

@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+            // 当たった相手のダメージinterfaceを呼んでダメージ処理を行う
             var attack = other.GetComponent<EnemyStatus>();
             if (attack != null)
             {
