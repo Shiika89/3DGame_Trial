@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] public float m_movingSpeed = 5f;
 
     /// <summary>プレイヤーが攻撃中かを判定するフラグ</summary>
-    public bool m_IsAttacking { get;  } = false;
+    public bool m_IsAttacking { get; set; } = false;
 
     [SerializeField] Animator m_anim;
     public Rigidbody m_rb;

@@ -1257,7 +1257,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0000076293945
+      value: -0.00005340576
       objectReference: {fileID: 0}
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4133,6 +4133,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872475743}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &890111482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 193006955, guid: 5a42da3d5bc850645a3c65dd4b885a24,
+    type: 3}
+  m_PrefabInstance: {fileID: 296171227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &893216542
 GameObject:
   m_ObjectHideFlags: 0
@@ -6221,6 +6227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2723ebc5a076cf479f17d9e2d8d9335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_content: {fileID: 890111482}
 --- !u!114 &1331338269
 MonoBehaviour:
   m_ObjectHideFlags: 0
