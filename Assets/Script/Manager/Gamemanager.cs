@@ -94,15 +94,7 @@ public class Gamemanager : MonoBehaviour
             m_UIflag = true;
             Time.timeScale = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && m_UIflag == true)
-        {
-            Time.timeScale = 1;
-            PanelChange.Instance.ActiveFalse();
-
-            InventoryManager.Instance.SelectItem();
-            m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700, 0);
-            m_UIflag = false;
-        }
+        
 
         if (PlayerStatus.Instance.CurrentLife <= 0)
         {
@@ -123,6 +115,22 @@ public class Gamemanager : MonoBehaviour
                 m_enemyLevelText.text = $"Lv{m_nowEnemyLv}";
                 Debug.Log($"敵の強さが上がった、レベル{m_nowEnemyLv}");
             }
+        }
+    }
+
+    /// <summary>
+    /// ボタンでメニュー画面を閉じるための関数
+    /// </summary>
+    public void EquipmentUIOff()
+    {
+        if (m_UIflag == true)
+        {
+            Time.timeScale = 1;
+            PanelChange.Instance.ActiveFalse();
+
+            InventoryManager.Instance.SelectItem();
+            m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700, 0);
+            m_UIflag = false;
         }
     }
 }
