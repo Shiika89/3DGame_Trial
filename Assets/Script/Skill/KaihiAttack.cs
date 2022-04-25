@@ -50,7 +50,7 @@ public class KaihiAttack : SkillBase
 
     private void OnTriggerStay(Collider other)
     {
-        if (m_playerMove.m_kaihi && m_IsKaihiSkill)
+        if (m_playerMove.m_IsKaihi && m_IsKaihiSkill)
         {
             if (other.gameObject.tag == "Enemy")
             {

@@ -9,9 +9,9 @@ public class PlayerAttack : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        // 当たった相手のダメージinterfaceを呼んでダメージ処理を行う
         if (other.gameObject.tag == "Enemy")
         {
-            // 当たった相手のダメージinterfaceを呼んでダメージ処理を行う
             var attack = other.GetComponent<EnemyStatus>();
             if (attack != null)
             {

@@ -71,7 +71,7 @@ public class PlayerStatus : MonoBehaviour, IDamagable
 
     public void Damage(int damage)
     {
-        if (m_playerMove.m_kaihi)
+        if (m_playerMove.m_IsKaihi)
         {
             return;
         }

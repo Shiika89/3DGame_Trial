@@ -10,13 +10,13 @@ public class BossStatus : MonoBehaviour, IDamagable, IStatusModelHolder
 {
     [Tooltip("敵のステータスのスクリプタブルオブジェクトを入れる")]
     [SerializeField] EnemyParameter m_bossParameter;
+    [Tooltip("ボスが死んだときに出す死亡アニメーションを持ったボスのプレハブ")]
+    [SerializeField] GameObject m_DeathObject;
+
 
     // 敵のステータスの受け皿
     private StatusModel m_status = new StatusModel();
     public StatusModel Status => m_status;
-
-    [Tooltip("ボスが死んだときに出す死亡アニメーションを持ったボスのプレハブ")]
-    [SerializeField] GameObject m_DeathObject;
 
     //[SerializeField] int m_maxLife = default; // 最大体力値
     //int m_currentLife; // 現在の体力値

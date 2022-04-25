@@ -12,26 +12,45 @@ public class PlayerMove : MonoBehaviour
     [Tooltip("動く速さ")]
     [SerializeField] public float m_movingSpeed = 5f;
 
+    [SerializeField] Animator m_anim;
+
+    [Tooltip("回避する時の速さ")]
+    [SerializeField] float m_kaihiSpeed;
+    public float KaihiSpeed { get => m_kaihiSpeed; set => m_kaihiSpeed = value; }
+
+    [Tooltip("回避時間")]
+    [SerializeField] float m_kaihiTime;
+    public float KaihiTime { get => m_kaihiTime; set => m_kaihiTime = value; }
+
+    [Tooltip("プレイヤーのモデル")]
+    [SerializeField] GameObject m_model;
+
+    [Tooltip("回避中のエフェクト")]
+    [SerializeField] ParticleSystem m_effect;
+
+    [SerializeField] AudioSource m_audioSource;
+
+    [Tooltip("攻撃した時の音")]
+    [SerializeField] AudioClip m_audioClip;
+
+    [Tooltip("アタックアップのスキル")]
+    [SerializeField] AttackUp m_attackUp;
+
+    [SerializeField] AttackController m_attackController;
+    
     /// <summary>プレイヤーが攻撃中かを判定するフラグ</summary>
     public bool m_IsAttacking { get; set; } = false;
 
-    [SerializeField] Animator m_anim;
-    public Rigidbody m_rb;
-    public bool m_kaihi;
-    float m_kaihiTimer;
-    [SerializeField] float m_kaihiSpeed;
-    public float KaihiSpeed { get => m_kaihiSpeed; set => m_kaihiSpeed = value; }
-    [SerializeField] float m_kaihiTime;
-    public float KaihiTime { get => m_kaihiTime; set => m_kaihiTime = value; }
-    [SerializeField] GameObject m_model;
-    [SerializeField] ParticleSystem m_effect;
-    [SerializeField] AudioSource m_audioSource;
-    [SerializeField] AudioClip m_audioClip;
-
-    [SerializeField] AttackUp m_attackUp;
-    [SerializeField] AttackController m_attackController;
-
+    /// <summary>スキル発動中の今何段目の攻撃中かを数える変数</summary>
     public int DualAttackNum { get; set; }
+
+    /// <summary>回避中かどうかを判定するフラグ</summary>
+    public bool m_IsKaihi;
+
+    /// <summary>回避が始まってからの時間を計るタイマー</summary>
+    float m_kaihiTimer;
+
+    public Rigidbody m_rb;
 
     private void Awake()
     {
@@ -41,7 +60,6 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
-        //DualAttackNum = m_anim.GetInteger("DualAttack");
     }
 
     // Update is called once per frame
@@ -52,9 +70,13 @@ public class PlayerMove : MonoBehaviour
         Kaihi();
     }
 
+    /// <summary>
+    /// 移動に関する関数
+    /// </summary>
     public void Move()
     {
-        if (m_IsAttacking || m_kaihi || Gamemanager.Instance.m_UIflag) // 攻撃中・回避中・ステータス画面だったら操作を受け付けない
+        // 攻撃中・回避中・ステータス画面だったら操作を受け付けない
+        if (m_IsAttacking || m_IsKaihi || Gamemanager.Instance.m_UIflag) 
         {
             return;
         }
@@ -77,11 +99,11 @@ public class PlayerMove : MonoBehaviour
     }
 
     /// <summary>
-    /// プレイヤーの操作（カメラの方向を基準に移動）
+    /// プレイヤーの操作（カメラの方向を基準に移動）現在未使用
     /// </summary>
     public void CameraMove()
     {
-        if (m_IsAttacking || m_kaihi) // 攻撃中・回避中だったら操作を受け付けない
+        if (m_IsAttacking || m_IsKaihi) // 攻撃中・回避中だったら操作を受け付けない
         {
             return;
         }
@@ -114,7 +136,7 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     public void Animation()
     {
-        if (m_anim && !m_kaihi)
+        if (m_anim && !m_IsKaihi)
         {
             // 水平方向の速度を Speed にセットする
             Vector3 velocity = m_rb.velocity;
@@ -124,6 +146,7 @@ public class PlayerMove : MonoBehaviour
             // ステータス画面を開いてなくて攻撃ボタンを押したら Attack をセットする
             if (Input.GetButtonDown("Fire1") && !Gamemanager.Instance.m_UIflag)
             {
+                // スキル発動中は連続攻撃可能
                 if (m_attackUp.IsSkillActive)
                 {
                     if (DualAttackNum == 0)
@@ -142,41 +165,32 @@ public class PlayerMove : MonoBehaviour
                         m_anim.SetInteger("DualAttack", DualAttackNum);
                     }
                 }
-                //if (m_attackUp.IsAttackUp)
-                //{
-                //    if (m_attackController.IsDualAttack2)
-                //    {
-                //        m_anim.SetTrigger("DualAttack3");
-                //    }
-                //    else if (m_attackController.IsDualAttack1)
-                //    {
-                //        m_anim.SetTrigger("DualAttack2");
-                //    }
-                //    else if (!m_attackController.IsDualAttack1)
-                //    {
-                //        m_anim.SetTrigger("DualAttack1");
-                //    }
-                //}
-                else
+                else // スキル発動中でなければ通常攻撃
                 {
                     m_anim.SetTrigger("Attack");
                 }
+
+                // 攻撃をすると音を鳴らす
                 m_audioSource.clip = m_audioClip;
                 m_audioSource.Play();
             }
         }
     }
 
+    /// <summary>
+    /// 右クリックでスタミナを消費して回避を行う
+    /// </summary>
     public void Kaihi()
     {
-        if (m_IsAttacking)
+        if (m_IsAttacking) // 攻撃中は受け付けない
         {
             return;
         }
 
-        if (Input.GetButtonDown("Fire2") && !m_kaihi && PlayerStatus.Instance.Sutamina >= 20f)
+        // 規定値以上のスタミナがあれば回避を実行
+        if (Input.GetButtonDown("Fire2") && !m_IsKaihi && PlayerStatus.Instance.Sutamina >= 20f)
         {
-            m_kaihi = true;
+            m_IsKaihi = true;
             m_model.SetActive(false);
             m_effect.Play();
             PlayerStatus.Instance.Sutamina -= 20f;
@@ -198,12 +212,12 @@ public class PlayerMove : MonoBehaviour
 
         }
 
-        if (m_kaihiTimer > 0 && m_kaihi)
+        if (m_kaihiTimer > 0 && m_IsKaihi)
         {
             m_kaihiTimer -= Time.deltaTime;
             if (m_kaihiTimer <= 0)
             {
-                m_kaihi = false;
+                m_IsKaihi = false;
                 m_model.SetActive(true);
                 m_effect.Stop();
             }
@@ -217,9 +231,9 @@ public class PlayerMove : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Fire2") && !m_kaihi && PlayerStatus.Instance.Sutamina >= 20f)
+        if (Input.GetButtonDown("Fire2") && !m_IsKaihi && PlayerStatus.Instance.Sutamina >= 20f)
         {
-            m_kaihi = true;
+            m_IsKaihi = true;
             m_model.SetActive(false);
             m_effect.Play();
             PlayerStatus.Instance.Sutamina -= 20f;
@@ -249,12 +263,12 @@ public class PlayerMove : MonoBehaviour
 
         }
 
-        if (m_kaihiTimer > 0 && m_kaihi)
+        if (m_kaihiTimer > 0 && m_IsKaihi)
         {
             m_kaihiTimer -= Time.deltaTime;
             if (m_kaihiTimer <= 0)
             {
-                m_kaihi = false;
+                m_IsKaihi = false;
                 m_model.SetActive(true);
                 m_effect.Stop();
             }
