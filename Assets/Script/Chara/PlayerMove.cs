@@ -36,6 +36,9 @@ public class PlayerMove : MonoBehaviour
     [Tooltip("アタックアップのスキル")]
     [SerializeField] AttackUp m_attackUp;
 
+    [Tooltip("回避をしたときに減るスタミナの量")]
+    [SerializeField] float m_kaihiCost;
+
     [SerializeField] AttackController m_attackController;
     
     /// <summary>プレイヤーが攻撃中かを判定するフラグ</summary>
@@ -188,12 +191,12 @@ public class PlayerMove : MonoBehaviour
         }
 
         // 規定値以上のスタミナがあれば回避を実行
-        if (Input.GetButtonDown("Fire2") && !m_IsKaihi && PlayerStatus.Instance.Sutamina >= 20f)
+        if (Input.GetButtonDown("Fire2") && !m_IsKaihi && PlayerStatus.Instance.Sutamina >= m_kaihiCost)
         {
             m_IsKaihi = true;
-            m_model.SetActive(false);
+            m_model.SetActive(false); // 回避中は姿を見えなくする
             m_effect.Play();
-            PlayerStatus.Instance.Sutamina -= 20f;
+            PlayerStatus.Instance.Sutamina -= m_kaihiCost; // スタミナを減らす
 
             float v = Input.GetAxisRaw("Vertical");
             float h = Input.GetAxisRaw("Horizontal");
@@ -212,6 +215,7 @@ public class PlayerMove : MonoBehaviour
 
         }
 
+        // 回避が終わったらエフェクトを消してモデルを戻す
         if (m_kaihiTimer > 0 && m_IsKaihi)
         {
             m_kaihiTimer -= Time.deltaTime;
