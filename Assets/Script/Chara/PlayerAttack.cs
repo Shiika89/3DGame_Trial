@@ -13,7 +13,8 @@ public class PlayerAttack : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             var attack = other.GetComponent<EnemyStatus>();
-            if (attack != null)
+
+            if (attack)
             {
                 attack.Damage(PlayerStatus.Instance.Attack);
             }

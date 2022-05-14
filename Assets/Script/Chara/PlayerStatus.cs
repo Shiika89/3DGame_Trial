@@ -7,37 +7,43 @@ using UnityEngine.UI;
 public class PlayerStatus : MonoBehaviour, IDamagable
 {
     public static PlayerStatus Instance { get; set; }
-
+    [Tooltip("プレイヤーの最大体力")]
     [SerializeField] int m_maxLife = 300;
     public int MaxLife { get => m_maxLife; set => m_maxLife = value; }
 
+    /// <summary> 現在のスタミナ </summary>
     int m_currentLife = 300;
     public int CurrentLife { get => m_currentLife; set => m_currentLife = value; }
 
-    
+    /// <summary> スキル発動時に上がる攻撃力の倍率 </summary>
     float m_buff = default;
     public float Buff { get => m_buff; set => m_buff = value; }
 
+    [Tooltip("プレイヤーの攻撃力")]
     [SerializeField] int m_attack = 500;
     public int Attack { get => m_attack + (int)(m_attack * m_buff);}
 
+    /// <summary> プレイヤーの基礎攻撃力 </summary>
     public int BaseAttack { get => m_attack; set => m_attack = value; }
 
+    [Tooltip("プレイヤーの防御力")]
     [SerializeField] int m_deffence = 35;
     public int Deffence { get => m_deffence; set => m_deffence = value; }
 
+    [Tooltip("プレイヤーの最大スタミナ")]
     [SerializeField] float m_maxSutamina = 100;
     public float MaxSutamina { get => m_maxSutamina; set => m_maxSutamina = value; }
 
+    /// <summary> 現在のスタミナ </summary>
     float m_sutamina;
     public float Sutamina { get => m_sutamina; set => m_sutamina = value; }
 
-
-    List<Skill> m_skillList = new List<Skill>();
-    public List<Skill> SkillList { get => m_skillList; set => m_skillList = value; }
-
+    [Tooltip("スタミナの自動回復する量")]
     [SerializeField] float m_sutaminaHeal;
+
+    [Tooltip("プレイヤーがやられたときに出すオブジェクト")]
     [SerializeField] GameObject m_DeathObject;
+
     [SerializeField] Slider m_hpSlider;
     [SerializeField] Slider m_sutaminaSlider;
     [SerializeField] GameObject m_attackRange;

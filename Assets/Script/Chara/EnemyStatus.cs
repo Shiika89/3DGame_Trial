@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,11 +23,15 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
 
     public Slider m_slinder { get; set; }
 
+    EnemyMove m_enemyMove;
+
+
     private void Start()
     {
         EnemyStatusSet();
 
         m_slinder = m_HPUI.transform.Find("HPBar").GetComponent<Slider>();
+        m_enemyMove = GetComponent<EnemyMove>();
 
         Status.currentLife = Status.maxLife; // 現在HPを初期HPに
         m_slinder.maxValue = Status.maxLife; // HPスライダーの最大値を初期HPと同じに
@@ -66,8 +71,23 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
     public void Damage(int damage)
     {
         Status.currentLife -= Mathf.Max(0, damage - Status.deffence);
+        if (m_enemyMove.IsHit == false)
+        {
+            StartCoroutine(KnockBack());
+        }
+    }
+
+    IEnumerator KnockBack()
+    {
+        m_enemyMove.IsHit = true;
+
+        yield return new WaitForSeconds(0.001f);
+
+        m_enemyMove.IsHit = false;
     }
 }
+
+
 
 public interface IStatusModelHolder
 {

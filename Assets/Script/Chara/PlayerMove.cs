@@ -228,6 +228,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    // 現在は使っていない回避
     public void CameraMoveKaihi()
     {
         if (m_IsAttacking)

@@ -1329,7 +1329,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0001296997
+      value: -0.000045776367
       objectReference: {fileID: 0}
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -10544,6 +10544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028384641868684729, guid: d632522e249d1b74bbf4f985661e3113,
+        type: 3}
+      propertyPath: m_kaihiCost
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6570595880788824874, guid: d632522e249d1b74bbf4f985661e3113,
         type: 3}

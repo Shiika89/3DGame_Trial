@@ -11,12 +11,20 @@ public class EnemyMove : MonoBehaviour
 {
     [Tooltip("移動目標")]
     Transform m_target;
+
     [SerializeField] Animator m_anim;
+
     [Tooltip("攻撃を開始する距離")]
     [SerializeField] float m_attackRange = 1.5f;
+
+    [Tooltip("ノックバックする強さ")]
+    [SerializeField] float m_knockBackPower;
+
     /// <summary> 相手が検知範囲内にいるか判定するためのフラグ </summary>
     public bool m_inArea = false;
     NavMeshAgent m_navMeshAgent;
+
+    public bool IsHit { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +39,14 @@ public class EnemyMove : MonoBehaviour
         //検知エリアに入ったら動いて出たら止まる
         if (m_inArea == true)
         {
-            if (m_target != null)
+            if (m_target)
             {
                 //相手が検知にいれば移動目標を相手に設定
-                m_navMeshAgent.destination = m_target.transform.position;
+                //m_navMeshAgent.destination = m_target.transform.position;
                 transform.LookAt(m_target.transform);
 
                 MoveAnimation();
-                AttackAnimation();
+                //AttackAnimation();
             }
         }
         else
@@ -62,6 +70,27 @@ public class EnemyMove : MonoBehaviour
             Vector3 velocity = m_navMeshAgent.velocity;
             velocity.y = 0f;
             m_anim.SetFloat("Speed", velocity.magnitude);
+
+            if (!IsHit)
+            {
+                //　相手が攻撃範囲内にいれば攻撃を開始
+                if (Vector3.Distance(transform.position, m_target.position) <= m_attackRange)
+                {
+                    m_navMeshAgent.speed = 0;
+                    m_anim.SetTrigger("Attack");
+                }
+                else
+                {
+                    m_navMeshAgent.speed = 2;
+                    //相手が検知にいれば移動目標を相手に設定
+                    m_navMeshAgent.destination = m_target.transform.position;
+                }
+            }
+            else
+            {
+                Debug.Log("hit");
+                m_navMeshAgent.velocity = transform.forward * -m_knockBackPower;
+            }
         }
     }
     /// <summary>
