@@ -11,7 +11,7 @@ public class ItemManager : MonoBehaviour
     public static ItemManager Instance { get; private set; }
 
     /// <summary>ItemのDataが入ってるリスト</summary>
-    static List<ItemData> m_haveItem = default;
+    List<ItemData> m_haveItem = default;
 
     /// <summary>アイテムを入手するたびに呼ばれるイベント</summary>
     public event Action OnItemGet;
