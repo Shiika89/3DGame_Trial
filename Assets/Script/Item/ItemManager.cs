@@ -11,22 +11,19 @@ public class ItemManager : MonoBehaviour
     public static ItemManager Instance { get; private set; }
 
     /// <summary>ItemのDataが入ってるリスト</summary>
-    List<ItemData> m_haveItem = default;
+    public List<ItemData> HaveItem = new List<ItemData>();
 
     /// <summary>アイテムを入手するたびに呼ばれるイベント</summary>
     public event Action OnItemGet;
     
     /// <summary>m_haveItemをプロパティ化</summary>
-    public List<ItemData> HaveItem { get => m_haveItem; }
+    //public List<ItemData> HaveItem { get => m_haveItem; }
+
+    /// <summary> ドロップした宝玉のリスト </summary>
+    public List<GameObject> JewelItem { get; } = new List<GameObject>();
 
     private void Awake()
     {
-        // シーンが読み込まれた時、リストが生成されてなければ生成（2階層以降、新しく作らないようにするため）
-        if (m_haveItem == null)
-        {
-            m_haveItem = new List<ItemData>();
-        }
-
         Instance = this;
     }
 
@@ -38,10 +35,10 @@ public class ItemManager : MonoBehaviour
 
     public void ItemGet(ItemData data)
     {
-        m_haveItem.Add(data);
-        for (int i = 0; i < m_haveItem.Count; i++)
+        HaveItem.Add(data);
+        for (int i = 0; i < HaveItem.Count; i++)
         {
-            m_haveItem[i].ID = i;
+            HaveItem[i].ID = i;
         }
         InventoryManager.Instance.ItemGet();
         //OnItemGet?.Invoke();
@@ -49,6 +46,14 @@ public class ItemManager : MonoBehaviour
 
     private void DiscardItem(int id)
     {
-        m_haveItem.RemoveAt(id);
+        HaveItem.RemoveAt(id);
+    }
+
+    public void DeleteJewel()
+    {
+        foreach (var item in JewelItem)
+        {
+            Destroy(item);
+        }
     }
 }

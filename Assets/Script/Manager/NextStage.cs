@@ -22,6 +22,7 @@ public class NextStage : MonoBehaviour
             Gamemanager.Instance.m_stage++;
             Gamemanager.Instance.m_key = false;
             m_stageTextAnim.SetTrigger("NextStage");
+            ItemManager.Instance.DeleteJewel();
 
             RandomStage.Instance.NextStage();
         }

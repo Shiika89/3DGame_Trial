@@ -26,6 +26,7 @@ public class EnemyDeathItemDrop : MonoBehaviour
 
         // 登録した宝玉をランダムに生成
         var number = Random.Range(0, m_dropItem.Length);
-        Instantiate(m_dropItem[number], new Vector3(transform.position.x, 0.32f, transform.position.z), transform.rotation);
+        var item = Instantiate(m_dropItem[number], new Vector3(transform.position.x, 0.32f, transform.position.z), transform.rotation);
+        ItemManager.Instance.JewelItem.Add(item);
     }
 }

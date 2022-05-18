@@ -88,7 +88,6 @@ public class EnemyMove : MonoBehaviour
             }
             else
             {
-                Debug.Log("hit");
                 m_navMeshAgent.velocity = transform.forward * -m_knockBackPower;
             }
         }
