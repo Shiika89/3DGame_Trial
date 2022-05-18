@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
             if (attack)
             {
                 attack.Damage(PlayerStatus.Instance.Attack);
+                // 攻撃が当たったらヒットストップのフラグを変える
                 AttackController.Instanca.OnHitStop = true;
             }
         }

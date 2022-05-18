@@ -18,6 +18,7 @@ public class AttackController : MonoBehaviour
     public bool IsDualAttack2 { get; private set; }
     public bool IsDualAttack3 { get; private set; }
 
+    // ヒットストップをするか判定するフラグ
     public bool OnHitStop { get; set; }
 
     private void Awake()
