@@ -7,13 +7,23 @@ using UnityEngine;
 /// </summary>
 public class AttackController : MonoBehaviour
 {
+    public static AttackController Instanca { get; set; }
+
     [SerializeField] Collider m_attackRange;
     [SerializeField] PlayerMove m_playerMove;
     [SerializeField] Animator m_anim;
+    [SerializeField] float m_sceal;
 
     public bool IsDualAttack1 { get; set; }
     public bool IsDualAttack2 { get; private set; }
     public bool IsDualAttack3 { get; private set; }
+
+    public bool OnHitStop { get; set; }
+
+    private void Awake()
+    {
+        Instanca = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -93,5 +103,22 @@ public class AttackController : MonoBehaviour
             m_playerMove.DualAttackNum = 0;
         }
         m_anim.SetInteger("DualAttack", m_playerMove.DualAttackNum);
+    }
+
+    public void StartHitStop()
+    {
+        if (OnHitStop)
+        {
+            Time.timeScale = m_sceal;
+        }
+    }
+
+    public void EndHitStop()
+    {
+        if (OnHitStop)
+        {
+            Time.timeScale = 1;
+            OnHitStop = false;
+        }
     }
 }

@@ -173,6 +173,9 @@ public class PlayerMove : MonoBehaviour
                     m_anim.SetTrigger("Attack");
                 }
 
+                //m_rb.velocity = transform.forward * m_movingSpeed;
+                //m_rb.AddForce(transform.forward * 10, ForceMode.Impulse);
+
                 // 攻撃をすると音を鳴らす
                 m_audioSource.clip = m_audioClip;
                 m_audioSource.Play();

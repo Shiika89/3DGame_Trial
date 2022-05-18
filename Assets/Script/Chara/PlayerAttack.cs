@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
             if (attack)
             {
                 attack.Damage(PlayerStatus.Instance.Attack);
+                AttackController.Instanca.OnHitStop = true;
             }
         }
 

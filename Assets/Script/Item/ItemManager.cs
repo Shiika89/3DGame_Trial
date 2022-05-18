@@ -15,9 +15,6 @@ public class ItemManager : MonoBehaviour
 
     /// <summary>アイテムを入手するたびに呼ばれるイベント</summary>
     public event Action OnItemGet;
-    
-    /// <summary>m_haveItemをプロパティ化</summary>
-    //public List<ItemData> HaveItem { get => m_haveItem; }
 
     /// <summary> ドロップした宝玉のリスト </summary>
     public List<GameObject> JewelItem { get; } = new List<GameObject>();
