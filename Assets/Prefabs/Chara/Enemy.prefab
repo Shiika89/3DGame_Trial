@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_anim: {fileID: 5332815367254055042}
-  m_attackRange: 2
+  m_attackRange: 1.5
   m_knockBackPower: 3
   m_inArea: 0
 --- !u!114 &3210286719794234389

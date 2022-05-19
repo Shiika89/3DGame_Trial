@@ -10,13 +10,17 @@ public class AttackController : MonoBehaviour
     public static AttackController Instanca { get; set; }
 
     [SerializeField] Collider m_attackRange;
+    [SerializeField] Collider m_attackAllRange;
     [SerializeField] PlayerMove m_playerMove;
     [SerializeField] Animator m_anim;
     [SerializeField] float m_sceal;
 
     public bool IsDualAttack1 { get; set; }
     public bool IsDualAttack2 { get; private set; }
-    public bool IsDualAttack3 { get; private set; }
+
+    public bool IsAttack1 { get; set; }
+    public bool IsAttack2 { get; set; }
+
 
     // ヒットストップをするか判定するフラグ
     public bool OnHitStop { get; set; }
@@ -48,6 +52,16 @@ public class AttackController : MonoBehaviour
         m_attackRange.gameObject.SetActive(false);
     }
 
+    void BiginKnockBackAttack()
+    {
+        m_attackAllRange.gameObject.SetActive(true);
+    }
+
+    void EndKnockBackAttack()
+    {
+        m_attackAllRange.gameObject.SetActive(false);
+    }
+
     // 攻撃中かを判定するための関数、攻撃中は移動できなくする
     public void BeginStop()
     {
@@ -61,9 +75,25 @@ public class AttackController : MonoBehaviour
         m_playerMove.m_IsAttacking = false;
     }
 
+    public void Attack1Start()
+    {
+        IsAttack1 = true;
+    }
+
     public void DualAttack1Start()
     {
         IsDualAttack1 = true;
+    }
+
+    public void Attack1End()
+    {
+        IsAttack1 = false;
+        if (m_playerMove.AttackNum == 1)
+        {
+            m_playerMove.m_IsAttacking = false;
+            m_playerMove.AttackNum = 0;
+        }
+        m_anim.SetInteger("Attack", m_playerMove.AttackNum);
     }
 
     public void DualAttack1End()
@@ -77,9 +107,26 @@ public class AttackController : MonoBehaviour
         m_anim.SetInteger("DualAttack", m_playerMove.DualAttackNum);
     }
 
+    public void Attack2Start()
+    {
+        IsAttack2 = true;
+    }
+
     public void DualAttack2Start()
     {
         IsDualAttack2 = true;
+    }
+
+    public void Attack2End()
+    {
+        IsAttack1 = false;
+        IsAttack2 = false;
+        if (m_playerMove.AttackNum == 2)
+        {
+            m_playerMove.m_IsAttacking = false;
+            m_playerMove.AttackNum = 0;
+        }
+        m_anim.SetInteger("Attack", m_playerMove.AttackNum);
     }
 
     public void DualAttack2End()
@@ -92,6 +139,18 @@ public class AttackController : MonoBehaviour
             m_playerMove.DualAttackNum = 0;
         }
         m_anim.SetInteger("DualAttack", m_playerMove.DualAttackNum);
+    }
+
+    public void Attack3End()
+    {
+        IsAttack1 = false;
+        IsAttack2 = false;
+        if (m_playerMove.AttackNum == 3)
+        {
+            m_playerMove.m_IsAttacking = false;
+            m_playerMove.AttackNum = 0;
+        }
+        m_anim.SetInteger("Attack", m_playerMove.AttackNum);
     }
 
     public void DualAttack3End()

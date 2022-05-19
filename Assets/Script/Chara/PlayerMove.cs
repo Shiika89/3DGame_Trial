@@ -47,6 +47,9 @@ public class PlayerMove : MonoBehaviour
     /// <summary>スキル発動中の今何段目の攻撃中かを数える変数</summary>
     public int DualAttackNum { get; set; }
 
+    /// <summary> 通常攻撃の今何段階目の攻撃中かを数える変数 </summary>
+    public int AttackNum { get; set; }
+
     /// <summary>回避中かどうかを判定するフラグ</summary>
     public bool m_IsKaihi;
 
@@ -170,7 +173,21 @@ public class PlayerMove : MonoBehaviour
                 }
                 else // スキル発動中でなければ通常攻撃
                 {
-                    m_anim.SetTrigger("Attack");
+                    if (AttackNum == 0)
+                    {
+                        AttackNum++;
+                        m_anim.SetInteger("Attack", AttackNum);
+                    }
+                    else if (AttackNum == 1 && m_attackController.IsAttack1)
+                    {
+                        AttackNum++;
+                        m_anim.SetInteger("Attack", AttackNum);
+                    }
+                    else if (AttackNum == 2 && m_attackController.IsAttack2)
+                    {
+                        AttackNum++;
+                        m_anim.SetInteger("Attack", AttackNum);
+                    }
                 }
 
                 //m_rb.velocity = transform.forward * m_movingSpeed;

@@ -13,10 +13,17 @@ public class PlayerAttack : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             var attack = other.GetComponent<EnemyStatus>();
+            var move = other.GetComponent<EnemyMove>();
 
             if (attack)
             {
+                if (PlayerMove.Instance.AttackNum == 3)
+                {
+                    move.IsHit = true;
+                }
+
                 attack.Damage(PlayerStatus.Instance.Attack);
+
                 // 攻撃が当たったらヒットストップのフラグを変える
                 AttackController.Instanca.OnHitStop = true;
             }

@@ -71,7 +71,7 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
     public void Damage(int damage)
     {
         Status.currentLife -= Mathf.Max(0, damage - Status.deffence);
-        if (m_enemyMove.IsHit == false)
+        if (m_enemyMove.IsHit == true)
         {
             StartCoroutine(KnockBack());
         }
@@ -79,8 +79,6 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
 
     IEnumerator KnockBack()
     {
-        m_enemyMove.IsHit = true;
-
         yield return new WaitForSeconds(0.001f);
 
         m_enemyMove.IsHit = false;
