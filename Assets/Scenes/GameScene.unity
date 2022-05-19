@@ -1329,7 +1329,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0000076293945
+      value: 0.000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7132,6 +7132,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1443384994}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &1502941739 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 5199662373039571835, guid: d632522e249d1b74bbf4f985661e3113,
+    type: 3}
+  m_PrefabInstance: {fileID: 6842287566636373077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1506000793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10485,11 +10491,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5028384641449429937, guid: d632522e249d1b74bbf4f985661e3113,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5028384641752054082, guid: d632522e249d1b74bbf4f985661e3113,
         type: 3}
       propertyPath: m_sceal
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 5028384641752054082, guid: d632522e249d1b74bbf4f985661e3113,
+        type: 3}
+      propertyPath: m_attackAllRange
+      value: 
+      objectReference: {fileID: 1502941739}
     - target: {fileID: 5028384641868684724, guid: d632522e249d1b74bbf4f985661e3113,
         type: 3}
       propertyPath: m_LocalPosition.x
