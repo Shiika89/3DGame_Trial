@@ -21,6 +21,8 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
 
     [SerializeField] GameObject m_attackRange;
 
+    [SerializeField] ParticleSystem m_effect;
+
     public Slider m_slinder { get; set; }
 
     EnemyMove m_enemyMove;
@@ -71,6 +73,9 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
     public void Damage(int damage)
     {
         Status.currentLife -= Mathf.Max(0, damage - Status.deffence);
+
+        m_effect.Play();
+
         if (m_enemyMove.IsHit == true)
         {
             StartCoroutine(KnockBack());
