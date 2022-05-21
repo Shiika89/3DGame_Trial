@@ -14,6 +14,7 @@ public class AttackController : MonoBehaviour
     [SerializeField] PlayerMove m_playerMove;
     [SerializeField] Animator m_anim;
     [SerializeField] float m_sceal;
+    [SerializeField] GameObject[] m_efect;
 
     public bool IsDualAttack1 { get; set; }
     public bool IsDualAttack2 { get; private set; }
@@ -179,6 +180,22 @@ public class AttackController : MonoBehaviour
         {
             Time.timeScale = 1;
             OnHitStop = false;
+        }
+    }
+
+    void EfectOn()
+    {
+        foreach (var item in m_efect)
+        {
+            item.gameObject.SetActive(true);
+        }
+    }
+
+    void EfectOff()
+    {
+        foreach (var item in m_efect)
+        {
+            item.gameObject.SetActive(false);
         }
     }
 }
