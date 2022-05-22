@@ -76,7 +76,7 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
 
         m_effect.Play();
 
-        if (m_enemyMove.IsHit == true)
+        if (m_enemyMove.IsHit)
         {
             StartCoroutine(KnockBack());
         }

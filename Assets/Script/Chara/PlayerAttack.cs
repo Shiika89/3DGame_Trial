@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] CameraShake m_cameraShake;
+
     private void OnTriggerEnter(Collider other)
     {
         // 当たった相手のダメージinterfaceを呼んでダメージ処理を行う
@@ -26,6 +28,11 @@ public class PlayerAttack : MonoBehaviour
 
                 // 攻撃が当たったらヒットストップのフラグを変える
                 AttackController.Instanca.OnHitStop = true;
+                if (AttackController.Instanca.OnHitStop)
+                {
+                    StartCoroutine(HitStop(0.2f));
+                    m_cameraShake.StartShake();
+                }
             }
         }
 
@@ -37,5 +44,17 @@ public class PlayerAttack : MonoBehaviour
                 attack.Damage(PlayerStatus.Instance.Attack);
             }
         }
+    }
+    IEnumerator HitStop(float time)
+    {
+        Time.timeScale = 0.3f;
+        float timer = time;
+        while (timer > 0)
+        {
+            timer -= Time.unscaledDeltaTime;
+            yield return null;
+        }
+        Time.timeScale = 1;
+        AttackController.Instanca.OnHitStop = false;
     }
 }

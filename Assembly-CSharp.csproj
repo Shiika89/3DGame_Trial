@@ -78,6 +78,7 @@
     <Compile Include="Assets\AssetStoreTools\unity-chan!\Unity-chan! Model\SplashScreen\Scripts\SplashScreen.cs" />
     <Compile Include="Assets\Script\CameraLook.cs" />
     <Compile Include="Assets\Script\CameraMove.cs" />
+    <Compile Include="Assets\Script\CameraShake.cs" />
     <Compile Include="Assets\Script\Chara\AttackController.cs" />
     <Compile Include="Assets\Script\Chara\BossAttack.cs" />
     <Compile Include="Assets\Script\Chara\BossAttackController.cs" />
