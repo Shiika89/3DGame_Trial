@@ -11,37 +11,21 @@ public class EquipmentJewel : MonoBehaviour
     [Tooltip("自分のスロットのイメージを登録")]
     [SerializeField] Image m_image;
 
+    [Tooltip("自分のスロットにあった装備詳細のスクリプトを入れる")]
     [SerializeField] EquipmentHelp m_help = default;
 
     /// <summary> 装備するアイテムのクラスを受け取るための変数 </summary>
     SelectJewel m_selectJewel = default;
-
-    public void Eqipment(int para1, int para2, int para3)
-    {
-        PlayerStatus.Instance.BaseAttack += para1;
-        PlayerStatus.Instance.Deffence += para2;
-        PlayerStatus.Instance.MaxSutamina += para3;
-
-        Debug.Log($"装備しました こ{para1} + ぼ{para2} + す{para3}");
-    }
-
-    public void Eqipment(ItemData data)
-    {
-        PlayerStatus.Instance.BaseAttack += data.Para1;
-        PlayerStatus.Instance.Deffence += data.Para2;
-        PlayerStatus.Instance.MaxSutamina += data.Para3;
-
-        Debug.Log($"装備しました こ{data.Para1} + ぼ{data.Para2} + す{data.Para3}");
-    }
 
     [SerializeField] Sprite m_redSprite;
     [SerializeField] Sprite m_blueSprite;
     [SerializeField] Sprite m_greenSprite;
     [SerializeField] Sprite m_toumeiSprite;
 
-    int m_para1;
-    int m_para2;
-    int m_para3;
+    // 受け取ったパラメータを入れる変数
+    int m_attack;
+    int m_deffence;
+    int m_sutamina;
 
 
     /// <summary>
@@ -55,29 +39,38 @@ public class EquipmentJewel : MonoBehaviour
         SlotIn(data);
     }
 
+    /// <summary>
+    /// 装備中の宝玉を外す
+    /// </summary>
     public void SlotOut()
     {
         // 既に装備スロットに装備されていたら装備から外す
         if (m_selectJewel != null)
         {
             // 装備していたステータスを下げる
-            PlayerStatus.Instance.BaseAttack -= m_para1;
-            PlayerStatus.Instance.Deffence -= m_para2;
-            PlayerStatus.Instance.MaxSutamina -= m_para3;
+            PlayerStatus.Instance.BaseAttack -= m_attack;
+            PlayerStatus.Instance.Deffence -= m_deffence;
+            PlayerStatus.Instance.MaxSutamina -= m_sutamina;
 
+            // 色を戻す
             m_image.sprite = m_toumeiSprite;
+            m_help.SlotOut(m_toumeiSprite);
 
             // 装備が外れたことをアイテム自身に伝える
             m_selectJewel.SelectOut();
 
+            // スキルを外す
             PlayerSkillList.Instance.m_haveSkillList.Remove(m_selectJewel.m_itemData.Skill);
             PlayerSkillList.Instance.SkillSet();
 
             m_selectJewel = null;
-            Debug.Log("out");
         }
     }
 
+    /// <summary>
+    /// 宝玉を装備する
+    /// </summary>
+    /// <param name="data"></param>
     void SlotIn(SelectJewel data)
     {
         // 持っているクラスを受け取ったクラスに置き換える
@@ -85,15 +78,16 @@ public class EquipmentJewel : MonoBehaviour
 
         m_selectJewel.Equipment();
 
+        m_attack = m_selectJewel.m_itemData.Para1;
+        m_deffence = m_selectJewel.m_itemData.Para2;
+        m_sutamina = m_selectJewel.m_itemData.Para3;
+
         // 受け取ったアイテムのパラメータを加算する
-        PlayerStatus.Instance.BaseAttack += m_selectJewel.m_itemData.Para1;
-        PlayerStatus.Instance.Deffence += m_selectJewel.m_itemData.Para2;
-        PlayerStatus.Instance.MaxSutamina += m_selectJewel.m_itemData.Para3;
+        PlayerStatus.Instance.BaseAttack += m_attack;
+        PlayerStatus.Instance.Deffence += m_deffence;
+        PlayerStatus.Instance.MaxSutamina += m_sutamina;
 
-        m_para1 = m_selectJewel.m_itemData.Para1;
-        m_para2 = m_selectJewel.m_itemData.Para2;
-        m_para3 = m_selectJewel.m_itemData.Para3;
-
+        // スキルをセット
         PlayerSkillList.Instance.m_haveSkillList.Add(m_selectJewel.m_itemData.Skill);
         PlayerSkillList.Instance.SkillSet();
 
@@ -119,15 +113,17 @@ public class EquipmentJewel : MonoBehaviour
 
         m_help.EquipmentText(m_selectJewel);
 
-        Debug.Log($"装備しました こ{m_selectJewel.m_itemData.Para1} + ぼ{m_selectJewel.m_itemData.Para2} + す{m_selectJewel.m_itemData.Para3}");
-        
+        //Debug.Log($"装備しました こ{m_selectJewel.m_itemData.Para1} + ぼ{m_selectJewel.m_itemData.Para2} + す{m_selectJewel.m_itemData.Para3}");
     }
 
+    /// <summary>
+    /// 現在未使用
+    /// </summary>
     public void GouseiOut()
     {
-        PlayerStatus.Instance.BaseAttack -= m_para1;
-        PlayerStatus.Instance.Deffence -= m_para2;
-        PlayerStatus.Instance.MaxSutamina -= m_para3;
+        PlayerStatus.Instance.BaseAttack -= m_attack;
+        PlayerStatus.Instance.Deffence -= m_deffence;
+        PlayerStatus.Instance.MaxSutamina -= m_sutamina;
 
         m_image.sprite = m_toumeiSprite;
         m_help.SlotOut(m_toumeiSprite);

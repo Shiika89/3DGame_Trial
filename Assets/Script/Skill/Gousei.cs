@@ -171,17 +171,15 @@ public class Gousei : MonoBehaviour
     {
         if (m_selectJewel2.IsSlot1)
         {
-            m_eqipList[0].GouseiOut();
-            Debug.Log("1");
+            m_eqipList[0].SlotOut();
         }
         else if (m_selectJewel2.IsSlot2)
         {
-            m_eqipList[1].GouseiOut();
-            Debug.Log("2");
+            m_eqipList[1].SlotOut();
         }
         else if (m_selectJewel2.IsSlot3)
         {
-            m_eqipList[2].GouseiOut();
+            m_eqipList[2].SlotOut();
         }
 
         m_selectJewel2.JewelOut();

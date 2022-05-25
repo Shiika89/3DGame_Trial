@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// 所持中の宝玉を管理
 /// </summary>
 public class InventoryManager : MonoBehaviour
 {
@@ -12,14 +12,19 @@ public class InventoryManager : MonoBehaviour
 
     [Tooltip("生成するUIの親")]
     [SerializeField] JewerData m_JewelUIParent;
+
+
+    [Tooltip("装備スロットを格納")]
     [SerializeField] EquipmentJewel[] m_equipmentJewels;
     public EquipmentJewel[] EquipmentJewels { get => m_equipmentJewels; }
+
     /// <summary>インベントリに表示中のアイテムのデータ</summary>
     public List<JewerData> m_jewerData { get; set; }
 
     public event Action OnSelectItem;
     public event Action OnOpenInventory;
     public event Action<int> OnDiscard;
+
     private void Awake()
     {
         Instance = this;

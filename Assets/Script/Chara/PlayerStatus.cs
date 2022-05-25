@@ -77,11 +77,12 @@ public class PlayerStatus : MonoBehaviour, IDamagable
 
     public void Damage(int damage)
     {
-        if (m_playerMove.m_IsKaihi)
-        {
-            return;
-        }
+        // 回避中はダメージをくらわない
+        if (m_playerMove.m_IsKaihi) return;
+
+        // ダメージがマイナスにならないように
         m_currentLife -= Mathf.Max(0, damage - m_deffence);
+
         if (m_currentLife <= 0)
         {
             GameObject death = Instantiate(m_DeathObject);

@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// 現在未使用
+/// </summary>
 public class DragItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     private Vector2 m_prevPos;
