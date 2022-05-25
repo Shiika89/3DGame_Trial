@@ -38721,6 +38721,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.26666668
+    functionName: Attack2Start
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.3
     functionName: EndHitStop
     data: 
@@ -38730,13 +38737,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.33333334
     functionName: EfectOff
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.36666667
-    functionName: Attack2Start
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
