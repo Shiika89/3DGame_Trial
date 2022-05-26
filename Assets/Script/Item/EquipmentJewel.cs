@@ -78,9 +78,9 @@ public class EquipmentJewel : MonoBehaviour
 
         m_selectJewel.Equipment();
 
-        m_attack = m_selectJewel.m_itemData.Para1;
-        m_deffence = m_selectJewel.m_itemData.Para2;
-        m_sutamina = m_selectJewel.m_itemData.Para3;
+        m_attack = m_selectJewel.m_itemData.Attack;
+        m_deffence = m_selectJewel.m_itemData.Deffence;
+        m_sutamina = m_selectJewel.m_itemData.Sutamina;
 
         // 受け取ったアイテムのパラメータを加算する
         PlayerStatus.Instance.BaseAttack += m_attack;

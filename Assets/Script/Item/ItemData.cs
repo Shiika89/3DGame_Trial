@@ -5,15 +5,28 @@
 /// </summary>
 public class ItemData
 {
-    /// <summary>ItemJewelのenumで設定したJewelの種類</summary>
+    /// <summary>宝玉の種類</summary>
     public JewelType JewelType { get; private set; }
+
+    /// <summary>宝玉のレア度</summary>
     public JewelRarity JewelRarity { get; private set; }
-    public int Para1 { get; set; }
-    public int Para2 { get; set; }
-    public int Para3 { get; set; }
-    public int paraAdd { get; private set; }
-    public bool Instance { get; set; } 
+
+    /// <summary>宝玉の攻撃力</summary>
+    public int Attack { get; set; }
+
+    /// <summary>宝玉の防御力</summary>
+    public int Deffence { get; set; }
+
+    /// <summary>宝玉のスタミナ</summary>
+    public int Sutamina { get; set; }
+
+    /// <summary>宝玉がインベントリに登録されてるか</summary>
+    public bool Instance { get; set; }
+
+    /// <summary>宝玉自身の番号</summary>
     public int ID { get; set; }
+
+    /// <summary>宝玉のスキル</summary>
     public Skill Skill { get; set; }
 
 
@@ -44,19 +57,19 @@ public class ItemData
                 switch (JewelRarity)
                 {
                     case JewelRarity.Normal:
-                        Para1 = Random.Range(3, 5);
-                        Para2 = Random.Range(0, 3);
-                        Para3 = Random.Range(-3, 1);
+                        Attack = Random.Range(3, 5);
+                        Deffence = Random.Range(0, 3);
+                        Sutamina = Random.Range(-3, 1);
                         break;
                     case JewelRarity.Rare:
-                        Para1 = Random.Range(5, 10);
-                        Para2 = Random.Range(3, 5);
-                        Para3 = Random.Range(1, 3);
+                        Attack = Random.Range(5, 10);
+                        Deffence = Random.Range(3, 5);
+                        Sutamina = Random.Range(1, 3);
                         break;
                     case JewelRarity.SuperRare:
-                        Para1 = Random.Range(10, 20);
-                        Para2 = Random.Range(5, 10);
-                        Para3 = Random.Range(3, 6);
+                        Attack = Random.Range(10, 20);
+                        Deffence = Random.Range(5, 10);
+                        Sutamina = Random.Range(3, 6);
                         break;
                     default:
                         break;
@@ -66,19 +79,19 @@ public class ItemData
                 switch (JewelRarity)
                 {
                     case JewelRarity.Normal:
-                        Para1 = Random.Range(-3, 1);
-                        Para2 = Random.Range(3, 5);
-                        Para3 = Random.Range(0, 3);
+                        Attack = Random.Range(-3, 1);
+                        Deffence = Random.Range(3, 5);
+                        Sutamina = Random.Range(0, 3);
                         break;
                     case JewelRarity.Rare:
-                        Para1 = Random.Range(1, 3);
-                        Para2 = Random.Range(5, 10);
-                        Para3 = Random.Range(3, 5);
+                        Attack = Random.Range(1, 3);
+                        Deffence = Random.Range(5, 10);
+                        Sutamina = Random.Range(3, 5);
                         break;
                     case JewelRarity.SuperRare:
-                        Para1 = Random.Range(3, 6);
-                        Para2 = Random.Range(10, 20);
-                        Para3 = Random.Range(5, 10);
+                        Attack = Random.Range(3, 6);
+                        Deffence = Random.Range(10, 20);
+                        Sutamina = Random.Range(5, 10);
                         break;
                     default:
                         break;
@@ -88,28 +101,28 @@ public class ItemData
                 switch (JewelRarity)
                 {
                     case JewelRarity.Normal:
-                        Para1 = Random.Range(0, 3);
-                        Para2 = Random.Range(-3, 1);
-                        Para3 = Random.Range(3, 5);
+                        Attack = Random.Range(0, 3);
+                        Deffence = Random.Range(-3, 1);
+                        Sutamina = Random.Range(3, 5);
                         break;
                     case JewelRarity.Rare:
-                        Para1 = Random.Range(3, 5);
-                        Para2 = Random.Range(1, 3);
-                        Para3 = Random.Range(5, 10);
+                        Attack = Random.Range(3, 5);
+                        Deffence = Random.Range(1, 3);
+                        Sutamina = Random.Range(5, 10);
                         break;
                     case JewelRarity.SuperRare:
-                        Para1 = Random.Range(5, 10);
-                        Para2 = Random.Range(3, 6);
-                        Para3 = Random.Range(10, 20);
+                        Attack = Random.Range(5, 10);
+                        Deffence = Random.Range(3, 6);
+                        Sutamina = Random.Range(10, 20);
                         break;
                     default:
                         break;
                 }
                 break;
             default:
-                Para1 = 0;
-                Para2 = 0;
-                Para3 = 0;
+                Attack = 0;
+                Deffence = 0;
+                Sutamina = 0;
                 break;
         }
     }

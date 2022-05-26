@@ -20,7 +20,7 @@ public class EnemySpown : MonoBehaviour
     {
         if (!m_spownFlag)
         {
-            Debug.Log("敵が現れた");
+            //Debug.Log("敵が現れた");
             foreach (var item in m_spownPos)
             {
                 Instantiate(m_enemy, item.transform);

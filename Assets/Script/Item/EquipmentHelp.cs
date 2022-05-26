@@ -39,6 +39,6 @@ public class EquipmentHelp : MonoBehaviour
     /// <param name="data"></param>
     public void EquipmentText(SelectJewel data)
     {
-        m_text.text = $"攻:{data.m_itemData.Para1} 防:{data.m_itemData.Para2} ス:{data.m_itemData.Para3}";
+        m_text.text = $"攻:{data.m_itemData.Attack} 防:{data.m_itemData.Deffence} ス:{data.m_itemData.Sutamina}";
     }
 }

@@ -15,11 +15,13 @@ public class ItemDetection : MonoBehaviour
     [SerializeField] Text m_text;
     Skill m_skill;
     ItemData m_data;
+    JewelRarity m_jewelRarity;
     bool m_falg = false;
     int m_heal;
 
     private void Start()
     {
+        JewelRaritySet();
         m_data = new ItemData(m_jewelType);
         m_skill = new Skill(m_jewelType);
         SkillSet();
@@ -93,7 +95,7 @@ public class ItemDetection : MonoBehaviour
 
     void PlayerHealPickUp()
     {
-        m_heal = ((m_data.Para1 + m_data.Para2 + m_data.Para3) * 3);
+        m_heal = ((m_data.Attack + m_data.Deffence + m_data.Sutamina) * 3);
         if (PlayerStatus.Instance.CurrentLife < 300)
         {
             if (PlayerStatus.Instance.CurrentLife + m_heal >300)
@@ -120,7 +122,24 @@ public class ItemDetection : MonoBehaviour
     private void ItemText()
     {
         Debug.Log(m_data.JewelRarity);
-        m_text.text = $"攻撃力  {m_data.Para1}    回復力  {((m_data.Para1 + m_data.Para2 + m_data.Para3) * 3)}\n防御力  {m_data.Para2}    SKILL Lv 1\nスタミナ  {m_data.Para3}";
+        m_text.text = $"攻撃力  {m_data.Attack}    回復力  {((m_data.Attack + m_data.Deffence + m_data.Sutamina) * 3)}\n防御力  {m_data.Deffence}    SKILL Lv 1\nスタミナ  {m_data.Sutamina}";
+    }
+
+    void JewelRaritySet()
+    {
+        int rarity = Random.Range(1, 10 + 1);
+        if (rarity == 10)
+        {
+           m_jewelRarity  = JewelRarity.SuperRare;
+        }
+        else if (rarity == 7 || rarity == 8 || rarity == 9)
+        {
+            m_jewelRarity = JewelRarity.Rare;
+        }
+        else
+        {
+            m_jewelRarity = JewelRarity.Normal;
+        }
     }
 }
 

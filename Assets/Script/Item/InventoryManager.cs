@@ -32,9 +32,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        //ItemManager.Instance.OnItemGet += ItemGet;
         m_jewerData = new List<JewerData>();
-        ItemSet();
     }
 
     /// <summary>
@@ -42,31 +40,10 @@ public class InventoryManager : MonoBehaviour
     /// </summary>
     public void ItemGet()
     {
-        //foreach (var item in m_jewerData)
-        //{
-        //    //　オブジェクト自身にデストロイする関数を作っておいて呼ぶ
-        //    item.MyDestroy();
-        //}
-        //m_jewerData.Clear();　//　リストの中身を消してリセットする
-
         foreach (var item in ItemManager.Instance.HaveItem)
         {
-            if (item.Instance)
-            {
-                continue;
-            }
-            // UIの親を生成
-            var ui = Instantiate(m_JewelUIParent, transform.position, transform.rotation, transform);
-            item.Instance = true;
-            ui.SetData(item);　// JewerDataのSetDataを呼んでアイテムの種類を判別
-            m_jewerData.Add(ui); // 判別したアイテムをリストに追加
-        }
-    }
+            if (item.Instance) continue;
 
-    private void ItemSet()
-    {
-        foreach (var item in ItemManager.Instance.HaveItem)
-        {
             // UIの親を生成
             var ui = Instantiate(m_JewelUIParent, transform.position, transform.rotation, transform);
             item.Instance = true;
@@ -81,6 +58,7 @@ public class InventoryManager : MonoBehaviour
         m_jewerData.RemoveAt(id);
         OnDiscard?.Invoke(id);
     }
+
     public void SelectItem()
     {
         OnSelectItem?.Invoke();
@@ -92,11 +70,6 @@ public class InventoryManager : MonoBehaviour
 
     public void Sort()
     {
-        //foreach (var item in m_jewerData)
-        //{
-        //    transform.SetSiblingIndex(0);
-        //}
-        
         for (int i = 0; i < m_jewerData.Count; i++)
         {
             m_jewerData[i].transform.SetSiblingIndex(i);

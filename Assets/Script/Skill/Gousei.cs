@@ -40,7 +40,7 @@ public class Gousei : MonoBehaviour
             var data1 = m_selectJewel1.m_itemData;
             var data2 = m_selectJewel2.m_itemData;
 
-            m_slot3Text.text = $"攻{data1.Para1 + data2.Para1}防{data1.Para2 + data2.Para2}ス{data1.Para3 + data2.Para3}";
+            m_slot3Text.text = $"攻{data1.Attack + data2.Attack}防{data1.Deffence + data2.Deffence}ス{data1.Sutamina + data2.Sutamina}";
 
             if (data1.Skill.SkillType == data2.Skill.SkillType)
             {
@@ -124,9 +124,9 @@ public class Gousei : MonoBehaviour
     {
         if (IsSlot1 && IsSlot2)
         {
-            m_selectJewel1.m_itemData.Para1 += m_selectJewel2.m_itemData.Para1;
-            m_selectJewel1.m_itemData.Para2 += m_selectJewel2.m_itemData.Para2;
-            m_selectJewel1.m_itemData.Para3 += m_selectJewel2.m_itemData.Para3;
+            m_selectJewel1.m_itemData.Attack += m_selectJewel2.m_itemData.Attack;
+            m_selectJewel1.m_itemData.Deffence += m_selectJewel2.m_itemData.Deffence;
+            m_selectJewel1.m_itemData.Sutamina += m_selectJewel2.m_itemData.Sutamina;
 
             if (m_selectJewel1.m_itemData.Skill.SkillType == m_selectJewel2.m_itemData.Skill.SkillType)
             {
@@ -203,7 +203,7 @@ public class Gousei : MonoBehaviour
     void TextSet(SelectJewel selectJewel, Text text)
     {
         var data = selectJewel.m_itemData;
-        text.text = $"攻{data.Para1}防{data.Para2}ス{data.Para3}\nSkill Lv {data.Skill.SkillLevel}";
+        text.text = $"攻{data.Attack}防{data.Deffence}ス{data.Sutamina}\nSkill Lv {data.Skill.SkillLevel}";
     }
 
 
