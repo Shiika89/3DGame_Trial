@@ -19,6 +19,10 @@ public class ItemDetection : MonoBehaviour
     bool m_falg = false;
     int m_heal;
 
+    int m_attack;
+    int m_deffence;
+    int m_sutamina;
+
     private void Start()
     {
         JewelRaritySet();
@@ -139,6 +143,84 @@ public class ItemDetection : MonoBehaviour
         else
         {
             m_jewelRarity = JewelRarity.Normal;
+        }
+    }
+
+    void JewelParaSet()
+    {
+        switch (m_jewelType)
+        {
+            case JewelType.Red:
+                switch (m_jewelRarity)
+                {
+                    case JewelRarity.Normal:
+                        m_attack = Random.Range(3, 5);
+                        m_deffence = Random.Range(0, 3);
+                        m_sutamina = Random.Range(-3, 1);
+                        break;
+                    case JewelRarity.Rare:
+                        m_attack = Random.Range(5, 10);
+                        m_deffence = Random.Range(3, 5);
+                        m_sutamina = Random.Range(1, 3);
+                        break;
+                    case JewelRarity.SuperRare:
+                        m_attack = Random.Range(10, 20);
+                        m_deffence = Random.Range(5, 10);
+                        m_sutamina = Random.Range(3, 6);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case JewelType.Blue:
+                switch (m_jewelRarity)
+                {
+                    case JewelRarity.Normal:
+                        m_attack = Random.Range(-3, 1);
+                        m_deffence = Random.Range(3, 5);
+                        m_sutamina = Random.Range(0, 3);
+                        break;
+                    case JewelRarity.Rare:
+                        m_attack = Random.Range(1, 3);
+                        m_deffence = Random.Range(5, 10);
+                        m_sutamina = Random.Range(3, 5);
+                        break;
+                    case JewelRarity.SuperRare:
+                        m_attack = Random.Range(3, 6);
+                        m_deffence = Random.Range(10, 20);
+                        m_sutamina = Random.Range(5, 10);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case JewelType.Green:
+                switch (m_jewelRarity)
+                {
+                    case JewelRarity.Normal:
+                        m_attack = Random.Range(0, 3);
+                        m_deffence = Random.Range(-3, 1);
+                        m_sutamina = Random.Range(3, 5);
+                        break;
+                    case JewelRarity.Rare:
+                        m_attack = Random.Range(3, 5);
+                        m_deffence = Random.Range(1, 3);
+                        m_sutamina = Random.Range(5, 10);
+                        break;
+                    case JewelRarity.SuperRare:
+                        m_attack = Random.Range(5, 10);
+                        m_deffence = Random.Range(3, 6);
+                        m_sutamina = Random.Range(10, 20);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                m_attack = 0;
+                m_deffence = 0;
+                m_sutamina = 0;
+                break;
         }
     }
 }
