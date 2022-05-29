@@ -8,9 +8,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class JewelParameter : ScriptableObject
 {
-    [SerializeField] public JewelRarity rarity;
-    [SerializeField] public JewelType jewelType;
-    [SerializeField] public Vector2Int attack;
-    [SerializeField] public Vector2Int deffence;
-    [SerializeField] public Vector2Int sutamina;
+    [SerializeField] Vector2Int[] m_high;
+    [SerializeField] Vector2Int[] m_medium;
+    [SerializeField] Vector2Int[] m_low;
+
+    public Vector2Int[] High { get => m_high; }
+    public Vector2Int[] Medium { get => m_medium; }
+    public Vector2Int[] Low { get => m_low; }
 }

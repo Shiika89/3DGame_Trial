@@ -4868,6 +4868,7 @@ MonoBehaviour:
   m_jewelType: 1
   m_canvas: {fileID: 2414123289406502384}
   m_text: {fileID: 3118826610338760932}
+  m_jewelPara: {fileID: 11400000, guid: 37462753099fe0044be76b830494c041, type: 2}
 --- !u!122 &3382965141187962789
 Halo:
   m_ObjectHideFlags: 0
