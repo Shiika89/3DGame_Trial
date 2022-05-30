@@ -10,8 +10,10 @@ public class ItemDetection : MonoBehaviour
 {
     [Tooltip("自分がどの種類のJewelなのか設定")]
     [SerializeField] JewelType m_jewelType;
+
     [Tooltip("子についてるUI")]
     [SerializeField] Canvas m_canvas;
+
     [SerializeField] Text m_text;
 
     [SerializeField] JewelParameter m_jewelPara;
@@ -55,14 +57,6 @@ public class ItemDetection : MonoBehaviour
     void SkillSet()
     {
         m_data.Skill = m_skill;
-
-        //foreach (var item in m_sill)
-        //{
-        //    if (item.jewelType == m_jewelType)
-        //    {
-        //        m_data.Skill = item;
-        //    }
-        //}
     }
 
     /// <summary>
@@ -101,23 +95,21 @@ public class ItemDetection : MonoBehaviour
         Destroy(gameObject);
     }
 
+
     void PlayerHealPickUp()
     {
-        m_heal = ((m_data.Attack + m_data.Deffence + m_data.Sutamina) * 3);
-        if (PlayerStatus.Instance.CurrentLife < 300)
+        if (PlayerStatus.Instance.CurrentLife < PlayerStatus.Instance.MaxLife)
         {
-            if (PlayerStatus.Instance.CurrentLife + m_heal >300)
+            if (PlayerStatus.Instance.CurrentLife + m_heal > PlayerStatus.Instance.MaxLife)
             {
-                PlayerStatus.Instance.CurrentLife = 300;
-                //m_chara.m_slinder.value = 100;
+                PlayerStatus.Instance.CurrentLife = PlayerStatus.Instance.MaxLife;
                 Debug.Log("HPは満タンになった");
                 Destroy(gameObject);
             }
             else
             {
                 PlayerStatus.Instance.CurrentLife += m_heal;
-                //m_chara.m_slinder.value += m_heal;
-                Debug.Log($"HPが{m_heal}回復した");
+
                 Destroy(gameObject);
             }
         }
@@ -130,7 +122,7 @@ public class ItemDetection : MonoBehaviour
     private void ItemText()
     {
         Debug.Log(m_data.JewelRarity);
-        m_text.text = $"攻撃力  {m_data.Attack}    回復力  {((m_data.Attack + m_data.Deffence + m_data.Sutamina) * 3)}\n防御力  {m_data.Deffence}    SKILL Lv 1\nスタミナ  {m_data.Sutamina}";
+        m_text.text = $"攻撃力  {m_attack}    回復力  {m_heal * 3}\n防御力  {m_deffence}    SKILL Lv 1\nスタミナ  {m_sutamina}";
     }
 
     void JewelRaritySet()
@@ -226,6 +218,7 @@ public class ItemDetection : MonoBehaviour
                 m_sutamina = 0;
                 break;
         }
+        m_heal = ((m_attack + m_deffence + m_sutamina) * 3); // 回復量を決定
     }
 }
 

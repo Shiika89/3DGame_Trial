@@ -31,7 +31,7 @@ public class ItemData
 
 
     /// <summary>
-    /// Jewelの種類によってパラメータを付与する関数
+    /// Jewelの種類、レア度によってパラメータを付与する関数
     /// </summary>
     /// <param name="type"></param>
     public ItemData(JewelType type, JewelRarity rarity, int attack, int deffence, int sutamina)
