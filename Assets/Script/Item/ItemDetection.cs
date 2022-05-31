@@ -8,6 +8,8 @@ using UnityEngine.UI;
 /// </summary>
 public class ItemDetection : MonoBehaviour
 {
+    const int PARAMETER_COUNT = 3;
+    
     [Tooltip("自分がどの種類のJewelなのか設定")]
     [SerializeField] JewelType m_jewelType;
 
@@ -147,70 +149,19 @@ public class ItemDetection : MonoBehaviour
         switch (m_jewelType)
         {
             case JewelType.Red:
-                switch (m_jewelRarity)
-                {
-                    case JewelRarity.Normal:
-                        m_attack = Random.Range(m_jewelPara.High[1].x, m_jewelPara.High[1].y);
-                        m_deffence = Random.Range(m_jewelPara.Medium[1].x, m_jewelPara.Medium[1].y);
-                        m_sutamina = Random.Range(m_jewelPara.Low[1].x, m_jewelPara.Low[1].y);
-                        break;
-                    case JewelRarity.Rare:
-                        m_attack = Random.Range(m_jewelPara.High[2].x, m_jewelPara.High[2].y);
-                        m_deffence = Random.Range(m_jewelPara.Medium[2].x, m_jewelPara.Medium[2].y);
-                        m_sutamina = Random.Range(m_jewelPara.Low[2].x, m_jewelPara.Low[2].y);
-                        break;
-                    case JewelRarity.SuperRare:
-                        m_attack = Random.Range(m_jewelPara.High[3].x, m_jewelPara.High[3].y);
-                        m_deffence = Random.Range(m_jewelPara.Medium[3].x, m_jewelPara.Medium[3].y);
-                        m_sutamina = Random.Range(m_jewelPara.Low[3].x, m_jewelPara.Low[3].y);
-                        break;
-                    default:
-                        break;
-                }
+                m_attack = GetParaHigh(m_jewelRarity);
+                m_deffence = GetParaMiddle(m_jewelRarity);
+                m_sutamina = GetParaLow(m_jewelRarity);
                 break;
             case JewelType.Blue:
-                switch (m_jewelRarity)
-                {
-                    case JewelRarity.Normal:
-                        m_attack = Random.Range(m_jewelPara.Low[1].x, m_jewelPara.Low[1].y);
-                        m_deffence = Random.Range(m_jewelPara.High[1].x, m_jewelPara.High[1].y);
-                        m_sutamina = Random.Range(m_jewelPara.Medium[1].x, m_jewelPara.Medium[1].y);
-                        break;
-                    case JewelRarity.Rare:
-                        m_attack = Random.Range(m_jewelPara.Low[2].x, m_jewelPara.Low[2].y);
-                        m_deffence = Random.Range(m_jewelPara.High[2].x, m_jewelPara.High[2].y);
-                        m_sutamina = Random.Range(m_jewelPara.Medium[2].x, m_jewelPara.Medium[2].y);
-                        break;
-                    case JewelRarity.SuperRare:
-                        m_attack = Random.Range(m_jewelPara.Low[3].x, m_jewelPara.Low[3].y);
-                        m_deffence = Random.Range(m_jewelPara.High[3].x, m_jewelPara.High[3].y);
-                        m_sutamina = Random.Range(m_jewelPara.Medium[3].x, m_jewelPara.Medium[3].y);
-                        break;
-                    default:
-                        break;
-                }
+                m_attack = GetParaLow(m_jewelRarity);
+                m_deffence = GetParaHigh(m_jewelRarity);
+                m_sutamina = GetParaMiddle(m_jewelRarity);
                 break;
             case JewelType.Green:
-                switch (m_jewelRarity)
-                {
-                    case JewelRarity.Normal:
-                        m_attack = Random.Range(m_jewelPara.Medium[1].x, m_jewelPara.Medium[1].y);
-                        m_deffence = Random.Range(m_jewelPara.Low[1].x, m_jewelPara.Low[1].y);
-                        m_sutamina = Random.Range(m_jewelPara.High[1].x, m_jewelPara.High[1].y);
-                        break;
-                    case JewelRarity.Rare:
-                        m_attack = Random.Range(m_jewelPara.Medium[2].x, m_jewelPara.Medium[2].y);
-                        m_deffence = Random.Range(m_jewelPara.Low[2].x, m_jewelPara.Low[2].y);
-                        m_sutamina = Random.Range(m_jewelPara.High[2].x, m_jewelPara.High[2].y);
-                        break;
-                    case JewelRarity.SuperRare:
-                        m_attack = Random.Range(m_jewelPara.Medium[3].x, m_jewelPara.Medium[3].y);
-                        m_deffence = Random.Range(m_jewelPara.Low[3].x, m_jewelPara.Low[3].y);
-                        m_sutamina = Random.Range(m_jewelPara.High[3].x, m_jewelPara.High[3].y);
-                        break;
-                    default:
-                        break;
-                }
+                m_attack = GetParaMiddle(m_jewelRarity);
+                m_deffence = GetParaLow(m_jewelRarity);
+                m_sutamina = GetParaHigh(m_jewelRarity);
                 break;
             default:
                 m_attack = 0;
@@ -218,7 +169,22 @@ public class ItemDetection : MonoBehaviour
                 m_sutamina = 0;
                 break;
         }
-        m_heal = ((m_attack + m_deffence + m_sutamina) * 3); // 回復量を決定
+        m_heal = ((m_attack + m_deffence + m_sutamina) * PARAMETER_COUNT); // 回復量を決定
+    }
+
+    private int GetParaHigh(JewelRarity rarity)
+    {
+        return Random.Range(m_jewelPara.High[(int)rarity].x, m_jewelPara.High[(int)rarity].y); ;
+    }
+
+    private int GetParaMiddle(JewelRarity rarity)
+    {
+        return Random.Range(m_jewelPara.Middle[(int)rarity].x, m_jewelPara.Middle[(int)rarity].y); ;
+    }
+
+    private int GetParaLow(JewelRarity rarity)
+    {
+        return Random.Range(m_jewelPara.Low[(int)rarity].x, m_jewelPara.Low[(int)rarity].y); ;
     }
 }
 
