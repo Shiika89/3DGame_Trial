@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class PlayerMove : MonoBehaviour
 {
+    const int FIRST_ATTACK = 0;
+    const int SECOND_ATTACK = 1;
+    const int LAST_ATTACK = 2;
     static public PlayerMove Instance;
 
     [Tooltip("動く速さ")]
@@ -155,17 +158,17 @@ public class PlayerMove : MonoBehaviour
                 // スキル発動中は連続攻撃可能
                 if (m_attackUp.IsSkillActive)
                 {
-                    if (DualAttackNum == 0)
+                    if (DualAttackNum == FIRST_ATTACK)
                     {
                         DualAttackNum++;
                         m_anim.SetInteger("DualAttack", DualAttackNum);
                     }
-                    else if(DualAttackNum == 1 && m_attackController.IsDualAttack1)
+                    else if(DualAttackNum == SECOND_ATTACK && m_attackController.IsDualAttack1)
                     {
                         DualAttackNum++;
                         m_anim.SetInteger("DualAttack", DualAttackNum);
                     }
-                    else if (DualAttackNum == 2 && m_attackController.IsDualAttack2)
+                    else if (DualAttackNum == LAST_ATTACK && m_attackController.IsDualAttack2)
                     {
                         DualAttackNum++;
                         m_anim.SetInteger("DualAttack", DualAttackNum);
@@ -173,17 +176,17 @@ public class PlayerMove : MonoBehaviour
                 }
                 else // スキル発動中でなければ通常攻撃
                 {
-                    if (AttackNum == 0)
+                    if (AttackNum == FIRST_ATTACK)
                     {
                         AttackNum++;
                         m_anim.SetInteger("Attack", AttackNum);
                     }
-                    else if (AttackNum == 1 && m_attackController.IsAttack1)
+                    else if (AttackNum == SECOND_ATTACK && m_attackController.IsAttack1)
                     {
                         AttackNum++;
                         m_anim.SetInteger("Attack", AttackNum);
                     }
-                    else if (AttackNum == 2 && m_attackController.IsAttack2)
+                    else if (AttackNum == LAST_ATTACK && m_attackController.IsAttack2)
                     {
                         AttackNum++;
                         m_anim.SetInteger("Attack", AttackNum);

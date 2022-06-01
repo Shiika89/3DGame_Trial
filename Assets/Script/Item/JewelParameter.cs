@@ -13,6 +13,6 @@ public class JewelParameter : ScriptableObject
     [SerializeField] Vector2Int[] m_low;
 
     public Vector2Int[] High { get => m_high; }
-    public Vector2Int[] Medium { get => m_medium; }
+    public Vector2Int[] Middle { get => m_medium; }
     public Vector2Int[] Low { get => m_low; }
 }

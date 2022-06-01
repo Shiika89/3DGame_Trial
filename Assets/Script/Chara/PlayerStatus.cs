@@ -9,7 +9,7 @@ public class PlayerStatus : MonoBehaviour, IDamagable
     public static PlayerStatus Instance { get; set; }
     [Tooltip("プレイヤーの最大体力")]
     [SerializeField] int m_maxLife = 300;
-    public int MaxLife { get => m_maxLife; set => m_maxLife = value; }
+    public int MaxLife { get => m_maxLife; }
 
     /// <summary> 現在のスタミナ </summary>
     int m_currentLife = 300;
