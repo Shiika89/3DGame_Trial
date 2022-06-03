@@ -53,7 +53,7 @@ public class BossStatus : MonoBehaviour, IDamagable, IStatusModelHolder
         // HPが0になったら鍵と死亡アニメーションのプレハブを出して自信を消す
         if (Status.currentLife <= 0)
         {
-            Gamemanager.Instance.m_key = true;
+            Gamemanager.Instance.Key = true;
             m_key.SetActive(true);
             GameObject death = Instantiate(m_DeathObject, this.gameObject.transform.position, this.gameObject.transform.rotation);
             Destroy(this.gameObject);

@@ -14,7 +14,7 @@ public class Key : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Gamemanager.Instance.m_key = true;
+        Gamemanager.Instance.Key = true;
         m_key.SetActive(true);
         Destroy(gameObject);
     }

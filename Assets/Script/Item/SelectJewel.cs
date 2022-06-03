@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// アイテムのUI自身に持たせて自分を装備するかを選択する
+/// アイテムのUI自身に持たせて自分を装備するかなどを選択する
 /// </summary>
 public class SelectJewel : MonoBehaviour
 {

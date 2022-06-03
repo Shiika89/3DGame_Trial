@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 現在未使用
+/// </summary>
 public class EquipmentData : MonoBehaviour
 {
     GameObject m_player;

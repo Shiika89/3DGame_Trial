@@ -24,7 +24,7 @@ public class RandomStage : MonoBehaviour
 
     void Start()
     {
-        if (Gamemanager.Instance.m_stage % 5 == 0)
+        if (Gamemanager.Instance.Stage % 5 == 0)
         {
             Instantiate(m_bossFloor).transform.position = new Vector3(0, 0, 0);
         }
@@ -118,7 +118,7 @@ public class RandomStage : MonoBehaviour
 
     public void NextStage()
     {
-        if (Gamemanager.Instance.m_stage % 5 == 0)
+        if (Gamemanager.Instance.Stage % 5 == 0)
         {
             Instantiate(m_bossFloor).transform.position = new Vector3(0, 0, 0);
         }

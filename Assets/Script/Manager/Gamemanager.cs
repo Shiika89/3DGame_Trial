@@ -13,25 +13,40 @@ public class Gamemanager : MonoBehaviour
 
     [Tooltip("装備画面のUI")]
     [SerializeField] GameObject m_EquipmentUI;
+
+    [Tooltip("経過時間のUIテキスト")]
     [SerializeField] Text m_timeText;
-    [SerializeField] AudioClip audioClip1;
-    [SerializeField] AudioClip audioClip2;
+
+    [Tooltip("BGMを格納")]
+    [SerializeField] AudioClip[] audioClip;
+
+    [Tooltip("敵の強さのテキスト")]
     [SerializeField] Text m_enemyLevelText;
+
+    [Tooltip("何秒で敵の強さが上がるか")]
     [SerializeField] int m_levelUpTime;
+
+    [Tooltip("ゲームオーバー時に出すUI")]
     [SerializeField] GameObject m_gameOver;
 
-    private AudioSource audioSource;
+    AudioSource audioSource;
 
-    public int m_stage = 1;
-    public bool m_key = false;
+    [Tooltip("現在の階層")]
+    [SerializeField] int m_stage = 1;
+    public int Stage { get => m_stage; set => m_stage = value; }
+
+    public bool Key { get; set; } = false;
+
     public bool m_timeAttack = false;
     float m_timer;
-    public int m_nowTimer;
-    public int m_minuteTime;
+
+    public int NowTimer { get; private set; }
+    public int MinuteTime { get; private set; }
 
     float m_enemyStatusTimer;
     [SerializeField] int[] m_enemyLevel;
     public int[] EnemyLevel { get => m_enemyLevel;}
+
     public int m_nowEnemyLv { get; private set; } = 1;
     
 
@@ -46,20 +61,9 @@ public class Gamemanager : MonoBehaviour
     private void Start()
     {
         m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700,0);
-        m_key = false;
+        Key = false;
 
-        if (m_stage % 5 == 0)
-        {
-            audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.clip = audioClip1;
-            audioSource.Play();
-        }
-        else
-        {
-            audioSource = gameObject.GetComponent<AudioSource>();
-            audioSource.clip = audioClip2;
-            audioSource.Play();
-        }
+        StageBGM();
     }
 
     // Update is called once per frame
@@ -67,23 +71,11 @@ public class Gamemanager : MonoBehaviour
     {
         GameLevel();
 
-        m_timeText.text = $"{m_minuteTime}分{m_nowTimer}秒";
+        GameTime();
 
-        if (m_timeAttack)
+        if (m_stage == 6)
         {
-            m_timer += Time.deltaTime;
-            m_nowTimer = (int)m_timer;
-            if (m_nowTimer == 60)
-            {
-                m_minuteTime++;
-                m_timer = 0;
-            }
-
-            if (m_stage == 6)
-            {
-                SceneManager.LoadScene("ClearScene");
-                m_timeAttack = false;
-            }
+            SceneManager.LoadScene("ClearScene");
         }
 
         //　装備画面のUIをスペースキーでオンオフに切り替え
@@ -102,6 +94,9 @@ public class Gamemanager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 時間経過で敵の強さを上げる
+    /// </summary>
     void GameLevel()
     {
         m_enemyStatusTimer += Time.deltaTime;
@@ -113,7 +108,7 @@ public class Gamemanager : MonoBehaviour
                 m_nowEnemyLv++;
                 m_enemyStatusTimer = 0;
                 m_enemyLevelText.text = $"Lv{m_nowEnemyLv}";
-                Debug.Log($"敵の強さが上がった、レベル{m_nowEnemyLv}");
+                //Debug.Log($"敵の強さが上がった、レベル{m_nowEnemyLv}");
             }
         }
     }
@@ -131,6 +126,45 @@ public class Gamemanager : MonoBehaviour
             InventoryManager.Instance.SelectItem();
             m_EquipmentUI.GetComponent<RectTransform>().localPosition = new Vector2(700, 0);
             m_UIflag = false;
+        }
+    }
+
+    /// <summary>
+    /// 階層数によってBGMを変える
+    /// </summary>
+    public void StageBGM()
+    {
+        if (m_stage % 5 == 0)
+        {
+            BGMSet(audioClip[0]);
+        }
+        else
+        {
+            BGMSet(audioClip[1]);
+        }
+    }
+
+    void BGMSet(AudioClip audio)
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = audio;
+        audioSource.Play();
+    }
+
+    /// <summary>
+    /// ゲームの経過時間を計る
+    /// </summary>
+    void GameTime()
+    {
+        m_timeText.text = $"{MinuteTime}分{NowTimer}秒";
+
+        m_timer += Time.deltaTime;
+        NowTimer = (int)m_timer;
+
+        if (NowTimer == 60)
+        {
+            MinuteTime++;
+            m_timer = 0;
         }
     }
 }
