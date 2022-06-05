@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// ゲーム全体を管理
 /// </summary>
-public class Gamemanager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static Gamemanager Instance { get; set; }
+    public static GameManager Instance { get; set; }
 
     [Tooltip("装備画面のUI")]
     [SerializeField] GameObject m_EquipmentUI;

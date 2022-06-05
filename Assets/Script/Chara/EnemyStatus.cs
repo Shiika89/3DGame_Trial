@@ -58,7 +58,7 @@ public class EnemyStatus : MonoBehaviour, IStatusModelHolder, IDamagable
     void EnemyStatusSet()
     {
         // GameManagerに登録したレベルの配列の現在の敵のレベルを呼び出し
-        int enemyLv = Gamemanager.Instance.EnemyLevel[Gamemanager.Instance.m_nowEnemyLv - 1];
+        int enemyLv = GameManager.Instance.EnemyLevel[GameManager.Instance.m_nowEnemyLv - 1];
 
         // スクリプタブルオブジェクトに登録してあるenemyLvのステータスを書き写し
         Status.maxLife = m_enemyParameter.ParaData(enemyLv).MaxLife;

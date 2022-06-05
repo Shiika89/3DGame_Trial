@@ -85,7 +85,7 @@ public class PlayerMove : MonoBehaviour
     public void Move()
     {
         // 攻撃中・回避中・ステータス画面だったら操作を受け付けない
-        if (m_IsAttacking || m_IsKaihi || Gamemanager.Instance.m_UIflag) 
+        if (m_IsAttacking || m_IsKaihi || GameManager.Instance.m_UIflag) 
         {
             return;
         }
@@ -153,7 +153,7 @@ public class PlayerMove : MonoBehaviour
             m_anim.SetFloat("Speed", velocity.magnitude);
 
             // ステータス画面を開いてなくて攻撃ボタンを押したら Attack をセットする
-            if (Input.GetButtonDown("Fire1") && !Gamemanager.Instance.m_UIflag)
+            if (Input.GetButtonDown("Fire1") && !GameManager.Instance.m_UIflag)
             {
                 // スキル発動中は連続攻撃可能
                 if (m_attackUp.IsSkillActive)

@@ -53,7 +53,7 @@ public class BossStatus : MonoBehaviour, IDamagable, IStatusModelHolder
         // HPが0になったら鍵と死亡アニメーションのプレハブを出して自信を消す
         if (Status.currentLife <= 0)
         {
-            Gamemanager.Instance.Key = true;
+            GameManager.Instance.Key = true;
             m_key.SetActive(true);
             GameObject death = Instantiate(m_DeathObject, this.gameObject.transform.position, this.gameObject.transform.rotation);
             Destroy(this.gameObject);
@@ -74,7 +74,7 @@ public class BossStatus : MonoBehaviour, IDamagable, IStatusModelHolder
     void EnemyStatusSet()
     {
         // GameManagerに登録したレベルの配列の現在の敵のレベルを呼び出し
-        int enemyLv = Gamemanager.Instance.EnemyLevel[Gamemanager.Instance.m_nowEnemyLv - 1];
+        int enemyLv = GameManager.Instance.EnemyLevel[GameManager.Instance.m_nowEnemyLv - 1];
 
         // スクリプタブルオブジェクトに登録してあるenemyLvのステータスを書き写し
         Status.maxLife = m_bossParameter.ParaData(enemyLv).MaxLife;

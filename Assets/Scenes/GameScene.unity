@@ -1329,7 +1329,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000022888184
+      value: 0.00005340576
       objectReference: {fileID: 0}
     - target: {fileID: 193006956, guid: 5a42da3d5bc850645a3c65dd4b885a24, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -10139,16 +10139,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EquipmentUI: {fileID: 814550837}
   m_timeText: {fileID: 1072300863}
-  audioClip1: {fileID: 8300000, guid: f831eede88460a84bb998b201a7b687b, type: 3}
-  audioClip2: {fileID: 8300000, guid: 18a0b8745e856c441a40f65148f4ece1, type: 3}
+  audioClip:
+  - {fileID: 8300000, guid: f831eede88460a84bb998b201a7b687b, type: 3}
+  - {fileID: 8300000, guid: 18a0b8745e856c441a40f65148f4ece1, type: 3}
   m_enemyLevelText: {fileID: 2078112307}
   m_levelUpTime: 60
   m_gameOver: {fileID: 1331338266}
-  m_stage: 1
-  m_key: 0
+  m_stage: 4
   m_timeAttack: 1
-  m_nowTimer: 0
-  m_minuteTime: 0
   m_enemyLevel: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
   m_UIflag: 0
 --- !u!4 &2111588479

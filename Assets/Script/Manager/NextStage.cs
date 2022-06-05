@@ -14,18 +14,18 @@ public class NextStage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Gamemanager.Instance.Key)
+        if (GameManager.Instance.Key)
         {
             RandomStage.Instance.StageClear();
 
             PlayerStatus.Instance.gameObject.transform.position = Vector3.zero;
-            Gamemanager.Instance.Stage++;
-            Gamemanager.Instance.Key = false;
+            GameManager.Instance.Stage++;
+            GameManager.Instance.Key = false;
             m_stageTextAnim.SetTrigger("NextStage");
             ItemManager.Instance.DeleteJewel();
 
             RandomStage.Instance.NextStage();
-            Gamemanager.Instance.StageBGM();
+            GameManager.Instance.StageBGM();
         }
     }
 }

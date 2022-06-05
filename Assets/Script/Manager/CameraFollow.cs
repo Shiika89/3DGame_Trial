@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        if (Gamemanager.Instance.m_UIflag)
+        if (GameManager.Instance.m_UIflag)
         {
             return;
         }

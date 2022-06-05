@@ -16,7 +16,7 @@ public class QuestText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Gamemanager.Instance.Key)
+        if (!GameManager.Instance.Key)
         {
             m_questText.text = "鍵を探そう！";
         }
