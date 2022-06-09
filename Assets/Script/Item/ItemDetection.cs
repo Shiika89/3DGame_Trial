@@ -15,6 +15,7 @@ public class ItemDetection : MonoBehaviour
 
     [Tooltip("子についてるUI")]
     [SerializeField] Canvas m_canvas;
+    public Canvas Canvas { get => m_canvas; set => m_canvas = value; }
 
     [SerializeField] Text m_text;
 
@@ -23,7 +24,7 @@ public class ItemDetection : MonoBehaviour
     Skill m_skill;
     ItemData m_data;
     JewelRarity m_jewelRarity;
-    bool m_falg = false;
+    public bool Flag { get; set; } = false;
     int m_heal;
 
     int m_attack;
@@ -42,14 +43,18 @@ public class ItemDetection : MonoBehaviour
 
     private void Update()
     {
-        if (m_falg)
+        if (Flag)
         {
             if (Input.GetKeyDown(KeyCode.E)) //アイテムを回収
             {
+                ItemManager.Instance.ChangeIndex();
+                ItemManager.Instance.JewelText.Remove(this);
                 ItemPickUp();
             }
             if (Input.GetKeyDown(KeyCode.Q)) // アイテムを消費して体力を回復
             {
+                ItemManager.Instance.ChangeIndex();
+                ItemManager.Instance.JewelText.Remove(this);
                 PlayerHealPickUp();
             }
             
@@ -69,8 +74,9 @@ public class ItemDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            m_falg = true;
-            m_canvas.gameObject.SetActive(true);
+            ItemManager.Instance.JewelText.Add(this);
+            //m_falg = true;
+            //m_canvas.gameObject.SetActive(true);
         }
     }
 
@@ -82,7 +88,8 @@ public class ItemDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            m_falg = false;
+            ItemManager.Instance.JewelText.Remove(this);
+            Flag = false;
             m_canvas.gameObject.SetActive(false);
         }
     }
