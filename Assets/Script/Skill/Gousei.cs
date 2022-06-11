@@ -7,18 +7,14 @@ public class Gousei : MonoBehaviour
 {
     static public Gousei Instance;
 
-    [SerializeField] Image m_slot1;
-    [SerializeField] Image m_slot2;
-    [SerializeField] Image m_slot3;
+    [SerializeField] Image[] m_slot;
 
     [SerializeField] Sprite m_redSprite;
     [SerializeField] Sprite m_blueSprite;
     [SerializeField] Sprite m_greenSprite;
     [SerializeField] Sprite m_toumeiSprite;
 
-    [SerializeField] Text m_slot1Text;
-    [SerializeField] Text m_slot2Text;
-    [SerializeField] Text m_slot3Text;
+    [SerializeField] Text[] m_slotText;
 
     [SerializeField] EquipmentJewel[] m_eqipList;
 
@@ -40,27 +36,27 @@ public class Gousei : MonoBehaviour
             var data1 = m_selectJewel1.m_itemData;
             var data2 = m_selectJewel2.m_itemData;
 
-            m_slot3Text.text = $"攻{data1.Attack + data2.Attack}防{data1.Deffence + data2.Deffence}ス{data1.Sutamina + data2.Sutamina}";
+            m_slotText[2].text = $"攻{data1.Attack + data2.Attack}防{data1.Deffence + data2.Deffence}ス{data1.Sutamina + data2.Sutamina}";
 
             if (data1.Skill.SkillType == data2.Skill.SkillType)
             {
                 if (data1.Skill.SkillLevel == data2.Skill.SkillLevel)
                 {
-                    m_slot3Text.text += $"\nSkill Lv { data1.Skill.SkillLevel + 1}";
+                    m_slotText[2].text += $"\nSkill Lv { data1.Skill.SkillLevel + 1}";
                 }
                 else
                 {
-                    m_slot3Text.text += $"\nSkill Lv { data1.Skill.SkillLevel}";
+                    m_slotText[2].text += $"\nSkill Lv { data1.Skill.SkillLevel}";
                 }
             }
             else
             {
-                m_slot3Text.text += $"\nSkill Lv { data1.Skill.SkillLevel}";
+                m_slotText[2].text += $"\nSkill Lv { data1.Skill.SkillLevel}";
             }
         }
         else
         {
-            m_slot3Text.text = null;
+            m_slotText[2].text = null;
         }
     }
 
@@ -73,23 +69,23 @@ public class Gousei : MonoBehaviour
         switch (data.JewelType)
         {
             case JewelType.Red:
-                m_slot1.sprite = m_redSprite;
-                m_slot3.sprite = m_redSprite;
+                m_slot[0].sprite = m_redSprite;
+                m_slot[2].sprite = m_redSprite;
                 break;
             case JewelType.Blue:
-                m_slot1.sprite = m_blueSprite;
-                m_slot3.sprite = m_blueSprite;
+                m_slot[0].sprite = m_blueSprite;
+                m_slot[2].sprite = m_blueSprite;
                 break;
             case JewelType.Green:
-                m_slot1.sprite = m_greenSprite;
-                m_slot3.sprite = m_greenSprite;
+                m_slot[0].sprite = m_greenSprite;
+                m_slot[2].sprite = m_greenSprite;
                 break;
             default:
-                m_slot1.sprite = m_toumeiSprite;
+                m_slot[0].sprite = m_toumeiSprite;
                 break;
         }
 
-        TextSet(m_selectJewel1, m_slot1Text);
+        TextSet(m_selectJewel1, m_slotText[0]);
         //m_slot1Text.text = $"攻{data.m_itemData.Para1}防{data.m_itemData.Para2}ス{data.m_itemData.Para3}\nSkill Lv {m_selectJewel1.m_itemData.Skill.SkillLevel}";
     }
 
@@ -102,20 +98,20 @@ public class Gousei : MonoBehaviour
         switch (data.JewelType)
         {
             case JewelType.Red:
-                m_slot2.sprite = m_redSprite;
+                m_slot[1].sprite = m_redSprite;
                 break;
             case JewelType.Blue:
-                m_slot2.sprite = m_blueSprite;
+                m_slot[1].sprite = m_blueSprite;
                 break;
             case JewelType.Green:
-                m_slot2.sprite = m_greenSprite;
+                m_slot[1].sprite = m_greenSprite;
                 break;
             default:
-                m_slot2.sprite = m_toumeiSprite;
+                m_slot[1].sprite = m_toumeiSprite;
                 break;
         }
 
-        TextSet(m_selectJewel2, m_slot2Text);
+        TextSet(m_selectJewel2, m_slotText[1]);
 
         //m_slot2Text.text = $"攻{data.m_itemData.Para1}防{data.m_itemData.Para2}ス{data.m_itemData.Para3}\nSkill Lv {m_selectJewel2.m_itemData.Skill.SkillLevel}";
     }
@@ -139,7 +135,7 @@ public class Gousei : MonoBehaviour
 
         SlotReset1();
         SlotReset2();
-        m_slot3.sprite = m_toumeiSprite;
+        m_slot[2].sprite = m_toumeiSprite;
     }
 
     void SlotReset1()
@@ -159,12 +155,12 @@ public class Gousei : MonoBehaviour
             m_selectJewel1.Select3();
         }
 
-        m_slot1.sprite = m_toumeiSprite;
+        m_slot[0].sprite = m_toumeiSprite;
         IsSlot1 = false;
         m_selectJewel1 = null;
         
 
-        m_slot1Text.text = null;
+        m_slotText[0].text = null;
     }
 
     void SlotReset2()
@@ -183,13 +179,11 @@ public class Gousei : MonoBehaviour
         }
 
         m_selectJewel2.JewelOut();
-        m_slot2.sprite = m_toumeiSprite;
+        m_slot[1].sprite = m_toumeiSprite;
         IsSlot2 = false;
         m_selectJewel2 = null;
 
-        m_slot2Text.text = null;
-        //TextSet(m_selectJewel1, m_slot1Text);
-        //m_slot1Text.text = $"攻{m_selectJewel1.m_itemData.Para1}防{m_selectJewel1.m_itemData.Para2}ス{m_selectJewel1.m_itemData.Para3}\nSkill Lv {m_selectJewel1.m_itemData.Skill.SkillLevel}";
+        m_slotText[1].text = null;
     }
 
     void SlotChange(SelectJewel selectJewel)
