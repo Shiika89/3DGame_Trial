@@ -24,6 +24,7 @@ public class InventoryManager : MonoBehaviour
     public event Action OnSelectItem;
     public event Action OnOpenInventory;
     public event Action<int> OnDiscard;
+    public event Action OnRemoveButton;
 
     private void Awake()
     {
@@ -63,9 +64,15 @@ public class InventoryManager : MonoBehaviour
     {
         OnSelectItem?.Invoke();
     }
+
     public void OpenInventory()
     {
         OnOpenInventory?.Invoke();
+    }
+
+    public void RemoveButtin()
+    {
+        OnRemoveButton?.Invoke();
     }
 
     public void Sort()

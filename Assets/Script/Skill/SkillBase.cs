@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/// <summary>
+/// スキルのベース
+/// </summary>
 [Serializable]
 public class SkillBase : MonoBehaviour
 {
@@ -13,11 +16,13 @@ public class SkillBase : MonoBehaviour
     public SkillType SkillType { get => m_skillType; }
 
     [Tooltip("スキル発動中に減るスタミナの量")]
-    [SerializeField] public float DecreaseSutamina;
+    [SerializeField] float m_decreaseSutamina;
 
-    [SerializeField] public GameObject ParticleLv1;
-    [SerializeField] public GameObject ParticleLv5;
-    [SerializeField] public GameObject ParticleLv10;
+    [Tooltip("エフェクトが変わるレベル")]
+    [SerializeField] int[] m_efectLv;
+
+    [Tooltip("レベル毎のパーティクル")]
+    [SerializeField] GameObject[] m_particleLv;
 
     public bool IsSkillActive { get; set; }
 
@@ -26,32 +31,32 @@ public class SkillBase : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && PlayerStatus.Instance.Sutamina > 0 && !IsSkillActive)
         {
             IsSkillActive = true;
-            Debug.Log("スキル発動");
-            if (SkillLv >= 1)
+            //Debug.Log("スキル発動");
+            if (SkillLv >= m_efectLv[0])
             {
-                ParticleLv1.SetActive(true);
+                m_particleLv[0].SetActive(true);
             }
-            if (SkillLv >= 5)
+            if (SkillLv >= m_efectLv[1])
             {
-                ParticleLv5.SetActive(true);
+                m_particleLv[1].SetActive(true);
             }
-            if (SkillLv >= 10)
+            if (SkillLv >= m_efectLv[2])
             {
-                ParticleLv10.SetActive(true);
+                m_particleLv[2].SetActive(true);
             }
         }
 
         if (IsSkillActive)
         {
-            PlayerStatus.Instance.Sutamina -= DecreaseSutamina;
-            if (PlayerStatus.Instance.Sutamina < 5 || Input.GetKeyDown(KeyCode.C))
+            PlayerStatus.Instance.Sutamina -= m_decreaseSutamina;
+            if (PlayerStatus.Instance.Sutamina <= 0 || Input.GetKeyDown(KeyCode.C))
             {
-                Debug.Log("スキル終了");
+                //Debug.Log("スキル終了");
                 IsSkillActive = false;
 
-                ParticleLv1.SetActive(false);
-                ParticleLv5.SetActive(false);
-                ParticleLv10.SetActive(false);
+                m_particleLv[0].SetActive(false);
+                m_particleLv[1].SetActive(false);
+                m_particleLv[2].SetActive(false);
             }
         }
     }

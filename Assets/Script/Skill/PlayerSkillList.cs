@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+/// <summary>
+/// プレイヤーが所持するスキルのリスト
+/// </summary>
 public class PlayerSkillList : MonoBehaviour
 {
     public static PlayerSkillList Instance { get; set; }

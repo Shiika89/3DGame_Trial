@@ -14,6 +14,8 @@ public class EquipmentJewel : MonoBehaviour
     [Tooltip("自分のスロットにあった装備詳細のスクリプトを入れる")]
     [SerializeField] EquipmentHelp m_help = default;
 
+    [SerializeField] GameObject m_removeButton;
+
     /// <summary> 装備するアイテムのクラスを受け取るための変数 </summary>
     SelectJewel m_selectJewel = default;
 
@@ -65,6 +67,8 @@ public class EquipmentJewel : MonoBehaviour
 
             m_selectJewel = null;
         }
+
+        m_removeButton.SetActive(false);
     }
 
     /// <summary>
@@ -133,5 +137,17 @@ public class EquipmentJewel : MonoBehaviour
 
         // 装備が外れたことをアイテム自身に伝える
         m_selectJewel.SelectOut();
+    }
+
+    public void ActiveButton()
+    {
+        InventoryManager.Instance.RemoveButtin();
+        m_removeButton.SetActive(true);
+        InventoryManager.Instance.OnRemoveButton += InActiveButton;
+    }
+
+    void InActiveButton()
+    {
+        m_removeButton.SetActive(false);
     }
 }

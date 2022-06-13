@@ -2,23 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 赤の宝玉のスキル
+/// </summary>
 public class AttackUp : SkillBase
 {
+    [Tooltip("スキル発動時に攻撃力が上がる倍率")]
     [SerializeField] float m_attackBuff;
+
+    [Tooltip("左手の剣オブジェクト")]
     [SerializeField] GameObject m_dualSword;
-    //[SerializeField] float m_speed;
 
     [SerializeField] GameObject m_swordParticle1;
     [SerializeField] GameObject m_swordParticle2;
 
-    //[SerializeField] GameObject m_lvUpParticle;
+    float m_totalAttackUp; // 最終的な加算値
 
-    float m_totalAttackUp;
-
-    //public bool IsAttackUp { get; set; }
-
-    //bool hatudou;
-    //[SerializeField] float time;
 
     private void Update()
     {
@@ -31,10 +30,11 @@ public class AttackUp : SkillBase
 
         if (IsSkillActive)
         {
-            m_dualSword.SetActive(true);
-            m_totalAttackUp = SkillLv * m_attackBuff;
-            PlayerStatus.Instance.Buff = m_totalAttackUp;
+            m_dualSword.SetActive(true); // 二刀流に
+            m_totalAttackUp = SkillLv * m_attackBuff; // 加算値を計算
+            PlayerStatus.Instance.Buff = m_totalAttackUp; 
 
+            // エフェクトを発動
             m_swordParticle1.SetActive(true);
             m_swordParticle2.SetActive(true);
         }
@@ -48,20 +48,4 @@ public class AttackUp : SkillBase
             m_swordParticle2.SetActive(false);
         }
     }
-
-    //private void OnEnable()
-    //{
-    //    IsAttackUp = true;
-    //    m_dualSword.SetActive(true);
-    //    m_totalAttackUp += SkillLv * m_attackBuff;
-    //    PlayerStatus.Instance.Buff = m_totalAttackUp;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    m_dualSword.SetActive(false);
-    //    m_totalAttackUp = 0;
-    //    PlayerStatus.Instance.Buff = m_totalAttackUp;
-    //    IsAttackUp = false;
-    //}
 }

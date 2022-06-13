@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class GuardianArea : SkillBase
 {
+    [Tooltip("ダメージの基本値")]
     [SerializeField] float m_baseAreaDamege;
+
+    [Tooltip("ダメージが発生するインターバル")]
     [SerializeField] float m_damegeInterval;
+
+    [Tooltip("発動時に上がる防御力の倍率")]
     [SerializeField] float m_DeffenceBuff;
 
-    float m_totalDamege;
+    float m_totalDamege; // 最終的なダメージ
     float m_timer;
     bool m_isGuardianSkill;
-    int m_buffTotal;
+    int m_buffTotal; // 最終的な防御力加算値
 
     private void Update()
     {
@@ -60,23 +65,17 @@ public class GuardianArea : SkillBase
     {
         base.SkillEffect();
 
-        
-
         if (IsSkillActive && !m_isGuardianSkill)
         {
             m_isGuardianSkill = true;
 
             m_buffTotal = (int)((PlayerStatus.Instance.Deffence * m_DeffenceBuff) - PlayerStatus.Instance.Deffence);
             PlayerStatus.Instance.Deffence += m_buffTotal;
-            //m_playerMove.KaihiSpeed = m_playerMove.KaihiSpeed * 2;
-            //m_playerMove.KaihiTime = m_playerMove.KaihiTime / 2;
         }
         else if (!IsSkillActive && m_isGuardianSkill)
         {
             m_isGuardianSkill = false;
             PlayerStatus.Instance.Deffence -= m_buffTotal;
-            //m_playerMove.KaihiSpeed = m_playerMove.KaihiSpeed / 2;
-            //m_playerMove.KaihiTime = m_playerMove.KaihiTime * 2;
         }
     }
 }

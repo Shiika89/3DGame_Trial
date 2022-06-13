@@ -48,13 +48,11 @@ public class ItemDetection : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E)) //アイテムを回収
             {
                 ItemManager.Instance.ChangeIndex();
-                ItemManager.Instance.JewelText.Remove(this);
                 ItemPickUp();
             }
             if (Input.GetKeyDown(KeyCode.Q)) // アイテムを消費して体力を回復
             {
                 ItemManager.Instance.ChangeIndex();
-                ItemManager.Instance.JewelText.Remove(this);
                 PlayerHealPickUp();
             }
             
@@ -101,6 +99,7 @@ public class ItemDetection : MonoBehaviour
     void ItemPickUp()
     {
         ItemManager.Instance.ItemGet(m_data);
+        ItemManager.Instance.JewelText.Remove(this);
         Destroy(gameObject);
     }
 
@@ -121,6 +120,7 @@ public class ItemDetection : MonoBehaviour
 
                 Destroy(gameObject);
             }
+            ItemManager.Instance.JewelText.Remove(this);
         }
         else
         {
