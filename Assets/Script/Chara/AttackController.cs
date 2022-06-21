@@ -16,6 +16,10 @@ public class AttackController : MonoBehaviour
     [SerializeField] float m_sceal;
     [SerializeField] GameObject[] m_efect;
 
+    [Tooltip("攻撃した時の音")]
+    [SerializeField] AudioClip m_audioClip;
+    [SerializeField] AudioSource m_audioSource;
+
     public bool IsDualAttack1 { get; set; }
     public bool IsDualAttack2 { get; private set; }
 
@@ -197,5 +201,12 @@ public class AttackController : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
+    }
+
+    public void AudioPlay()
+    {
+        // 攻撃をすると音を鳴らす
+        m_audioSource.clip = m_audioClip;
+        m_audioSource.Play();
     }
 }
